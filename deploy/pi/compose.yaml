@@ -32,6 +32,9 @@ services:
       # cloudflared reaches the container through the bridge gateway;
       # trust its X-Forwarded-For so rate limits see real client IPs.
       MB_TRUSTED_PROXIES: "10.89.72.1,127.0.0.1"
+      # The Pi kernel has the memory cgroup disabled, so mem_limit below is
+      # ignored; this soft cap makes the Go runtime collect harder instead.
+      GOMEMLIMIT: "384MiB"
     ports:
       - "127.0.0.1:18480:8080"
       - "127.0.0.1:18490:9090"

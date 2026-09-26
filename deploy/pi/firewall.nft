@@ -5,7 +5,8 @@
 # else's rules, and nothing here flushes the ruleset. The two base chains run
 # just before the standard filter chains; a drop here is final.
 #
-# Traffic from the mockingbird container network may reach the public
+# Container addresses are .2-.254 (.1 is the Pi itself; its own broadcasts
+# on the bridge are left alone). Traffic from containers may reach the public
 # internet only: no LAN, no other containers, no Tailscale, no services on
 # the Pi itself.
 
@@ -25,13 +26,13 @@ table inet mockingbird {
 
 	chain forward {
 		type filter hook forward priority filter - 10; policy accept;
-		ip saddr 10.89.72.0/24 ct state new ip daddr @nonpublic4 counter drop comment "mockingbird: no private/LAN egress"
+		ip saddr 10.89.72.2-10.89.72.254 ct state new ip daddr @nonpublic4 counter drop comment "mockingbird: no private/LAN egress"
 		iifname "br-mockingbird" meta nfproto ipv6 counter drop comment "mockingbird: no IPv6"
 	}
 
 	chain input {
 		type filter hook input priority filter - 10; policy accept;
-		ip saddr 10.89.72.0/24 ct state new counter drop comment "mockingbird: no connections to the Pi itself"
+		ip saddr 10.89.72.2-10.89.72.254 ct state new counter drop comment "mockingbird: no connections to the Pi itself"
 		iifname "br-mockingbird" meta nfproto ipv6 counter drop comment "mockingbird: no IPv6"
 	}
 }
