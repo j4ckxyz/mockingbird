@@ -212,9 +212,9 @@ These results come from the Mac used for development, not the Pi. Each run used 
 | Setup | Users | Rate | p95 translation overhead | Bridge heap |
 |---|---|---|---|---|
 | Apple silicon, 6 cores, native | 3000 | 200 req/s | 3.8 ms | ~60 MB |
-| arm64 container limited to **1 CPU** | 3000 | 100 req/s | 4.4 ms | ~54 MB |
+| arm64 container limited to **1 CPU** | 3000 | 100 req/s | 4.6 ms | ~55 MB |
 
-For scale, 3000 users polling two endpoints every 2.5 minutes is about 40 req/s. Responses averaged 1.2 KB on the wire with gzip, about 1 Mbit/s of upload at 100 req/s. Upstream calls averaged 0.8 per client request.
+For scale, 3000 users polling two endpoints every 2.5 minutes is about 40 req/s. Responses averaged 0.9 to 1.2 KB on the wire with gzip, under 1 Mbit/s of upload at 100 req/s. Upstream calls averaged 0.8 per client request.
 
 ## Limitations
 
