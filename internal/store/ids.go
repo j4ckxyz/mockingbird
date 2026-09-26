@@ -30,7 +30,20 @@ func (s *Store) StatusIDs(ctx context.Context, refs []StatusRef) (map[string]int
 	if len(refs) == 0 {
 		return out, nil
 	}
-	sorted := append([]StatusRef(nil), refs...)
+	// De-duplicate first (keeping any known time): an upsert that hits a
+	// conflict still consumes an AUTOINCREMENT value, leaving gaps.
+	byURI := make(map[string]int, len(refs))
+	sorted := make([]StatusRef, 0, len(refs))
+	for _, r := range refs {
+		if i, ok := byURI[r.URI]; ok {
+			if sorted[i].SortAt.IsZero() {
+				sorted[i].SortAt = r.SortAt
+			}
+			continue
+		}
+		byURI[r.URI] = len(sorted)
+		sorted = append(sorted, r)
+	}
 	sort.SliceStable(sorted, func(i, j int) bool {
 		a, b := sorted[i].SortAt, sorted[j].SortAt
 		if a.IsZero() != b.IsZero() {
@@ -236,7 +249,15 @@ func (s *Store) DMIDs(ctx context.Context, refs []DMRef) (map[DMRef]int64, error
 	if len(refs) == 0 {
 		return out, nil
 	}
-	sorted := append([]DMRef(nil), refs...)
+	seen := map[[2]string]bool{}
+	var sorted []DMRef
+	for _, r := range refs {
+		k := [2]string{r.ConvoID, r.MsgID}
+		if !seen[k] {
+			seen[k] = true
+			sorted = append(sorted, r)
+		}
+	}
 	sort.SliceStable(sorted, func(i, j int) bool { return sorted[i].SortAt.Before(sorted[j].SortAt) })
 	tx, err := s.w.BeginTx(ctx, nil)
 	if err != nil {

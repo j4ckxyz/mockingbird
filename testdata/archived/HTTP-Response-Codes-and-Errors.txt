@@ -1,0 +1,59 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response Codes and Errors
+Twitter API Wiki
+log inhelp
+WikiPages & Files
+View
+HTTP Response Codes and Errors
+Page history  last edited by Mark McBride 5 mos ago
+<< Back to Twitter API Documentation
+HTTP Status Codes
+The Twitter API attempts to return appropriate HTTP status codes for every request. It is possible to surpress response codes for the REST API.
+200 OK: Success!
+304 Not Modified: There was no new data to return.
+400 Bad Request: The request was invalid.  An accompanying error message will explain why. This is the status code will be returned during rate limiting.
+401 Unauthorized: Authentication credentials were missing or incorrect.
+403 Forbidden: The request is understood, but it has been refused.  An accompanying error message will explain why. This code is used when requests are being denied due to update limits.
+404 Not Found: The URI requested is invalid or the resource requested, such as a user, does not exists.
+406 Not Acceptable: Returned by the Search API when an invalid format is specified in the request.
+420 Enhance Your Calm: Returned by the Search and Trends API  when you are being rate limited.
+500 Internal Server Error: Something is broken.  Please post to the group so the Twitter team can investigate.
+502 Bad Gateway: Twitter is down or being upgraded.
+503 Service Unavailable: The Twitter servers are up, but overloaded with requests. Try again later.
+Error Messages
+When the Twitter API returns error messages, it does so in your requested format. For example, an error from an XML method might look like this:
+<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/direct_messages/destroy/456.xml</request>
+  <error>No direct message with that ID found.</error>
+</hash>
+<< Back to Twitter API Documentation
+HTTP Response Codes and Errors
+Page Tools
+Insert links
+Insert links to other pages or uploaded files.
+Pages
+Images and files
+Insert a link to a new page
+ Loading...
+ No images or files uploaded yet.
+Insert image from URL
+Tip: To turn text into a link, highlight the text, then click on a page or file from the list above.
+Comments (0)
+You don't have permission to comment on this page.
+Printable version
+Navigator   
+Loading…
+SideBar     
+FAQ
+Twitter API Documentation
+Getting Started
+API Changelog
+Libraries
+Tutorials
+Open source
+Recent Activity   
+Show 0 new items
+Loading…

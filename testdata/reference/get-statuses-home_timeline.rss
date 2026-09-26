@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:twitter="http://api.twitter.com">
+  <channel>
+    <title>Twitter / themattharris with friends</title>
+    <link>http://twitter.com/themattharris/with_friends</link>
+    <atom:link type="application/rss+xml" rel="self" href="https://api.twitter.com/1/statuses/home_timeline.rss?count=30"/>
+    <description>Twitter updates and retweets from Matt Harris / themattharris and folks.</description>
+    <language>en-us</language>
+    <ttl>40</ttl>
+  <item>
+    <title>cindyli: got a lovely surprise from @craftybeans. She sent me the best tshirt ever. http://www.flickr.com/photos/cindyli/4799054041/ ::giggles::</title>
+    <description>cindyli: got a lovely surprise from @craftybeans. She sent me the best tshirt ever. http://www.flickr.com/photos/cindyli/4799054041/ ::giggles::</description>
+    <pubDate>Fri, 16 Jul 2010 16:58:46 +0000</pubDate>
+    <guid>http://twitter.com/cindyli/statuses/18700887835</guid>
+    <link>http://twitter.com/cindyli/statuses/18700887835</link>
+    <twitter:source>web</twitter:source>
+    <twitter:place/>
+  </item>
+  <item>
+    <title>dburka: Anything is possible when you're in the library... with a celestial sandwich: http://bit.ly/libraryman (via @iamcal)</title>
+    <description>dburka: Anything is possible when you're in the library... with a celestial sandwich: http://bit.ly/libraryman (via @iamcal)</description>
+    <pubDate>Fri, 16 Jul 2010 16:55:52 +0000</pubDate>
+    <guid>http://twitter.com/dburka/statuses/18700688341</guid>
+    <link>http://twitter.com/dburka/statuses/18700688341</link>
+    <twitter:source>web</twitter:source>
+    <twitter:place xmlns:georss="http://www.georss.org/georss">
+      <twitter:id>5a110d312052166f</twitter:id>
+      <twitter:name>San Francisco</twitter:name>
+      <twitter:full_name>San Francisco, CA</twitter:full_name>
+      <twitter:place_type>city</twitter:place_type>
+      <twitter:url>http://api.twitter.com/1/geo/id/5a110d312052166f.json</twitter:url>
+      <twitter:attributes/>
+      <twitter:bounding_box>
+        <georss:polygon>37.70813196 -122.51368188 37.70813196 -122.35845384 37.83245301 -122.35845384 37.83245301 -122.51368188</georss:polygon>
+      </twitter:bounding_box>
+      <twitter:country code="US">The United States of America</twitter:country>
+    </twitter:place>
+  </item>
+  ...
+  <item>
+    <title>kplawver: Walking the DOM like Huggybear.</title>
+    <description>kplawver: Walking the DOM like Huggybear.</description>
+    <pubDate>Fri, 16 Jul 2010 16:40:34 +0000</pubDate>
+    <guid>http://twitter.com/kplawver/statuses/18699620902</guid>
+    <link>http://twitter.com/kplawver/statuses/18699620902</link>
+    <twitter:source>&lt;a href=&quot;http://twitter.com&quot; rel=&quot;nofollow&quot;&gt;Tweetie for Mac&lt;/a&gt;</twitter:source>
+    <twitter:place/>
+  </item>
+  </channel>
+</rss>

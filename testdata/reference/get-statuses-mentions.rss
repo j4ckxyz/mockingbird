@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:twitter="http://api.twitter.com">
+  <channel>
+    <title>Twitter / Tweets mentioning themattharris</title>
+    <link>http://twitter.com/replies</link>
+    <atom:link type="application/rss+xml" rel="self" href="https://api.twitter.com/1/statuses/mentions.rss"/>
+    <description>Twitter updates that reply to updates from Matt Harris / themattharris.</description>
+    <language>en-us</language>
+    <ttl>40</ttl>
+  <item>
+    <title>ShanleyKane: Just opened more slots for SF @socialappworkshop - with @themattharris, @abraham, @mattwkelly from FB- going fast tho! http://bit.ly/94BCpx</title>
+    <description>ShanleyKane: Just opened more slots for SF @socialappworkshop - with @themattharris, @abraham, @mattwkelly from FB- going fast tho! http://bit.ly/94BCpx</description>
+    <pubDate>Tue, 13 Jul 2010 17:38:21 +0000</pubDate>
+    <guid>http://twitter.com/ShanleyKane/statuses/18454047411</guid>
+    <link>http://twitter.com/ShanleyKane/statuses/18454047411</link>
+    <twitter:source>&lt;a href=&quot;http://www.tweetdeck.com&quot; rel=&quot;nofollow&quot;&gt;TweetDeck&lt;/a&gt;</twitter:source>
+    <twitter:place/>
+  </item>
+  <item>
+    <title>pulpin_000: @themattharris @twitter_es @soypaulinagoto holaaaa!</title>
+    <description>pulpin_000: @themattharris @twitter_es @soypaulinagoto holaaaa!</description>
+    <pubDate>Sun, 11 Jul 2010 02:45:34 +0000</pubDate>
+    <guid>http://twitter.com/pulpin_000/statuses/18240214048</guid>
+    <link>http://twitter.com/pulpin_000/statuses/18240214048</link>
+    <twitter:source>web</twitter:source>
+    <twitter:place/>
+  </item>
+  ...
+  <item>
+    <title>pk2004: http://wiki.github.com/themattharris/annotations-hackfest/ Twitter annotations wiki page from @themattharris #devnest</title>
+    <description>pk2004: http://wiki.github.com/themattharris/annotations-hackfest/ Twitter annotations wiki page from @themattharris #devnest</description>
+    <pubDate>Tue, 06 Jul 2010 19:49:45 +0000</pubDate>
+    <guid>http://twitter.com/pk2004/statuses/17891652167</guid>
+    <link>http://twitter.com/pk2004/statuses/17891652167</link>
+    <twitter:source>web</twitter:source>
+    <twitter:place/>
+  </item>
+  </channel>
+</rss>

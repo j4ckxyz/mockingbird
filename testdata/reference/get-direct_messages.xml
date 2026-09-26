@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<direct-messages type="array">
+<direct_message>
+  <id>1270520569</id>
+  <sender_id>777925</sender_id>
+  <text>sure thing. Meet you at the mall around 7?</text>
+  <recipient_id>19345946</recipient_id>
+  <created_at>Tue Jun 22 17:48:26 +0000 2010</created_at>
+  <sender_screen_name>themattharris</sender_screen_name>
+  <recipient_screen_name>mattytest</recipient_screen_name>
+  <sender>
+    <id>777925</id>
+    <name>Matt Harris</name>
+    <screen_name>themattharris</screen_name>
+    <location>San Francisco</location>
+    <description>Developer Advocate at Twitter. Also a hacker and British expat who is married to @cindyli and lives in San Francisco.</description>
+    <profile_image_url>http://a1.twimg.com/profile_images/554181350/matt_normal.jpg</profile_image_url>
+    <url>http://themattharris.com</url>
+    <protected>false</protected>
+    <followers_count>1025</followers_count>
+    <profile_background_color>C0DEED</profile_background_color>
+    <profile_text_color>333333</profile_text_color>
+    <profile_link_color>0084B4</profile_link_color>
+    <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+    <friends_count>294</friends_count>
+    <created_at>Sat Feb 17 20:49:54 +0000 2007</created_at>
+    <favourites_count>95</favourites_count>
+    <utc_offset>-28800</utc_offset>
+    <time_zone>Tijuana</time_zone>
+    <profile_background_image_url>http://s.twimg.com/a/1276711174/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <profile_use_background_image>true</profile_use_background_image>
+    <notifications>false</notifications>
+    <geo_enabled>true</geo_enabled>
+    <verified>false</verified>
+    <following>true</following>
+    <statuses_count>2923</statuses_count>
+    <lang>en</lang>
+    <contributors_enabled>false</contributors_enabled>
+  </sender>
+  <recipient>
+    <id>19345946</id>
+    <name>mattytest</name>
+    <screen_name>mattytest</screen_name>
+    <location></location>
+    <description></description>
+    <profile_image_url>http://a1.twimg.com/profile_images/644612310/matt_bright_normal.png</profile_image_url>
+    <url></url>
+    <protected>true</protected>
+    <followers_count>3</followers_count>
+    <profile_background_color>C0DEED</profile_background_color>
+    <profile_text_color>333333</profile_text_color>
+    <profile_link_color>0084B4</profile_link_color>
+    <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+    <friends_count>2</friends_count>
+    <created_at>Thu Jan 22 16:27:50 +0000 2009</created_at>
+    <favourites_count>0</favourites_count>
+    <utc_offset>-28800</utc_offset>
+    <time_zone>Tijuana</time_zone>
+    <profile_background_image_url>http://s.twimg.com/a/1277162817/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <profile_use_background_image>false</profile_use_background_image>
+    <notifications>false</notifications>
+    <geo_enabled>true</geo_enabled>
+    <verified>false</verified>
+    <following>false</following>
+    <statuses_count>9</statuses_count>
+    <lang>en</lang>
+    <contributors_enabled>false</contributors_enabled>
+  </recipient>
+</direct_message>
+...
+</direct-messages>

@@ -37,8 +37,9 @@ func (t SearchTime) String() string { return time.Time(t).UTC().Format(SearchTim
 // MarshalJSON renders the quoted Search format.
 func (t SearchTime) MarshalJSON() ([]byte, error) { return []byte(strconv.Quote(t.String())), nil }
 
-// User is a Twitter user object. Order follows the 2009 users/show XML,
-// with fields added during 2010 appended before the nested status.
+// User is a Twitter user object. Element order follows real mid-2010 API
+// output archived on dev.twitter.com; fields added later in 2010 are
+// appended before the nested status.
 type User struct {
 	ID                        int64   `json:"id"`
 	Name                      string  `json:"name"`
@@ -61,16 +62,16 @@ type User struct {
 	TimeZone                  *string `json:"time_zone"`
 	ProfileBackgroundImageURL string  `json:"profile_background_image_url"`
 	ProfileBackgroundTile     bool    `json:"profile_background_tile"`
-	StatusesCount             int64   `json:"statuses_count"`
+	ProfileUseBackgroundImage bool    `json:"profile_use_background_image"`
 	Notifications             *bool   `json:"notifications"`
-	Following                 *bool   `json:"following"`
-	Verified                  bool    `json:"verified"`
 	GeoEnabled                bool    `json:"geo_enabled"`
+	Verified                  bool    `json:"verified"`
+	Following                 *bool   `json:"following"`
+	StatusesCount             int64   `json:"statuses_count"`
 	Lang                      string  `json:"lang"`
 	ContributorsEnabled       bool    `json:"contributors_enabled"`
 	FollowRequestSent         *bool   `json:"follow_request_sent"`
 	ListedCount               int64   `json:"listed_count"`
-	ProfileUseBackgroundImage bool    `json:"profile_use_background_image"`
 	ShowAllInlineMedia        bool    `json:"show_all_inline_media"`
 	IDStr                     string  `json:"id_str" xml:"-"`
 	Status                    *Status `json:"status,omitempty" xml:",omitempty"`

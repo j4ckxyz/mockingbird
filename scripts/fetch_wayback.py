@@ -9,15 +9,20 @@ import html, json, os, re, sys, time, urllib.parse, urllib.request
 
 OUT = os.path.join(os.path.dirname(__file__), "..", "testdata", "wayback")
 RAW = os.path.join(OUT, "raw")
+# (pattern, latest timestamp to consider). apiwiki pages became "this page
+# has moved" stubs in late 2010, so they are capped; dev.twitter.com/doc
+# replaced them and carries the late-2010 response shapes (with id_str).
 PATTERNS = [
-    "apiwiki.twitter.com/Twitter-REST-API-Method*",
-    "apiwiki.twitter.com/Twitter-Search-API-Method*",
-    "apiwiki.twitter.com/Return-Values*",
-    "apiwiki.twitter.com/HTTP-Response-Codes-and-Errors*",
-    "apiwiki.twitter.com/Rate-limiting*",
-    "apiwiki.twitter.com/Authentication*",
-    "apiwiki.twitter.com/OAuth-FAQ*",
-    "apiwiki.twitter.com/Things-Every-Developer-Should-Know*",
+    ("apiwiki.twitter.com/Twitter-REST-API-Method*", "20100731"),
+    ("apiwiki.twitter.com/Twitter-Search-API-Method*", "20100731"),
+    ("apiwiki.twitter.com/Return-Values*", "20100731"),
+    ("apiwiki.twitter.com/HTTP-Response-Codes-and-Errors*", "20100731"),
+    ("apiwiki.twitter.com/Rate-limiting*", "20100731"),
+    ("apiwiki.twitter.com/Authentication*", "20100731"),
+    ("apiwiki.twitter.com/OAuth-FAQ*", "20100731"),
+    ("apiwiki.twitter.com/Things-Every-Developer-Should-Know*", "20100731"),
+    ("dev.twitter.com/doc/get/*", "20110331"),
+    ("dev.twitter.com/doc/post/*", "20110331"),
 ]
 
 def get(url, tries=6):
@@ -42,9 +47,9 @@ def slug(u):
 def main():
     os.makedirs(RAW, exist_ok=True)
     latest = {}
-    for pat in PATTERNS:
+    for pat, to in PATTERNS:
         cdx = "https://web.archive.org/cdx/search/cdx?" + urllib.parse.urlencode(
-            {"url": pat, "output": "json", "filter": "statuscode:200", "fl": "original,timestamp"})
+            {"url": pat, "output": "json", "filter": "statuscode:200", "fl": "original,timestamp", "to": to})
         b = get(cdx)
         if not b:
             print("cdx failed", pat, file=sys.stderr); continue
@@ -52,7 +57,13 @@ def main():
         for orig, ts in rows:
             if "SearchFor=" in orig or "%E2%97%8F" in orig:
                 continue
-            key = slug(orig.split("?")[0])
+            if "dev.twitter.com" in orig:
+                # The dev.twitter.com index is polluted with URLs scraped
+                # from JavaScript; keep only real method pages.
+                path = urllib.parse.unquote(urllib.parse.urlsplit(orig).path)
+                if not re.match(r"^/doc/(get|post|delete)[/ ][a-z_]+(/[a-z_:]+)*/?$", path, re.I):
+                    continue
+            key = slug(orig.split("?")[0].replace(":80/", "/"))
             if "mode=print" in orig:  # prefer print views, they have less chrome
                 ts = ts + "p"
             if key not in latest or ts > latest[key][1]:
@@ -66,6 +77,9 @@ def main():
                 continue
             open(dest, "wb").write(b)
         s = open(dest, encoding="utf-8", errors="replace").read()
+        if "This page has moved" in s:
+            os.remove(dest)
+            continue
         pres = [html.unescape(re.sub(r"<[^>]+>", "", p)) for p in re.findall(r"<pre[^>]*>(.*?)</pre>", s, re.S)]
         text = html.unescape(re.sub(r"<[^>]+>", "", re.sub(r"<script.*?</script>|<style.*?</style>", "", s, flags=re.S)))
         text = re.sub(r"\n\s*\n+", "\n", text)

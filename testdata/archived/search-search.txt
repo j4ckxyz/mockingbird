@@ -1,0 +1,42 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values):
+Warning: The user ids in the Search API are different from those in the REST API (about the two APIs). This defect is being tracked by Issue 214. This means that the to_user_id and from_user_id field vary from the actualy user id on Twitter.com. Applications will have to perform a screen name-based lookup with the users/show method to get the correct user id if necessary.
+The metadata node will sometimes contain a result_type field with a value of either "recent" or "popular" -- though other values may be possible in the future. Popular results are derived by an algorithm that Twitter computes, and up to 3 will appear in "mixed mode" at the top of the result set. Popular results will also include another node to metadata called "recent_retweets" and will indicate how many retweets the tweet was bestowed recently. The metadata node will contain more fields as time goes on.
+          JSON example (truncated):
+{"results":[
+     {"text":"@twitterapi  http:\/\/tinyurl.com\/ctrefg",
+     "to_user_id":396524,
+     "to_user":"TwitterAPI",
+     "from_user":"jkoum",
+     "metadata":
+     {
+      "result_type":"popular",
+      "recent_retweets": 109
+     },
+     "id":1478555574,   
+     "from_user_id":1833773,
+     "iso_language_code":"nl",
+     "source":"<a href="http:\/\/twitter.com\/">twitter<\/a>",
+     "profile_image_url":"http:\/\/s3.amazonaws.com\/twitter_production\/profile_images\/118412707\/2522215727_a5f07da155_b_normal.jpg",
+     "created_at":"Wed, 08 Apr 2009 19:22:10 +0000"},
+     ... truncated ...],
+     "since_id":0,
+     "max_id":1480307926,
+     "refresh_url":"?since_id=1480307926&q=%40twitterapi",
+     "results_per_page":15,
+     "next_page":"?page=2&max_id=1480307926&q=%40twitterapi",
+     "completed_in":0.031704,
+     "page":1,
+     "query":"%40twitterapi"}
+}
+Refreshing Search Results
+For those using  client side search widgets, by default the first request  might  include popular results. If you want to display these you can use the  result_type attribute to visually differentiate them. If you don't want  to  display these you can always just pass the "result_type"  parameter with a  value of "recent" along with your request and  they'll never be included.
+In the case that you are displaying them, you  may not want to not redisplay  them every time your widget  refreshes. Each result payload will include the  since_id that you  should use in subsequent requests to get the latest  results. If you  are using this since_id (which all compliant search widgets  should) then the popular results will be excluded in subsequent  requests.  The specific since_id value to pass up to the query  string is included in  the payload. Here are examples in various  formats:
+JSON
+   "refresh_url":"?since_id=9290798834&q=i" 
+atom 
+   <link type="application/atom+xml" href="http://search.twitter.com/search.atom?q=i&since_id=9290738270" rel="refresh"/> 
+rss 
+   <twitter:refresh_url>http://search.twitter.com/search.rss?q=i&since_id=9290775688</twitter:refresh_url>

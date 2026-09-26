@@ -1,0 +1,73 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+XML example:
+<?xml version="1.0" encoding="UTF-8"?>
+<user>
+  <id>2625781</id>
+  <name>Scobelizer</name>
+  <screen_name>Scobelizer</screen_name>
+  <location></location>
+  <description></description>
+  <profile_image_url>http://a1.twimg.com/profile_images/30566462/twitterbird_normal.jpg</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>511</followers_count>
+  <profile_background_color>9ae4e8</profile_background_color>
+  <profile_text_color>000000</profile_text_color>
+  <profile_link_color>0000ff</profile_link_color>
+  <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+  <friends_count>26</friends_count>
+  <created_at>Wed Mar 28 06:18:29 +0000 2007</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US & Canada)</time_zone>
+  <profile_background_image_url>http://s.twimg.com/a/1255644274/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <statuses_count>23</statuses_count>
+  <notifications></notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <status>
+    <created_at>Thu Jan 29 03:51:00 +0000 2009</created_at>
+    <id>1157493875</id>
+    <text>Please Retweet! @lonelygirl15 Put #haterday in your tweets today and I might show my boobs - http://tinyurl.com/brcutn</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <geo/>
+  </status>
+</user>
+Twitter REST API Method: GET list subscribers id
+Page Tools
+Insert links
+Insert links to other pages or uploaded files.
+Pages
+Images and files
+Insert a link to a new page
+ Loading...
+ No images or files uploaded yet.
+Insert image from URL
+Tip: To turn text into a link, highlight the text, then click on a page or file from the list above.
+Comments (0)
+You don't have permission to comment on this page.
+Printable version
+Navigator   
+Loading…
+SideBar     
+FAQ
+Twitter API Documentation
+Getting Started
+API Changelog
+Libraries
+Tutorials
+Open source
+Recent Activity   
+Show 0 new items
+Loading…

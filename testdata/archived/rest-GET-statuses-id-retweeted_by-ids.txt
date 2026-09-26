@@ -1,0 +1,38 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+XML example:
+<?xml version="1.0" encoding="UTF-8"?>
+<ids>
+<id>16758065</id>
+<id>43968397</id>
+<id>5933482</id>
+</ids>
+Twitter REST API Method: GET statuses id retweeted_by ids
+Page Tools
+Insert links
+Insert links to other pages or uploaded files.
+Pages
+Images and files
+Insert a link to a new page
+ Loading...
+ No images or files uploaded yet.
+Insert image from URL
+Tip: To turn text into a link, highlight the text, then click on a page or file from the list above.
+Comments (0)
+You don't have permission to comment on this page.
+Printable version
+Navigator   
+Loading…
+SideBar     
+FAQ
+Twitter API Documentation
+Getting Started
+API Changelog
+Libraries
+Tutorials
+Open source
+Recent Activity   
+Show 0 new items
+Loading…

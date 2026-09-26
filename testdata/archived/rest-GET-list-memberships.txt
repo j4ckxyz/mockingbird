@@ -1,0 +1,116 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+XML example:
+<?xml version="1.0" encoding="UTF-8"?>
+<lists_list>
+<lists type="array">
+<list>
+  <id>881927</id>
+  <name>tech</name>
+  <full_name>@ThatPJ/tech</full_name>
+  <slug>tech</slug>
+  <subscriber_count>1</subscriber_count>
+  <member_count>104</member_count>
+  <uri>/ThatPJ/tech</uri>
+  <mode>public</mode>
+  <user>
+    <id>23104877</id>
+    <name>PJ Edwards</name>
+    <screen_name>ThatPJ</screen_name>
+    <location>Michigan</location>
+    <description>An Overglorified Extra.  </description>
+    <profile_image_url>http://a1.twimg.com/profile_images/426872428/DSCN0222_normal.JPG</profile_image_url>
+    <url>http://thatpj.tumblr.com/post/181180225/thoserrules</url>
+    <protected>false</protected>
+    <followers_count>457</followers_count>
+    <profile_background_color>8cdbea</profile_background_color>
+    <profile_text_color>000000</profile_text_color>
+    <profile_link_color>0068ff</profile_link_color>
+    <profile_sidebar_fill_color>87bb35</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>329b31</profile_sidebar_border_color>
+    <friends_count>183</friends_count>
+    <created_at>Fri Mar 06 19:16:57 +0000 2009</created_at>
+    <favourites_count>1795</favourites_count>
+    <utc_offset>-18000</utc_offset>
+    <time_zone>Eastern Time (US & Canada)</time_zone>
+    <profile_background_image_url>http://a3.twimg.com/profile_background_images/46632753/twitbacks_background.jpg</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <statuses_count>2573</statuses_count>
+    <notifications>false</notifications>
+    <geo_enabled>false</geo_enabled>
+    <verified>false</verified>
+    <following>false</following>
+  </user>
+</list>
+<list>
+  <id>2137356</id>
+  <name>twittervia</name>
+  <full_name>@AbbyCe/twittervia</full_name>
+  <slug>twittervia</slug>
+  <subscriber_count>0</subscriber_count>
+  <member_count>12</member_count>
+  <uri>/AbbyCe/twittervia</uri>
+  <mode>public</mode>
+  <user>
+    <id>8086712</id>
+    <name>Abby</name>
+    <screen_name>AbbyCe</screen_name>
+    <location>Florida</location>
+    <description>Music, sports, technology enthusiast, internet shop owner, blogger, boricua, optimist with pinch of realist and chocolate lover :)</description>
+    <profile_image_url>http://a1.twimg.com/profile_images/471084916/DSC000277777_normal.JPG</profile_image_url>
+    <url>http://norbela.blogspot.com</url>
+    <protected>false</protected>
+    <followers_count>616</followers_count>
+    <profile_background_color>badfcd</profile_background_color>
+    <profile_text_color>0C3E53</profile_text_color>
+    <profile_link_color>3b1010</profile_link_color>
+    <profile_sidebar_fill_color>badfcd</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>badfcd</profile_sidebar_border_color>
+    <friends_count>666</friends_count>
+    <created_at>Thu Aug 09 18:49:40 +0000 2007</created_at>
+    <favourites_count>1</favourites_count>
+    <utc_offset>-18000</utc_offset>
+    <time_zone>Eastern Time (US & Canada)</time_zone>
+    <profile_background_image_url>http://s.twimg.com/a/1257288876/images/themes/theme12/bg.gif</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <statuses_count>910</statuses_count>
+    <notifications>false</notifications>
+    <geo_enabled>false</geo_enabled>
+    <verified>false</verified>
+    <following>false</following>
+  </user>
+</list>
+<!-- remaining results truncated.... -->
+</lists>
+<next_cursor>1318394788821099242</next_cursor>
+<previous_cursor>0</previous_cursor>
+</lists_list>
+Twitter REST API Method: GET list memberships
+Page Tools
+Insert links
+Insert links to other pages or uploaded files.
+Pages
+Images and files
+Insert a link to a new page
+ Loading...
+ No images or files uploaded yet.
+Insert image from URL
+Tip: To turn text into a link, highlight the text, then click on a page or file from the list above.
+Comments (0)
+You don't have permission to comment on this page.
+Printable version
+Navigator   
+Loading…
+SideBar     
+FAQ
+Twitter API Documentation
+Getting Started
+API Changelog
+Libraries
+Tutorials
+Open source
+Recent Activity   
+Show 0 new items
+Loading…

@@ -292,10 +292,10 @@ func fieldsOf(t reflect.Type) []fieldInfo {
 // WriteXML renders the rate limit hash in Twitter's Rails-style form.
 func (r RateLimitStatus) WriteXML(w *XMLWriter, name string) {
 	w.Open("hash")
-	w.Elem("remaining-hits", strconv.Itoa(r.RemainingHits), "type", "integer")
 	w.Elem("hourly-limit", strconv.Itoa(r.HourlyLimit), "type", "integer")
-	w.Elem("reset-time", timeISO(r.ResetTime), "type", "datetime")
 	w.Elem("reset-time-in-seconds", strconv.FormatInt(r.ResetTimeInSeconds, 10), "type", "integer")
+	w.Elem("reset-time", timeISO(r.ResetTime), "type", "datetime")
+	w.Elem("remaining-hits", strconv.Itoa(r.RemainingHits), "type", "integer")
 	w.Close("hash")
 }
 

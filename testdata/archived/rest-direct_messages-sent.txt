@@ -1,0 +1,72 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example (truncated):
+<?xml version="1.0" encoding="UTF-8"?>
+<direct-messages>
+<direct_message>
+<id>88619848</id>
+<sender_id>1401881</sender_id>
+<text>all your bases are belong to us.</text>
+<recipient_id>7004322</recipient_id>
+<created_at>Wed Apr 08 20:30:04 +0000 2009</created_at>
+<sender_screen_name>dougw</sender_screen_name>
+<recipient_screen_name>igudo</recipient_screen_name>
+<sender>
+<id>1401881</id>
+<name>Doug Williams</name>
+<screen_name>dougw</screen_name>
+<location>San Francisco, CA</location>
+<description>Twitter API Support. Internet, greed, users, dougw and opportunities are my passions.</description>
+<profile_image_url>http://s3.amazonaws.com/twitter_production/profile_images/59648642/avatar_normal.png</profile_image_url>
+<url>http://www.igudo.com</url>
+<protected>false</protected>
+<followers_count>1036</followers_count>
+<profile_background_color>9ae4e8</profile_background_color>
+<profile_text_color>000000</profile_text_color>
+<profile_link_color>0000ff</profile_link_color>
+<profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+<profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+<friends_count>290</friends_count>
+<created_at>Sun Mar 18 06:42:26 +0000 2007</created_at>
+<favourites_count>0</favourites_count>
+<utc_offset>-18000</utc_offset>
+<time_zone>Eastern Time (US & Canada)</time_zone>
+<profile_background_image_url>http://s3.amazonaws.com/twitter_production/profile_background_images/2752608/twitter_bg_grass.jpg</profile_background_image_url>
+<profile_background_tile>false</profile_background_tile>
+<statuses_count>3394</statuses_count>
+<notifications>false</notifications>
+<following>false</following>
+<verified>true</verified>
+</sender>
+<recipient>
+<id>7004322</id>
+<name>Doug Williams</name>
+<screen_name>igudo</screen_name>
+<location>North Carolina</location>
+<description>A character.</description>
+<profile_image_url>http://s3.amazonaws.com/twitter_production/profile_images/15446222/twitter_48_48_normal.jpg</profile_image_url>
+<url>http://www.igudo.com</url>
+<protected>false</protected>
+<followers_count>19</followers_count>
+<profile_background_color>69A1AA</profile_background_color>
+<profile_text_color>000000</profile_text_color>
+<profile_link_color>F00</profile_link_color>
+<profile_sidebar_fill_color>ACBEC1</profile_sidebar_fill_color>
+<profile_sidebar_border_color>8A8F85</profile_sidebar_border_color>
+<friends_count>3</friends_count>
+<created_at>Thu Jun 21 21:16:21 +0000 2007</created_at>
+<favourites_count>0</favourites_count>
+<utc_offset>-18000</utc_offset>
+<time_zone>Eastern Time (US & Canada)</time_zone>
+<profile_background_image_url>http://static.twitter.com/images/themes/theme1/bg.gif</profile_background_image_url>
+<profile_background_tile>false</profile_background_tile>
+<statuses_count>382</statuses_count>
+<notifications>false</notifications>
+<following>true</following>
+<verified>true</verified>
+</recipient>
+</direct_message>
+... truncated ...
+</direct-messages>

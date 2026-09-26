@@ -319,6 +319,19 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			s.mu.RUnlock()
 		}
 		ok(w, map[string]any{"uri": q.Get("uri"), "repostedBy": out})
+	case "app.bsky.graph.getBlocks":
+		var out []any
+		s.mu.RLock()
+		for _, a := range s.sortedAccounts() {
+			if s.blocks[viewer][a.DID] != "" {
+				out = append(out, s.profile(a, viewer, false))
+			}
+		}
+		s.mu.RUnlock()
+		if out == nil {
+			out = []any{}
+		}
+		ok(w, map[string]any{"blocks": out})
 	case "app.bsky.notification.listNotifications":
 		s.notifications(w, q, viewer)
 	case "app.bsky.unspecced.getTrendingTopics":

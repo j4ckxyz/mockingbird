@@ -144,3 +144,25 @@ func TestSessions(t *testing.T) {
 		t.Fatalf("purged %d", n)
 	}
 }
+
+func TestNoIDGapsFromDuplicates(t *testing.T) {
+	s := openTest(t)
+	ctx := context.Background()
+	at := time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)
+	refs := []StatusRef{{URI: "at://a/p/1"}, {URI: "at://a/p/1", SortAt: at}, {URI: "at://a/p/2", SortAt: at.Add(time.Second)}, {URI: "at://a/p/2"}}
+	ids, err := s.StatusIDs(ctx, refs)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if ids["at://a/p/1"] != 1 || ids["at://a/p/2"] != 2 {
+		t.Fatalf("ids %v", ids)
+	}
+	next, _ := s.StatusIDs(ctx, []StatusRef{{URI: "at://a/p/3", SortAt: at.Add(time.Hour)}})
+	if next["at://a/p/3"] != 3 {
+		t.Fatalf("gap: next id %d", next["at://a/p/3"])
+	}
+	_, got, _ := s.StatusByID(ctx, 1)
+	if !got.Equal(at) {
+		t.Fatalf("time from duplicate lost: %v", got)
+	}
+}

@@ -1,0 +1,6 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example:
+<ok>true</ok>

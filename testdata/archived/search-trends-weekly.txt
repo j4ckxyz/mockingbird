@@ -1,0 +1,6 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          JSON example (truncated):
+{"trends":{"2009-03-18":[{"query":"#sxsw OR SXSW","name":"#sxsw"},... truncated ...}],... truncated ...},"as_of":1239656690}

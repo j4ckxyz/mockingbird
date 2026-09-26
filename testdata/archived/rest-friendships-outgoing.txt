@@ -1,0 +1,15 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example (truncated):
+<?xml version="1.0" encoding="UTF-8"?> 
+<id_list>
+     <ids>
+          <id>30592818</id>
+          <id>21249843</id>
+          ... truncated ...
+     </ids>
+     <next_cursor>1288724293877798413</next_cursor>
+     <previous_cursor>-1300794057949944903</previous_cursor>
+</id_list>

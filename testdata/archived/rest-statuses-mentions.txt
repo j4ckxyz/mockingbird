@@ -1,0 +1,47 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example (truncated):
+<?xml version="1.0" encoding="UTF-8"?>
+<statuses>
+<status>
+<created_at>Sat Apr 04 22:18:06 +0000 2009</created_at>
+<id>1453797117</id>
+<text>@dougw start with a road race. Crits are horrible for wrecks and you've got a pretty face</text>
+<source>web</source>
+<truncated>false</truncated>
+<in_reply_to_status_id>1453559719</in_reply_to_status_id>
+<in_reply_to_user_id>1401881</in_reply_to_user_id>
+<favorited>false</favorited>
+<in_reply_to_screen_name>dougw</in_reply_to_screen_name>
+<user>
+<id>14297815</id>
+<name>dbwilliams0928</name>
+<screen_name>paintmywords</screen_name>
+<location>Durham, NC</location>
+<description>Husband, Artist, Friend, Business Man, Hippie, Runner, </description>
+<profile_image_url>http://s3.amazonaws.com/twitter_production/profile_images/97358792/PaintMyWords-Logo_normal.jpg</profile_image_url>
+<url>http://www.paintmywords.com</url>
+<protected>false</protected>
+<followers_count>326</followers_count>
+<profile_background_color>EBEBEB</profile_background_color>
+<profile_text_color>333333</profile_text_color>
+<profile_link_color>990000</profile_link_color>
+<profile_sidebar_fill_color>F3F3F3</profile_sidebar_fill_color>
+<profile_sidebar_border_color>DFDFDF</profile_sidebar_border_color>
+<friends_count>700</friends_count>
+<created_at>Thu Apr 03 23:31:28 +0000 2008</created_at>
+<favourites_count>0</favourites_count>
+<utc_offset>-18000</utc_offset>
+<time_zone>Quito</time_zone>
+<profile_background_image_url>http://s3.amazonaws.com/twitter_production/profile_background_images/6947624/favicon.jpg</profile_background_image_url>
+<profile_background_tile>true</profile_background_tile>
+<statuses_count>336</statuses_count>
+<notifications>true</notifications>
+<following>true</following>
+<verified>true</verified>
+</user>
+</status>
+... truncated ...
+</statuses>

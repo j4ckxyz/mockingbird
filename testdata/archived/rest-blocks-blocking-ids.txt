@@ -1,0 +1,12 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example (truncated):
+<?xml version="1.0" encoding="UTF-8"?>
+<ids>
+<id>1401881</id>
+... truncated ...
+</ids>
+JSON example (truncated):
+[1401881, ...]

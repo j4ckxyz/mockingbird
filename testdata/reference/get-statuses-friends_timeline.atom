@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns:georss="http://www.georss.org/georss" xmlns="http://www.w3.org/2005/Atom" xmlns:twitter="http://api.twitter.com">
+  <title>Twitter / themattharris with friends</title>
+  <id>tag:twitter.com,2007:Status</id>
+  <link type="text/html" rel="alternate" href="http://twitter.com/themattharris/with_friends"/>
+  <link type="application/atom+xml" rel="self" href="https://api.twitter.com/1/statuses/home_timeline.atom?count=30"/>
+  <updated>2010-07-16T17:11:41+00:00</updated>
+  <subtitle>Twitter updates and retweets from Matt Harris / themattharris and folks.</subtitle>
+    <entry>
+      <title>cindyli: got a lovely surprise from @craftybeans. She sent me the best tshirt ever. http://www.flickr.com/photos/cindyli/4799054041/ ::giggles::</title>
+      <content type="html">cindyli: got a lovely surprise from @craftybeans. She sent me the best tshirt ever. http://www.flickr.com/photos/cindyli/4799054041/ ::giggles::</content>
+      <id>tag:twitter.com,2007:http://twitter.com/cindyli/statuses/18700887835</id>
+      <published>2010-07-16T16:58:46+00:00</published>
+      <updated>2010-07-16T16:58:46+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/cindyli/statuses/18700887835"/>
+      <link type="image/jpeg" rel="image" href="http://a1.twimg.com/profile_images/553508996/43082001_N00_normal.jpg"/>
+      <author>
+        <name>cindy li</name>
+        <uri>http://www.cindyli.com</uri>
+      </author>
+      <twitter:source>web</twitter:source>
+      <twitter:place/>
+    </entry>
+    <entry>
+      <title>dburka: Anything is possible when you're in the library... with a celestial sandwich: http://bit.ly/libraryman (via @iamcal)</title>
+      <content type="html">dburka: Anything is possible when you're in the library... with a celestial sandwich: http://bit.ly/libraryman (via @iamcal)</content>
+      <id>tag:twitter.com,2007:http://twitter.com/dburka/statuses/18700688341</id>
+      <published>2010-07-16T16:55:52+00:00</published>
+      <updated>2010-07-16T16:55:52+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/dburka/statuses/18700688341"/>
+      <link type="image/jpeg" rel="image" href="http://a3.twimg.com/profile_images/74260755/2009-square-small_normal.jpg"/>
+      <author>
+        <name>Daniel Burka</name>
+        <uri>http://deltatangobravo.com</uri>
+      </author>
+      <twitter:source>web</twitter:source>
+      <twitter:place xmlns:georss="http://www.georss.org/georss">
+        <twitter:id>5a110d312052166f</twitter:id>
+        <twitter:name>San Francisco</twitter:name>
+        <twitter:full_name>San Francisco, CA</twitter:full_name>
+        <twitter:place_type>city</twitter:place_type>
+        <twitter:url>http://api.twitter.com/1/geo/id/5a110d312052166f.json</twitter:url>
+        <twitter:attributes/>
+        <twitter:bounding_box>
+          <georss:polygon>37.70813196 -122.51368188 37.70813196 -122.35845384 37.83245301 -122.35845384 37.83245301 -122.51368188</georss:polygon>
+        </twitter:bounding_box>
+        <twitter:country code="US">The United States of America</twitter:country>
+      </twitter:place>
+    </entry>
+    <entry>
+      <title>kplawver: Walking the DOM like Huggybear.</title>
+      <content type="html">kplawver: Walking the DOM like Huggybear.</content>
+      <id>tag:twitter.com,2007:http://twitter.com/kplawver/statuses/18699620902</id>
+      <published>2010-07-16T16:40:34+00:00</published>
+      <updated>2010-07-16T16:40:34+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/kplawver/statuses/18699620902"/>
+      <link type="image/jpeg" rel="image" href="http://a3.twimg.com/profile_images/980477983/oh_lawver_normal.jpg"/>
+      <author>
+        <name>Kevin Lawver</name>
+        <uri>http://lawver.net</uri>
+      </author>
+      <twitter:source>&lt;a href=&quot;http://twitter.com&quot; rel=&quot;nofollow&quot;&gt;Tweetie for Mac&lt;/a&gt;</twitter:source>
+      <twitter:place/>
+    </entry>
+</feed>

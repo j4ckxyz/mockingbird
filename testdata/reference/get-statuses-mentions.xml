@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statuses type="array">
+  <status>
+    <created_at>Tue Jul 13 17:38:21 +0000 2010</created_at>
+    <id>18454047411</id>
+    <text>Just opened more slots for SF @socialappworkshop - with @themattharris, @abraham, @mattwkelly from FB- going fast tho! http://bit.ly/94BCpx</text>
+    <source>&lt;a href=&quot;http://www.tweetdeck.com&quot; rel=&quot;nofollow&quot;&gt;TweetDeck&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <user>
+      <id>50462250</id>
+      <name>Shanley Kane</name>
+      <screen_name>ShanleyKane</screen_name>
+      <location>San Francisco</location>
+      <description>i work at apigee. this makes me an apigeek. i tweet about cloud, agile, APIs, tech stuff, pandas, propaganda, snark and trying to make it in the Valley.</description>
+      <profile_image_url>http://a0.twimg.com/profile_images/887285836/lele2_normal.jpg</profile_image_url>
+      <url>http://www.shanleykane.wordpress.com</url>
+      <protected>false</protected>
+      <followers_count>479</followers_count>
+      <profile_background_color>9AE4E8</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>0084B4</profile_link_color>
+      <profile_sidebar_fill_color>DDFFCC</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>BDDCAD</profile_sidebar_border_color>
+      <friends_count>440</friends_count>
+      <created_at>Wed Jun 24 22:24:43 +0000 2009</created_at>
+      <favourites_count>8</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1279228556/images/themes/theme1/bg.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>false</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+      <statuses_count>3100</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="70" start="56">
+          <id>777925</id>
+          <screen_name>themattharris</screen_name>
+          <name>Matt Harris</name>
+        </user_mention>
+        <user_mention end="80" start="72">
+          <id>9436992</id>
+          <screen_name>abraham</screen_name>
+          <name>Abraham Williams</name>
+        </user_mention>
+        <user_mention end="93" start="82">
+          <id>6300552</id>
+          <screen_name>mattwkelly</screen_name>
+          <name>Matt Kelly</name>
+        </user_mention>
+      </user_mentions>
+      <urls>
+        <url end="139" start="119">
+          <url>http://bit.ly/94BCpx</url>
+          <expanded_url/>
+        </url>
+      </urls>
+      <hashtags/>
+    </entities>
+  </status>
+  <status>
+    <created_at>Sun Jul 11 02:45:34 +0000 2010</created_at>
+    <id>18240214048</id>
+    <text>@themattharris @twitter_es @soypaulinagoto holaaaa!</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id>777925</in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name>themattharris</in_reply_to_screen_name>
+    <user>
+      <id>165262200</id>
+      <name>leonardo daniel </name>
+      <screen_name>pulpin_000</screen_name>
+      <location></location>
+      <description></description>
+      <profile_image_url>http://s.twimg.com/a/1279228556/images/default_profile_5_normal.png</profile_image_url>
+      <url></url>
+      <protected>false</protected>
+      <followers_count>0</followers_count>
+      <profile_background_color>9ae4e8</profile_background_color>
+      <profile_text_color>000000</profile_text_color>
+      <profile_link_color>0000ff</profile_link_color>
+      <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+      <friends_count>3</friends_count>
+      <created_at>Sun Jul 11 02:35:10 +0000 2010</created_at>
+      <favourites_count>0</favourites_count>
+      <utc_offset></utc_offset>
+      <time_zone></time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1279228556/images/themes/theme1/bg.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>false</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+      <statuses_count>3</statuses_count>
+      <lang>es</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="14" start="0">
+          <id>777925</id>
+          <screen_name>themattharris</screen_name>
+          <name>Matt Harris</name>
+        </user_mention>
+        <user_mention end="26" start="15">
+          <id>85426644</id>
+          <screen_name>twitter_es</screen_name>
+          <name>Twitter Espa&#241;ol</name>
+        </user_mention>
+        <user_mention end="42" start="27">
+          <id>110086132</id>
+          <screen_name>soypaulinagoto</screen_name>
+          <name>Paulina Goto</name>
+        </user_mention>
+      </user_mentions>
+      <urls/>
+      <hashtags/>
+    </entities>
+  </status>
+  ...
+  <status>
+    <created_at>Tue Jul 06 19:49:45 +0000 2010</created_at>
+    <id>17891652167</id>
+    <text>http://wiki.github.com/themattharris/annotations-hackfest/ Twitter annotations wiki page from @themattharris #devnest</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <user>
+      <id>5732282</id>
+      <name>Paul Kane</name>
+      <screen_name>pk2004</screen_name>
+      <location>London</location>
+      <description>Tech geek, gadget addict, music lover, MTB'er, runner - sometimes.</description>
+      <profile_image_url>http://a3.twimg.com/profile_images/98546479/PK-front_normal.jpg</profile_image_url>
+      <url>http://pk2004.posterous.com/</url>
+      <protected>false</protected>
+      <followers_count>1516</followers_count>
+      <profile_background_color>FFFFFF</profile_background_color>
+      <profile_text_color>000000</profile_text_color>
+      <profile_link_color>8b8b9c</profile_link_color>
+      <profile_sidebar_fill_color>ffffff</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>ffffff</profile_sidebar_border_color>
+      <friends_count>1212</friends_count>
+      <created_at>Thu May 03 05:58:32 +0000 2007</created_at>
+      <favourites_count>988</favourites_count>
+      <utc_offset>0</utc_offset>
+      <time_zone>London</time_zone>
+      <profile_background_image_url>http://a3.twimg.com/profile_background_images/8321573/banksy.jpg</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+      <statuses_count>3202</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="36" start="22">
+          <id>777925</id>
+          <screen_name>themattharris</screen_name>
+          <name>Matt Harris</name>
+        </user_mention>
+      </user_mentions>
+      <urls>
+        <url end="58" start="0">
+          <url>http://wiki.github.com/themattharris/annotations-hackfest/</url>
+          <expanded_url/>
+        </url>
+      </urls>
+      <hashtags>
+        <hashtag end="117" start="109">
+          <text>devnest</text>
+        </hashtag>
+      </hashtags>
+    </entities>
+  </status>
+</statuses>

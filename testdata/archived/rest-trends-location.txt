@@ -1,0 +1,92 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example:
+<?xml version="1.0" encoding="UTF-8"?>
+<matching_trends type="array">
+<trends as_of="2009-11-09T21:14:09Z">
+<locations>
+          <location>
+          <woeid>2487956</woeid>
+          <name>San Francisco</name>
+          </location>
+</locations>
+<trend url="http://search.twitter.com/search?q=Canon+5DMKII" query="Canon+5DMKII">Canon 5DMKII</trend>
+<trend url="http://search.twitter.com/search?q=Berlin+Wall" query="Berlin+Wall">Berlin Wall</trend>
+<trend url="http://search.twitter.com/search?q=Veterans+Day" query="Veterans+Day">Veterans Day</trend>
+<trend url="http://search.twitter.com/search?q=Gizmo5" query="Gizmo5">Gizmo5</trend>
+<trend url="http://search.twitter.com/search?q=Monday+Night+Football" query="Monday+Night+Football">Monday Night Football</trend>
+<trend url="http://search.twitter.com/search?q=Katt+Williams" query="Katt+Williams">Katt Williams</trend>
+<trend url="http://search.twitter.com/search?q=Dragon+Age" query="Dragon+Age">Dragon Age</trend>
+<trend url="http://search.twitter.com/search?q=Robert+Pattinson" query="Robert+Pattinson">Robert Pattinson</trend>
+<trend url="http://search.twitter.com/search?q=Gift+Cert" query="Gift+Cert">Gift Cert</trend>
+<trend url="http://search.twitter.com/search?q=Steven+Tyler" query="Steven+Tyler">Steven Tyler</trend>
+</trends>
+</matching_trends> 
+          JSON example (truncated):
+[
+{
+"locations":
+[
+{
+"woeid":44418,
+"name":"London"
+}
+],
+"as_of":"2009-11-09T21:18:42Z",
+"trends":
+[
+{
+"url":"http://search.twitter.com/search?q=Jedward",
+"name":"Jedward",
+"query":"Jedward"
+},
+{
+"url":"http://search.twitter.com/search?q=Ngog",
+"name":"Ngog",
+"query":"Ngog"
+},
+{
+"url":"http://search.twitter.com/search?q=University+Challenge",
+"name":"University Challenge",
+"query":"University+Challenge"
+},
+{
+"url":"http://search.twitter.com/search?q=Berlin+Wall",
+"name":"Berlin Wall",
+"query":"Berlin+Wall"
+},
+{
+"url":"http://search.twitter.com/search?q=FlashForward",
+"name":"FlashForward",
+"query":"FlashForward"
+},
+{
+"url":"http://search.twitter.com/search?q=Katt+Williams",
+"name":"Katt Williams",
+"query":"Katt+Williams"
+},
+{
+"url":"http://search.twitter.com/search?q=JLS",
+"name":"JLS",
+"query":"JLS"
+},
+{
+"url":"http://search.twitter.com/search?q=Modern+Warfare",
+"name":"Modern Warfare",
+"query":"Modern+Warfare"
+},
+{
+"url":"http://search.twitter.com/search?q=Simon+Cowell",
+"name":"Simon Cowell",
+"query":"Simon+Cowell"
+},
+{
+"url":"http://search.twitter.com/search?q=%23musicmonday",
+"name":"#musicmonday",
+"query":"%23musicmonday"
+}
+]
+}
+]

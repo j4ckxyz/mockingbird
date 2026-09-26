@@ -1,0 +1,98 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example (truncated):
+<?xml version="1.0" encoding="UTF-8"?>
+<users>
+<user>
+<id>1401881</id>
+<name>Doug Williams</name>
+<screen_name>dougw</screen_name>
+<location>San Francisco, CA</location>
+<description>Twitter API Support. Internet, greed, users, dougw and opportunities are my passions.</description>
+<profile_image_url>http://s3.amazonaws.com/twitter_production/profile_images/59648642/avatar_normal.png</profile_image_url>
+<url>http://www.igudo.com</url>
+<protected>false</protected>
+<followers_count>1031</followers_count>
+<profile_background_color>9ae4e8</profile_background_color>
+<profile_text_color>000000</profile_text_color>
+<profile_link_color>0000ff</profile_link_color>
+<profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+<profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+<friends_count>293</friends_count>
+<created_at>Sun Mar 18 06:42:26 +0000 2007</created_at>
+<favourites_count>0</favourites_count>
+<utc_offset>-18000</utc_offset>
+<time_zone>Eastern Time (US & Canada)</time_zone>
+<profile_background_image_url>http://s3.amazonaws.com/twitter_production/profile_background_images/2752608/twitter_bg_grass.jpg</profile_background_image_url>
+<profile_background_tile>false</profile_background_tile>
+<statuses_count>3390</statuses_count>
+<notifications>false</notifications>
+<following>false</following>
+<verified>true</verified>
+<status>
+<created_at>Tue Apr 07 22:52:51 +0000 2009</created_at>
+<id>1472669360</id>
+<text>At least I can get your humor through tweets. RT @abdur: I don't mean this in a bad way, but genetically speaking your a cul-de-sac.</text>
+<source><a href="http://www.tweetdeck.com/">TweetDeck</a></source>
+<truncated>false</truncated>
+<in_reply_to_status_id></in_reply_to_status_id>
+<in_reply_to_user_id></in_reply_to_user_id>
+<favorited>false</favorited>
+<in_reply_to_screen_name></in_reply_to_screen_name>
+</status>
+</user> 
+... truncated ...
+</users>
+Paginated Response (about return values): 
+          XML example (truncated):
+<?xml version="1.0" encoding="UTF-8"?>
+<users_list>
+<users type="array">
+<user>
+  <id>422</id>
+  <name>Jason Shellen</name>
+  <screen_name>shellen</screen_name>
+  <location>iPhone: 37.889321,-122.173345</location>
+  <description>CEO and founder of Thing Labs, makers of Brizzly! Former Blogger/Google dude, father of two little dudes.</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/369449595/js_glasses_suit_normal.png</profile_image_url>
+  <url>http://www.shellen.com</url>
+  <protected>false</protected>
+  <followers_count>8526</followers_count>
+  <profile_background_color>9ae4e8</profile_background_color>
+  <profile_text_color>000000</profile_text_color>
+  <profile_link_color>0000ff</profile_link_color>
+  <profile_sidebar_fill_color>DCDCDC</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>D22900</profile_sidebar_border_color>
+  <friends_count>375</friends_count>
+  <created_at>Thu Jul 06 22:36:22 +0000 2006</created_at>
+  <favourites_count>1179</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US & Canada)</time_zone>
+  <profile_background_image_url>http://a1.twimg.com/profile_background_images/382/IMG_0158.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <statuses_count>2710</statuses_count>
+  <notifications></notifications>
+  <verified>false</verified>
+  <following></following>
+  <status>
+    <created_at>Thu Sep 24 19:31:58 +0000 2009</created_at>
+    <id>4349531340</id>
+    <text>I think @jasonfried just went from "prickly fellow" to "kind of a dick" in my book. Eyes on your own paper Fried.</text>
+    <source><a href="http://www.brizzly.com" rel="nofollow">Brizzly</a></source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+  </status>
+</user>
+... truncated ... 
+</users>
+<next_cursor>1299072354878293926</next_cursor>
+<previous_cursor>0</previous_cursor>
+</users_list>
+Notes:
+If the cursor parameter is not provided, only the first 100 users in the set will be returned.
+The previously documented page-based pagination mechanism is still in production, but will be deprecated. Please migrate to cursor-based pagination for increased reliability and performance.

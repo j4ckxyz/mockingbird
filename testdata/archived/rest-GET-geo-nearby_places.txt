@@ -1,0 +1,62 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values):  
+{
+  "query": {
+    "type":"reverse_geocode",
+    "url":"/1/geo/reverse_geocode.json?lat=37.78215&long=-122.40060&accuracy=0&granularity=neighborhood",
+    "params": {
+      "granularity":"neighborhood",
+      "coordinates": {
+        "type":"Point",
+        "coordinates":[-122.40060,37.78215]
+      },
+      "accuracy":0
+    }
+  },
+  "result": {
+    "places": [
+      {
+        "name":"SoMa",
+        "country_code":"US",
+        "id":"7695dd2ec2f86f2b",
+        "country":"United States",
+        "place_type":"neighborhood",
+        "url":"/1/geo/id/7695dd2ec2f86f2b.json",
+        "full_name":"SoMa,
+         San Francisco",
+        "bounding_box": {
+            "type":"Polygon",
+            "coordinates": [
+              [ [-122.42284884, 37.76893497],
+                [-122.3964, 37.76893497],
+                [-122.3964, 37.78752897],
+                [-122.42284884, 37.78752897] ]
+            ]
+        },
+        "contained_within": [
+          {
+            "place_type":"city",
+            "url":"/1/geo/id/6f165220310d115a.json",
+            "bounding_box": {
+              "type":"Polygon",
+              "coordinates": [
+                [ [-123.173825, 37.63983],
+                  [-122.28178, 37.63983],
+                  [-122.28178, 37.929824],
+                  [-123.173825, 37.929824] ]
+              ]
+            },
+            "full_name":"San Francisco,CA",
+            "country_code":"US",
+            "name":"San Francisco",
+            "id":"6f165220310d115a",
+            "country":"United States"
+          }
+        ]
+      }
+    ]
+    ...
+  }
+}

@@ -518,7 +518,7 @@ func TestMiscEndpoints(t *testing.T) {
 		t.Fatalf("help/test xml: %s", r.body)
 	}
 	r := h.get("/account/rate_limit_status.xml", alice)
-	if !strings.Contains(string(r.body), `<hash><remaining-hits type="integer">`) || !strings.Contains(string(r.body), `<reset-time type="datetime">`) {
+	if !strings.Contains(string(r.body), `<hash><hourly-limit type="integer">`) || !strings.Contains(string(r.body), `<reset-time type="datetime">`) {
 		t.Fatalf("rate limit xml: %s", r.body)
 	}
 	r = h.get("/statuses/lists/nonexistent.json", alice)

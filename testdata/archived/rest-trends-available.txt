@@ -1,0 +1,32 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example (truncated):
+<?xml version="1.0" encoding="UTF-8"?>
+<locations type="array">
+<location>
+<woeid>2487956</woeid>
+<name>San Francisco</name>
+<placeTypeName code="7">Town</placeTypeName>
+<country type="Country" code="US">United States</country>
+<url>http://where.yahooapis.com/v1/place/2487956</url>
+</location>
+...
+</locations>
+          JSON example (truncated):
+[
+{
+"placeType":
+{
+"code":7
+"name":"Town"
+},
+"woeid":44418,
+"country":"United Kingdom",
+"countryCode":"GB",
+"url":"http://where.yahooapis.com/v1/place/44418",
+"name":"London"
+},
+...
+]

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:twitter="http://api.twitter.com">
+  <channel>
+    <title>Direct messages to mattytest</title>
+    <link>http://twitter.com/direct_messages</link>
+    <atom:link type="application/rss+xml" href="https://api.twitter.com/1/direct_messages.rss" rel="self"/>
+    <description>All the direct messages sent to mattytest</description>
+    <language>en-us</language>
+    <ttl>40</ttl>
+  <item>
+    <title>Message from themattharris to mattytest</title>
+    <description>sure thing. Meet you at the mall around 7?</description>
+    <pubDate>Tue, 22 Jun 2010 17:48:26 +0000</pubDate>
+    <guid>https://api.twitter.com/direct_messages/1270520569</guid>
+    <link>https://api.twitter.com/direct_messages/1270520569</link>
+  </item>
+  </channel>
+</rss>

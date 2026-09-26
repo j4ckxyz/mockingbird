@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statuses type="array">
+  <status>
+    <created_at>Fri Jul 16 16:58:46 +0000 2010</created_at>
+    <id>18700887835</id>
+    <text>got a lovely surprise from @craftybeans. She sent me the best tshirt ever. http://www.flickr.com/photos/cindyli/4799054041/ ::giggles::</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <user>
+      <id>29733</id>
+      <name>cindy li</name>
+      <screen_name>cindyli</screen_name>
+      <location>San Francisco, CA</location>
+      <description>Just me, Cindy Li.Giving cute substance since 1997.
+  Married to @themattharris.
+  Product designer for Yahoo! </description>
+      <profile_image_url>http://a1.twimg.com/profile_images/553508996/43082001_N00_normal.jpg</profile_image_url>
+      <url>http://www.cindyli.com</url>
+      <protected>false</protected>
+      <followers_count>3395</followers_count>
+      <profile_background_color>cfe8f6</profile_background_color>
+      <profile_text_color>000000</profile_text_color>
+      <profile_link_color>FF8500</profile_link_color>
+      <profile_sidebar_fill_color>AD0066</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>AD0066</profile_sidebar_border_color>
+      <friends_count>542</friends_count>
+      <created_at>Wed Nov 29 06:08:08 +0000 2006</created_at>
+      <favourites_count>465</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+      <profile_background_image_url>http://a3.twimg.com/profile_background_images/3368753/twitter_flowerbig.gif</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>true</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>true</following>
+      <statuses_count>4847</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="39" start="27">
+          <id>15473839</id>
+          <screen_name>craftybeans</screen_name>
+          <name>Stephanie</name>
+        </user_mention>
+      </user_mentions>
+      <urls>
+        <url end="123" start="75">
+          <url>http://www.flickr.com/photos/cindyli/4799054041/</url>
+          <expanded_url/>
+        </url>
+      </urls>
+      <hashtags/>
+    </entities>
+  </status>
+  <status>
+    <created_at>Fri Jul 16 16:55:52 +0000 2010</created_at>
+    <id>18700688341</id>
+    <text>Anything is possible when you're in the library... with a celestial sandwich: http://bit.ly/libraryman (via @iamcal)</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <user>
+      <id>635543</id>
+      <name>Daniel Burka</name>
+      <screen_name>dburka</screen_name>
+      <location>San Francisco</location>
+      <description>Director of design at Tiny Speck. Ex-Creative director at Digg. CSS. Design. UX. Climbing. Cycling. Chilaquiles mmm.</description>
+      <profile_image_url>http://a3.twimg.com/profile_images/74260755/2009-square-small_normal.jpg</profile_image_url>
+      <url>http://deltatangobravo.com</url>
+      <protected>false</protected>
+      <followers_count>9949</followers_count>
+      <profile_background_color>BADFCD</profile_background_color>
+      <profile_text_color>0C3E53</profile_text_color>
+      <profile_link_color>5a0d91</profile_link_color>
+      <profile_sidebar_fill_color>f1ccff</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>a655ec</profile_sidebar_border_color>
+      <friends_count>219</friends_count>
+      <created_at>Mon Jan 15 15:22:14 +0000 2007</created_at>
+      <favourites_count>92</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+      <profile_background_image_url>http://a3.twimg.com/profile_background_images/4444585/back.png</profile_background_image_url>
+      <profile_background_tile>true</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>true</following>
+      <statuses_count>806</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place xmlns:georss="http://www.georss.org/georss">
+      <id>5a110d312052166f</id>
+      <name>San Francisco</name>
+      <full_name>San Francisco, CA</full_name>
+      <place_type>city</place_type>
+      <url>http://api.twitter.com/1/geo/id/5a110d312052166f.json</url>
+      <attributes/>
+      <bounding_box>
+        <georss:polygon>37.70813196 -122.51368188 37.70813196 -122.35845384 37.83245301 -122.35845384 37.83245301 -122.51368188</georss:polygon>
+      </bounding_box>
+      <country code="US">The United States of America</country>
+    </place>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="115" start="108">
+          <id>6104</id>
+          <screen_name>iamcal</screen_name>
+          <name>Cal Henderson</name>
+        </user_mention>
+      </user_mentions>
+      <urls>
+        <url end="102" start="78">
+          <url>http://bit.ly/libraryman</url>
+          <expanded_url/>
+        </url>
+      </urls>
+      <hashtags/>
+    </entities>
+  </status>
+  ...
+  <status>
+    <created_at>Fri Jul 16 16:40:34 +0000 2010</created_at>
+    <id>18699620902</id>
+    <text>Walking the DOM like Huggybear.</text>
+    <source>&lt;a href=&quot;http://twitter.com&quot; rel=&quot;nofollow&quot;&gt;Tweetie for Mac&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <user>
+      <id>3404</id>
+      <name>Kevin Lawver</name>
+      <screen_name>kplawver</screen_name>
+      <location>Savannah, GA, US</location>
+      <description>Nerd who loves web standards, Ruby on Rails and all things webbish. Chief Architect @ http://uplaya.com and co-founder of http://ficly.com. Happy dad &amp; husband.</description>
+      <profile_image_url>http://a3.twimg.com/profile_images/980477983/oh_lawver_normal.jpg</profile_image_url>
+      <url>http://lawver.net</url>
+      <protected>false</protected>
+      <followers_count>1048</followers_count>
+      <profile_background_color>003030</profile_background_color>
+      <profile_text_color>003030</profile_text_color>
+      <profile_link_color>DC4104</profile_link_color>
+      <profile_sidebar_fill_color>E6E2B0</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>A8A37E</profile_sidebar_border_color>
+      <friends_count>268</friends_count>
+      <created_at>Sat Jul 29 18:23:37 +0000 2006</created_at>
+      <favourites_count>148</favourites_count>
+      <utc_offset>-18000</utc_offset>
+      <time_zone>Eastern Time (US &amp; Canada)</time_zone>
+      <profile_background_image_url>http://a1.twimg.com/profile_background_images/1391712/twitter_back.png</profile_background_image_url>
+      <profile_background_tile>true</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>true</following>
+      <statuses_count>10561</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions/>
+      <urls/>
+      <hashtags/>
+    </entities>
+  </status>
+</statuses>

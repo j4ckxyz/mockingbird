@@ -1,0 +1,13 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example (truncated):
+<?xml version="1.0" encoding="UTF-8"?>
+<saved_search>
+<id>313006</id>
+<name>twitter api</name>
+<query>twitter api</query>
+<position></position>
+<created_at>Thu Jun 04 21:54:17 +0000 2009</created_at>
+</saved_search>

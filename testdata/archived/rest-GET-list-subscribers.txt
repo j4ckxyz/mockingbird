@@ -1,0 +1,193 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+XML example:
+<?xml version="1.0" encoding="UTF-8"?>
+<users_list>
+<users type="array">
+<user>
+  <id>8725692</id>
+  <name>knoedeldealer</name>
+  <screen_name>knoedeldealer</screen_name>
+  <location>Cologne, Germany</location>
+  <description>schönwettertwitterer</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/56099829/simpsons_me_normal.gif</profile_image_url>
+  <url></url>
+  <protected>false</protected>
+  <followers_count>215</followers_count>
+  <profile_background_color>000000</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>050505</profile_link_color>
+  <profile_sidebar_fill_color>616266</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>eeeeee</profile_sidebar_border_color>
+  <friends_count>198</friends_count>
+  <created_at>Fri Sep 07 14:54:15 +0000 2007</created_at>
+  <favourites_count>235</favourites_count>
+  <utc_offset>3600</utc_offset>
+  <time_zone>Berlin</time_zone>
+  <profile_background_image_url>http://s.twimg.com/a/1257288876/images/themes/theme14/bg.gif</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <statuses_count>3690</statuses_count>
+  <notifications>false</notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <status>
+    <created_at>Wed Nov 04 22:50:05 +0000 2009</created_at>
+    <id>5432888339</id>
+    <text>@Jule_Hoffmann na danke, nun hab ich auch wieder nen Ohrwurm ^^</text>
+    <source><a href="http://www.brizzly.com" rel="nofollow">Brizzly</a></source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id>5431558457</in_reply_to_status_id>
+    <in_reply_to_user_id>36762307</in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name>Jule_Hoffmann</in_reply_to_screen_name>
+    <geo/>
+  </status>
+</user>
+<user>
+  <id>15627893</id>
+  <name>nambutest</name>
+  <screen_name>nambutest</screen_name>
+  <location>Everywhere</location>
+  <description>Test account for The Nambu Network.</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/501658157/nambuicon-512-border_normal.png</profile_image_url>
+  <url>http://www.nambu.com/</url>
+  <protected>true</protected>
+  <followers_count>1</followers_count>
+  <profile_background_color>000</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>1D7D9F</profile_link_color>
+  <profile_sidebar_fill_color>EAEAEA</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>CCCCCC</profile_sidebar_border_color>
+  <friends_count>76</friends_count>
+  <created_at>Mon Jul 28 04:38:53 +0000 2008</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US & Canada)</time_zone>
+  <profile_background_image_url>http://a1.twimg.com/profile_background_images/3206736/n-twtbg.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <statuses_count>39</statuses_count>
+  <notifications>false</notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+</user>
+<user>
+  <id>10892442</id>
+  <name>Brent McConnell</name>
+  <screen_name>emcconne</screen_name>
+  <location>MA, US</location>
+  <description>Community Manager for iFolder and Kablink.  Wantabe muscian and havetabe home repair guy :(</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/51999411/headshot_small_normal.jpg</profile_image_url>
+  <url>http://www.mindby.com</url>
+  <protected>false</protected>
+  <followers_count>257</followers_count>
+  <profile_background_color>1A1B1F</profile_background_color>
+  <profile_text_color>666666</profile_text_color>
+  <profile_link_color>2FC2EF</profile_link_color>
+  <profile_sidebar_fill_color>252429</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>181A1E</profile_sidebar_border_color>
+  <friends_count>425</friends_count>
+  <created_at>Thu Dec 06 03:12:05 +0000 2007</created_at>
+  <favourites_count>0</favourites_count>
+  <utc_offset>-21600</utc_offset>
+  <time_zone>Central Time (US & Canada)</time_zone>
+  <profile_background_image_url>http://a3.twimg.com/profile_background_images/39437539/mindby_background.gif</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <statuses_count>382</statuses_count>
+  <notifications>false</notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <status>
+    <created_at>Wed Nov 04 22:08:24 +0000 2009</created_at>
+    <id>5431858092</id>
+    <text>RT @juliov27612: RT @billtrippe: RT @piers_hollott: RT @ramblingman: Dynamic Publishing Market to Grow @ 20%+  - Frost http://bit.ly/3T6Z9n</text>
+    <source><a href="http://www.tweetdeck.com/" rel="nofollow">TweetDeck</a></source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <geo/>
+  </status>
+</user>
+<user>
+  <id>13348</id>
+  <name>Robert Scoble</name>
+  <screen_name>Scobleizer</screen_name>
+  <location>Half Moon Bay, California, USA</location>
+  <description>Geek and technology enthusiasm from a blogger who grew up in Silicon Valley.</description>
+  <profile_image_url>http://a1.twimg.com/profile_images/456562836/scoblebuilding43crop-fanatiguy_normal.jpg</profile_image_url>
+  <url>http://friendfeed.com/scobleizer</url>
+  <protected>false</protected>
+  <followers_count>102141</followers_count>
+  <profile_background_color>C6E2EE</profile_background_color>
+  <profile_text_color>663B12</profile_text_color>
+  <profile_link_color>1F98C7</profile_link_color>
+  <profile_sidebar_fill_color>DAECF4</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C6E2EE</profile_sidebar_border_color>
+  <friends_count>13884</friends_count>
+  <created_at>Mon Nov 20 23:43:44 +0000 2006</created_at>
+  <favourites_count>8073</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Pacific Time (US & Canada)</time_zone>
+  <profile_background_image_url>http://a1.twimg.com/profile_background_images/31266726/scoblebuilding43small.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <statuses_count>25983</statuses_count>
+  <notifications>false</notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>true</verified>
+  <following>false</following>
+  <status>
+    <created_at>Wed Nov 04 23:12:14 +0000 2009</created_at>
+    <id>5433448552</id>
+    <text>Yeah, @RealTweeter I have your iPhone power cable. In exchange I'm now following Real Networks at @RealPlayer/realnetworks</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <geo/>
+  </status>
+</user>
+</users>
+<next_cursor>0</next_cursor>
+<previous_cursor>0</previous_cursor>
+</users_list>
+Twitter REST API Method: GET list subscribers
+Page Tools
+Insert links
+Insert links to other pages or uploaded files.
+Pages
+Images and files
+Insert a link to a new page
+ Loading...
+ No images or files uploaded yet.
+Insert image from URL
+Tip: To turn text into a link, highlight the text, then click on a page or file from the list above.
+Comments (0)
+You don't have permission to comment on this page.
+Printable version
+Anonymous
+Create an account or Log in
+Log in
+FrontPage
+Pages & Files
+Help      
+Navigator   
+Loading…
+SideBar     
+FAQ
+Twitter API Documentation
+Getting Started
+API Changelog
+Libraries
+Tutorials
+Open source
+Recent Activity   
+Show 0 new items
+Loading…

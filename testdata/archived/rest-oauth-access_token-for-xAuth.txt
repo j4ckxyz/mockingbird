@@ -1,0 +1,33 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response:
+oauth_token=819797-torCkTs0XK7H2A2i1ee5iofqkMC4p7aayeEXRTmlw&oauth_token_secret=SpuaLXRxZ0gOZHNQKPooBiWC2RY81klw13kLZGa2wc&user_id=819797&screen_name=episod
+<< Back to Twitter API Documentation
+Twitter REST API Method: oauth access_token for xAuth
+Page Tools
+Insert links
+Insert links to other pages or uploaded files.
+Pages
+Images and files
+Insert a link to a new page
+ Loading...
+ No images or files uploaded yet.
+Insert image from URL
+Tip: To turn text into a link, highlight the text, then click on a page or file from the list above.
+Comments (0)
+You don't have permission to comment on this page.
+Printable version
+Navigator   
+Loading…
+SideBar     
+FAQ
+Twitter API Documentation
+Getting Started
+API Changelog
+Libraries
+Tutorials
+Open source
+Recent Activity   
+Show 0 new items
+Loading…

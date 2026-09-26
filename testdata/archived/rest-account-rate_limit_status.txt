@@ -1,0 +1,12 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+          XML example:
+<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+<remaining-hits type="integer">19933</remaining-hits>
+<hourly-limit type="integer">20000</hourly-limit>
+<reset-time type="datetime">2009-04-08T21:57:23+00:00</reset-time>
+<reset-time-in-seconds type="integer">1239227843</reset-time-in-seconds>
+</hash>

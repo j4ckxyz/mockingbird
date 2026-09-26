@@ -1,0 +1,30 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response Codes are meaningful.
+4) The API is a RESTful resource
+With the exception of the Streaming API, the Twitter API attempts to conform to the design principles of Representational State Transfer (REST). Simply change the format extension a request to get results in the format of your choice. The documentation notes which formats are available for each method. The API presently supports the following data formats: XML, JSON, and the RSS and Atom syndication formats, with some methods only accepting a subset of these formats.
+5) Parameters have certain expectations
+Some API methods take optional or requisite parameters. Two things to keep in mind when making requests with parameters:
+Parameter values should be converted to UTF-8 and URL encoded. 
+The page parameter begins at 1, not 0.
+There are two special parameters in the Twitter API: 
+callback: Used only when requesting JSON formatted responses, this parameter wraps your response in a callback method of your choice.  For example, appending &callback=myFancyFunction to your request will result in a response body of: myFancyFunction(...).  Callbacks may only contain alphanumeric characters and underscores; any invalid characters will be stripped.
+suppress_response_codes: If this parameter is present, all responses will be returned with a 200 OK status code - even errors.  This parameter exists to accommodate Flash and JavaScript applications running in browsers that intercept all non-200 responses.  If used, it's then the job of the client to determine error states by parsing the response body.  Use with caution, as those error messages may change.
+Where noted, some API methods will return different results based on HTTP headers sent by the client. Where the same behavior can be controlled by both a parameter and an HTTP header, the parameter will take precedence.
+6) There are pagination limits
+Rest API Limit
+Clients may access up to 3,200 statuses via the page and count parameters for timeline REST API methods. Requests for more than the limit will result in a reply with a status code of 200 and an empty result in the format requested. Twitter still maintains a database of all the tweets sent by a user. However, to ensure performance of the site, this artificial limit is temporarily in place.
+Search API Limit
+Clients may request up to 1,500 statuses via the page and rpp parameters for the search method. The response to a request exceeding this limit will be a status code of 200 and an empty result in the format requested. This artificial limit is in place to ensure the performance of the search system. We also restrict the size of the search index by placing a date limit on the updates we allow you to search. This limit is currently around 1.5 weeks but is dynamic and subject to shrink as the number of tweets per day continues to grow.
+7) Encoding affects status character count
+The Twitter API supports UTF-8 encoding. Please note that angle brackets ("<" and ">") are entity-encoded to prevent Cross-Site Scripting attacks for web-embedded consumers of JSON API output. The resulting encoded entities do count towards the 140 character limit. When requesting XML, the response is UTF-8 encoded. Symbols and characters outside of the standard ASCII range may be translated to HTML entities.
+8) A command line is all you need to use the Twitter API 
+If your system has curl (and it should!), you’ve already got a great way to poke around the Twitter API. Here are some examples:
+Get the public timeline in RSS format, unauthenticated: curl http://api.twitter.com/1/statuses/public_timeline.rss
+Get updates from users you follow in XML, authenticated: curl -u username:password http://api.twitter.com/1/statuses/friends_timeline.xml
+See just the headers for that last request: curl --head -u username:password http://api.twitter.com/1/statuses/friends_timeline.xml
+Post a status update and get the resulting status back as JSON: curl -u username:password -d status="your message here" http://api.twitter.com/1/statuses/update.json
+Learn more about cURL and the API here.
+9) There are Twitter API libraries for almost any language.
+The community has created numerous Twitter API libraries and is willing to share.

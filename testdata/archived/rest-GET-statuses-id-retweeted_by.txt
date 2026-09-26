@@ -1,0 +1,140 @@
+# Source: https://web.archive.org/web/?/?
+# Extracted verbatim from the archived page text (HTML stripped).
+
+Response (about return values): 
+XML example:
+<?xml version="1.0" encoding="UTF-8"?>
+<users type="array">
+<user>
+  <id>16758065</id>
+  <name>Anil</name>
+  <screen_name>anilparmar</screen_name>
+  <location>Canada</location>
+  <description>Twitter has connected us with each other like never before...lets share knowledge & help each other.</description>
+  <profile_image_url>http://a1.twimg.com/profile_images/663688832/akp3_normal.png</profile_image_url>
+  <url>http://www.twitter.com/anilparmar</url>
+  <protected>false</protected>
+  <followers_count>230</followers_count>
+  <profile_background_color>B2DFDA</profile_background_color>
+  <profile_text_color>030303</profile_text_color>
+  <profile_link_color>0d3380</profile_link_color>
+  <profile_sidebar_fill_color>ffca38</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>ffb508</profile_sidebar_border_color>
+  <friends_count>47</friends_count>
+  <created_at>Wed Oct 15 05:03:12 +0000 2008</created_at>
+  <favourites_count>158</favourites_count>
+  <utc_offset>-18000</utc_offset>
+  <time_zone>Eastern Time (US & Canada)</time_zone>
+  <profile_background_image_url>http://a1.twimg.com/profile_background_images/81947072/Pinstripe.jpg</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <notifications>false</notifications>
+  <geo_enabled>true</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <statuses_count>3661</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+</user>
+<user>
+  <id>43968397</id>
+  <name>Clem C.</name>
+  <screen_name>cmonLexxo</screen_name>
+  <location>Bordeaux</location>
+  <description>Want to leave Fr. ASAP. Love the UK, music, movies. Skins. Calvin Harris. Oh yeah, and Franz Ferdinand is the best band in the whole universe. 30/11/09 ♥</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/734334665/meirn_normal.jpg</profile_image_url>
+  <url>http://www.facebook.com/album.php?aid=175112&id=708858451&ref=mf</url>
+  <protected>false</protected>
+  <followers_count>200</followers_count>
+  <profile_background_color>000000</profile_background_color>
+  <profile_text_color>239e9e</profile_text_color>
+  <profile_link_color>eb660e</profile_link_color>
+  <profile_sidebar_fill_color>6b3535</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>000000</profile_sidebar_border_color>
+  <friends_count>408</friends_count>
+  <created_at>Mon Jun 01 20:45:46 +0000 2009</created_at>
+  <favourites_count>420</favourites_count>
+  <utc_offset>3600</utc_offset>
+  <time_zone>Paris</time_zone>
+  <profile_background_image_url>http://a1.twimg.com/profile_background_images/80683316/nicklex.jpg</profile_background_image_url>
+  <profile_background_tile>true</profile_background_tile>
+  <notifications>false</notifications>
+  <geo_enabled>true</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <statuses_count>8313</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+</user>
+<user>
+  <id>5933482</id>
+  <name>Matt Todd</name>
+  <screen_name>mtodd</screen_name>
+  <location>Atlanta, GA</location>
+  <description>Ruby Developer, OSS Enthusiast. Cyclist. Caveat lector.</description>
+  <profile_image_url>http://a3.twimg.com/profile_images/615027479/55426050-482d7b78c163dd129547da1f39adf6b8.4b454bd2-scaled_normal.jpg</profile_image_url>
+  <url>http://maraby.org/</url>
+  <protected>false</protected>
+  <followers_count>834</followers_count>
+  <profile_background_color>000000</profile_background_color>
+  <profile_text_color>000000</profile_text_color>
+  <profile_link_color>A336EE</profile_link_color>
+  <profile_sidebar_fill_color>E0FF91</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>87BC44</profile_sidebar_border_color>
+  <friends_count>1294</friends_count>
+  <created_at>Thu May 10 16:01:06 +0000 2007</created_at>
+  <favourites_count>3790</favourites_count>
+  <utc_offset>-18000</utc_offset>
+  <time_zone>Eastern Time (US & Canada)</time_zone>
+  <profile_background_image_url>http://s.twimg.com/a/1268687377/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <notifications>false</notifications>
+  <geo_enabled>false</geo_enabled>
+  <verified>false</verified>
+  <following>false</following>
+  <statuses_count>6295</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <status>
+    <created_at>Tue Mar 16 17:42:13 +0000 2010</created_at>
+    <id>10579884471</id>
+    <text>Thinking http://etudeapp.com/ might be pretty cool...</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+  </status>
+</user>
+</users> 
+Twitter REST API Method: GET statuses id retweeted_by
+Page Tools
+Insert links
+Insert links to other pages or uploaded files.
+Pages
+Images and files
+Insert a link to a new page
+ Loading...
+ No images or files uploaded yet.
+Insert image from URL
+Tip: To turn text into a link, highlight the text, then click on a page or file from the list above.
+Comments (0)
+You don't have permission to comment on this page.
+Printable version
+Navigator   
+Loading…
+SideBar     
+FAQ
+Twitter API Documentation
+Getting Started
+API Changelog
+Libraries
+Tutorials
+Open source
+Recent Activity   
+Show 0 new items
+Loading…
