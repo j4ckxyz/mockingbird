@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suggestions type="array">
+<category>
+  <name>Art &amp; Design</name>
+  <slug>art-design</slug>
+</category>
+<category>
+  <name>Books</name>
+  <slug>books</slug>
+</category>
+...
+<category>
+  <name>Twitter</name>
+  <slug>twitter</slug>
+</category>
+</suggestions>

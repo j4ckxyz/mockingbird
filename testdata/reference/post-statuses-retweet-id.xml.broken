@@ -1,0 +1,80 @@
+<status>
+  <created_at>Fri Nov 06 01:24:24 +0000 2009</created_at>
+  <id>5466271842</id>
+  <text>RT @Brockstar: Hooray, we started rolling the retweet feature out to people!</text>
+  <source>web</source>
+  <truncated>false</truncated>
+  <in_reply_to_status_id></in_reply_to_status_id>
+  <in_reply_to_user_id></in_reply_to_user_id>
+  <favorited>false</favorited>
+  <in_reply_to_screen_name></in_reply_to_screen_name>
+  <retweeted_status>
+    <created_at>Fri Nov 06 01:22:17 +0000 2009</created_at>
+    <id>5466220198</id>
+    <text>Hooray, we started rolling the retweet feature out to people!</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <user>
+      <id>2404341</id>
+      <name>Zach Brock</name>
+      <screen_name>Brockstar</screen_name>
+      <location>San Francisco, CA</location>
+      <description>I'm mostly made of water.</description>
+      <profile_image_url>http://a1.twimg.com/profile_images/44776412/mecropped_normal.jpg</profile_image_url>
+      <url>http://www.imthecuteone.com</url>
+      <protected>false</protected>
+      <followers_count>319</followers_count>
+      <profile_background_color>352726</profile_background_color>
+      <profile_text_color>3E4415</profile_text_color>
+      <profile_link_color>D02B55</profile_link_color>
+      <profile_sidebar_fill_color>99CC33</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>829D5E</profile_sidebar_border_color>
+      <friends_count>108</friends_count>
+      <created_at>Tue Mar 27 04:43:51 +0000 2007</created_at>
+      <favourites_count>19</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Pacific Time (US & Canada)</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1257443454/images/themes/theme5/bg.gif</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <statuses_count>1052</statuses_count>
+      <notifications>false</notifications>
+      <geo_enabled>false</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+    </user>
+    <geo/>
+  </retweeted_status>
+  <user>
+    <id>1199081</id>
+    <name>Dustin Diaz</name>
+    <screen_name>ded</screen_name>
+    <location>San Francisco, CA</location>
+    <description>Twitter Engineer, Photographer</description>
+    <profile_image_url>http://a1.twimg.com/profile_images/56561346/dustin-was-here_normal.gif</profile_image_url>
+    <url>http://photography.dustindiaz.com</url>
+    <protected>false</protected>
+    <followers_count>7039</followers_count>
+    <profile_background_color>000000</profile_background_color>
+    <profile_text_color>9e9e9e</profile_text_color>
+    <profile_link_color>92aef6</profile_link_color>
+    <profile_sidebar_fill_color>415771</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>ffffff</profile_sidebar_border_color>
+    <friends_count>127</friends_count>
+    <created_at>Thu Mar 15 02:52:58 +0000 2007</created_at>
+    <favourites_count>1002</favourites_count>
+    <utc_offset>-28800</utc_offset>
+    <time_zone>Pacific Time (US & Canada)</time_zone>
+    <profile_background_image_url>http://a3.twimg.com/profile_background_images/15460187/3369212741_7804dd46e5_o.jpg</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <statuses_count>2734</statuses_count>
+    <notifications>false</notifications>
+    <geo_enabled>true</geo_enabled>
+    <verified>false</verified>
+    <following>true</following>
+  </user>
+  <geo/>
+</status>

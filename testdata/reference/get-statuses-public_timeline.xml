@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statuses type="array">
+<status>
+  <created_at>Thu Jul 15 23:24:33 +0000 2010</created_at>
+  <id>18639350000</id>
+  <text>se fuder</text>
+  <source>web</source>
+  <truncated>false</truncated>
+  <in_reply_to_status_id></in_reply_to_status_id>
+  <in_reply_to_user_id></in_reply_to_user_id>
+  <favorited>false</favorited>
+  <in_reply_to_screen_name></in_reply_to_screen_name>
+  <user>
+    <id>61949587</id>
+    <name>leonor</name>
+    <screen_name>leonor_</screen_name>
+    <location></location>
+    <description></description>
+    <profile_image_url>http://a1.twimg.com/profile_images/1015735169/Foto0133_normal.jpg</profile_image_url>
+    <url></url>
+    <protected>false</protected>
+    <followers_count>91</followers_count>
+    <profile_background_color>ffffff</profile_background_color>
+    <profile_text_color>f745b9</profile_text_color>
+    <profile_link_color>f00c95</profile_link_color>
+    <profile_sidebar_fill_color></profile_sidebar_fill_color>
+    <profile_sidebar_border_color>969090</profile_sidebar_border_color>
+    <friends_count>197</friends_count>
+    <created_at>Sat Aug 01 03:24:58 +0000 2009</created_at>
+    <favourites_count>0</favourites_count>
+    <utc_offset>-10800</utc_offset>
+    <time_zone>Greenland</time_zone>
+    <profile_background_image_url>http://a3.twimg.com/profile_background_images/112042905/POfQE9X92p2tpaoqTJ3HPbWFo1_400_large.jpg</profile_background_image_url>
+    <profile_background_tile>true</profile_background_tile>
+    <profile_use_background_image>true</profile_use_background_image>
+    <notifications></notifications>
+    <geo_enabled>false</geo_enabled>
+    <verified>false</verified>
+    <following></following>
+    <statuses_count>2754</statuses_count>
+    <lang>en</lang>
+    <contributors_enabled>false</contributors_enabled>
+    <follow_request_sent></follow_request_sent>
+  </user>
+  <geo/>
+  <coordinates/>
+  <place/>
+  <contributors/>
+</status>
+<status>
+  <created_at>Thu Jul 15 23:24:31 +0000 2010</created_at>
+  <id>18639347000</id>
+  <text>QUERO UMA MULHER PRA CASAR!!</text>
+  <source>web</source>
+  <truncated>false</truncated>
+  <in_reply_to_status_id></in_reply_to_status_id>
+  <in_reply_to_user_id></in_reply_to_user_id>
+  <favorited>false</favorited>
+  <in_reply_to_screen_name></in_reply_to_screen_name>
+  <user>
+    <id>160730191</id>
+    <name>EWERTON CABRAL</name>
+    <screen_name>EWERTON_G3</screen_name>
+    <location>RIO DE JANEIRO / BRASIL</location>
+    <description></description>
+    <profile_image_url>http://a0.twimg.com/profile_images/1034068620/eweron_B_normal.jpg</profile_image_url>
+    <url></url>
+    <protected>false</protected>
+    <followers_count>4</followers_count>
+    <profile_background_color>DBE9ED</profile_background_color>
+    <profile_text_color>333333</profile_text_color>
+    <profile_link_color>CC3366</profile_link_color>
+    <profile_sidebar_fill_color>E6F6F9</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>DBE9ED</profile_sidebar_border_color>
+    <friends_count>9</friends_count>
+    <created_at>Tue Jun 29 00:16:27 +0000 2010</created_at>
+    <favourites_count>2</favourites_count>
+    <utc_offset>-10800</utc_offset>
+    <time_zone>Brasilia</time_zone>
+    <profile_background_image_url>http://a1.twimg.com/profile_background_images/119620646/fairy-wings-small.jpg</profile_background_image_url>
+    <profile_background_tile>true</profile_background_tile>
+    <profile_use_background_image>true</profile_use_background_image>
+    <notifications></notifications>
+    <geo_enabled>false</geo_enabled>
+    <verified>false</verified>
+    <following></following>
+    <statuses_count>41</statuses_count>
+    <lang>en</lang>
+    <contributors_enabled>false</contributors_enabled>
+    <follow_request_sent></follow_request_sent>
+  </user>
+  <geo/>
+  <coordinates/>
+  <place/>
+  <contributors/>
+</status>
+...
+<status>
+  <created_at>Thu Jul 15 23:23:51 +0000 2010</created_at>
+  <id>18639306000</id>
+  <text>CNN's Lemon Argues With Black Tea Party Member; Civil War is 'Modern History'? http://bit.ly/cobIID</text>
+  <source>&lt;a href=&quot;http://twitterfeed.com&quot; rel=&quot;nofollow&quot;&gt;twitterfeed&lt;/a&gt;</source>
+  <truncated>false</truncated>
+  <in_reply_to_status_id></in_reply_to_status_id>
+  <in_reply_to_user_id></in_reply_to_user_id>
+  <favorited>false</favorited>
+  <in_reply_to_screen_name></in_reply_to_screen_name>
+  <user>
+    <id>83234874</id>
+    <name>Paul Alyunov</name>
+    <screen_name>World_Policy</screen_name>
+    <location></location>
+    <description></description>
+    <profile_image_url>http://a1.twimg.com/profile_images/481487584/twitter-bird-3_normal.png</profile_image_url>
+    <url></url>
+    <protected>false</protected>
+    <followers_count>930</followers_count>
+    <profile_background_color>9ae4e8</profile_background_color>
+    <profile_text_color>000000</profile_text_color>
+    <profile_link_color>0000ff</profile_link_color>
+    <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+    <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+    <friends_count>7</friends_count>
+    <created_at>Sat Oct 17 22:23:03 +0000 2009</created_at>
+    <favourites_count>0</favourites_count>
+    <utc_offset></utc_offset>
+    <time_zone></time_zone>
+    <profile_background_image_url>http://s.twimg.com/a/1278188204/images/themes/theme1/bg.png</profile_background_image_url>
+    <profile_background_tile>false</profile_background_tile>
+    <profile_use_background_image>true</profile_use_background_image>
+    <notifications>false</notifications>
+    <geo_enabled>false</geo_enabled>
+    <verified>false</verified>
+    <following>false</following>
+    <statuses_count>54977</statuses_count>
+    <lang>en</lang>
+    <contributors_enabled>false</contributors_enabled>
+    <follow_request_sent>false</follow_request_sent>
+  </user>
+  <geo/>
+  <coordinates/>
+  <place/>
+  <contributors/>
+</status>
+</statuses>

@@ -1,0 +1,4 @@
+{
+  "request": "/1/account/end_session.json",
+  "error": "Logged out."
+}

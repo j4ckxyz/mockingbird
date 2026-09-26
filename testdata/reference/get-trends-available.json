@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Ireland",
+    "placeType": {
+      "name": "Country",
+      "code": 12
+    },
+    "woeid": 23424803,
+    "country": "Ireland",
+    "url": "http://where.yahooapis.com/v1/place/23424803",
+    "countryCode": "IE"
+  },
+  {
+    "name": "United Kingdom",
+    "woeid": 23424975,
+    "placeType": {
+      "name": "Country",
+      "code": 12
+    },
+    "country": "United Kingdom",
+    "url": "http://where.yahooapis.com/v1/place/23424975",
+    "countryCode": "GB"
+  },
+  {
+    "name": "London",
+    "woeid": 44418,
+    "placeType": {
+      "name": "Town",
+      "code": 7
+    },
+    "country": "United Kingdom",
+    "url": "http://where.yahooapis.com/v1/place/44418",
+    "countryCode": "GB"
+  }
+]

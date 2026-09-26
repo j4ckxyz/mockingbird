@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns:georss="http://www.georss.org/georss" xmlns="http://www.w3.org/2005/Atom" xmlns:twitter="http://api.twitter.com">
+  <title>Twitter / themattharris</title>
+  <id>tag:twitter.com,2007:Status</id>
+  <link type="text/html" rel="alternate" href="http://twitter.com/themattharris"/>
+  <link type="application/atom+xml" rel="self" href="https://api.twitter.com/1/statuses/user_timeline.atom"/>
+  <updated>2010-07-16T17:36:18+00:00</updated>
+  <subtitle>Twitter updates from Matt Harris / themattharris.</subtitle>
+    <entry>
+      <title>themattharris: Another great workout tonight, this time a 45 min run, speed 5.5, incline randomising between 0 and 8. Now to relax with some Knight Rider</title>
+      <content type="html">themattharris: Another great workout tonight, this time a 45 min run, speed 5.5, incline randomising between 0 and 8. Now to relax with some Knight Rider</content>
+      <id>tag:twitter.com,2007:http://twitter.com/themattharris/statuses/18498353208</id>
+      <published>2010-07-14T05:56:17+00:00</published>
+      <updated>2010-07-14T05:56:17+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/themattharris/statuses/18498353208"/>
+      <link type="image/jpeg" rel="image" href="http://a1.twimg.com/profile_images/554181350/matt_normal.jpg"/>
+      <author>
+        <name>Matt Harris</name>
+        <uri>http://themattharris.com</uri>
+      </author>
+      <twitter:source>web</twitter:source>
+      <twitter:place xmlns:georss="http://www.georss.org/georss">
+        <twitter:id>5a110d312052166f</twitter:id>
+        <twitter:name>San Francisco</twitter:name>
+        <twitter:full_name>San Francisco, CA</twitter:full_name>
+        <twitter:place_type>city</twitter:place_type>
+        <twitter:url>http://api.twitter.com/1/geo/id/5a110d312052166f.json</twitter:url>
+        <twitter:attributes/>
+        <twitter:bounding_box>
+          <georss:polygon>37.70813196 -122.51368188 37.70813196 -122.35845384 37.83245301 -122.35845384 37.83245301 -122.51368188</georss:polygon>
+        </twitter:bounding_box>
+        <twitter:country code="US">The United States of America</twitter:country>
+      </twitter:place>
+    </entry>
+    <entry>
+      <title>themattharris: Nice. Whole Foods carries Sam Smith's amongst some other UK ales. Not sure why I didn't know this before.</title>
+      <content type="html">themattharris: Nice. Whole Foods carries Sam Smith's amongst some other UK ales. Not sure why I didn't know this before.</content>
+      <id>tag:twitter.com,2007:http://twitter.com/themattharris/statuses/18314939923</id>
+      <published>2010-07-12T00:27:26+00:00</published>
+      <updated>2010-07-12T00:27:26+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/themattharris/statuses/18314939923"/>
+      <link type="image/jpeg" rel="image" href="http://a1.twimg.com/profile_images/554181350/matt_normal.jpg"/>
+      <author>
+        <name>Matt Harris</name>
+        <uri>http://themattharris.com</uri>
+      </author>
+      <twitter:source>&lt;a href=&quot;http://twitter.com/&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</twitter:source>
+      <georss:point>37.78124892 -122.39994481</georss:point>
+      <twitter:place xmlns:georss="http://www.georss.org/georss">
+        <twitter:id>2b6ff8c22edd9576</twitter:id>
+        <twitter:name>SoMa</twitter:name>
+        <twitter:full_name>SoMa, San Francisco</twitter:full_name>
+        <twitter:place_type>neighborhood</twitter:place_type>
+        <twitter:url>http://api.twitter.com/1/geo/id/2b6ff8c22edd9576.json</twitter:url>
+        <twitter:attributes/>
+        <twitter:bounding_box>
+          <georss:polygon>37.76893497 -122.42284884 37.76893497 -122.3964 37.78752897 -122.3964 37.78752897 -122.42284884</georss:polygon>
+        </twitter:bounding_box>
+        <twitter:country code="US">The United States of America</twitter:country>
+      </twitter:place>
+    </entry>
+    ...
+    <entry>
+      <title>themattharris: I'm still getting used to this farenheit thing but I think I've got the basics. 80-89 is hot, 90-99 is really hot and 100+ is freakin insane</title>
+      <content type="html">themattharris: I'm still getting used to this farenheit thing but I think I've got the basics. 80-89 is hot, 90-99 is really hot and 100+ is freakin insane</content>
+      <id>tag:twitter.com,2007:http://twitter.com/themattharris/statuses/17677826621</id>
+      <published>2010-07-03T21:24:02+00:00</published>
+      <updated>2010-07-03T21:24:02+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/themattharris/statuses/17677826621"/>
+      <link type="image/jpeg" rel="image" href="http://a1.twimg.com/profile_images/554181350/matt_normal.jpg"/>
+      <author>
+        <name>Matt Harris</name>
+        <uri>http://themattharris.com</uri>
+      </author>
+      <twitter:source>&lt;a href=&quot;http://twitter.com/&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</twitter:source>
+      <georss:point>39.07571937 -77.49050023</georss:point>
+      <twitter:place xmlns:georss="http://www.georss.org/georss">
+        <twitter:id>0a0c5fadce900696</twitter:id>
+        <twitter:name>Broad Run</twitter:name>
+        <twitter:full_name>Broad Run, VA</twitter:full_name>
+        <twitter:place_type>city</twitter:place_type>
+        <twitter:url>http://api.twitter.com/1/geo/id/0a0c5fadce900696.json</twitter:url>
+        <twitter:attributes/>
+        <twitter:bounding_box>
+          <georss:polygon>39.00709 -77.528884 39.00709 -77.378433 39.100589 -77.378433 39.100589 -77.528884</georss:polygon>
+        </twitter:bounding_box>
+        <twitter:country code="US">The United States of America</twitter:country>
+      </twitter:place>
+    </entry>
+</feed>

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statuses type="array">
+  <status>
+    <created_at>Sat Jul 10 01:01:27 +0000 2010</created_at>
+    <id>18160226357</id>
+    <text>RT @TwitterEng: Cassandra at Twitter Today http://dlvr.it/2TLtH</text>
+    <source>&lt;a href=&quot;http://twitter.com/&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweeted_status>
+      <created_at>Sat Jul 10 00:59:07 +0000 2010</created_at>
+      <id>18160083925</id>
+      <text>Cassandra at Twitter Today http://dlvr.it/2TLtH</text>
+      <source>&lt;a href=&quot;http://dlvr.it&quot; rel=&quot;nofollow&quot;&gt;dlvr.it&lt;/a&gt;</source>
+      <truncated>false</truncated>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <favorited>false</favorited>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <user>
+        <id>6844292</id>
+        <name>Twitter Engineering</name>
+        <screen_name>TwitterEng</screen_name>
+        <location>San Francisco, CA</location>
+        <description></description>
+        <profile_image_url>http://a1.twimg.com/profile_images/700154866/unicornbird_normal.jpeg</profile_image_url>
+        <url>http://engineering.twitter.com</url>
+        <protected>false</protected>
+        <followers_count>12599</followers_count>
+        <profile_background_color>C0DEED</profile_background_color>
+        <profile_text_color>333333</profile_text_color>
+        <profile_link_color>0084B4</profile_link_color>
+        <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+        <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+        <friends_count>10</friends_count>
+        <created_at>Sat Jun 16 00:14:36 +0000 2007</created_at>
+        <favourites_count>0</favourites_count>
+        <utc_offset>-14400</utc_offset>
+        <time_zone>Atlantic Time (Canada)</time_zone>
+        <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
+        <profile_background_tile>false</profile_background_tile>
+        <profile_use_background_image>true</profile_use_background_image>
+        <notifications>true</notifications>
+        <geo_enabled>false</geo_enabled>
+        <verified>false</verified>
+        <following>true</following>
+        <statuses_count>20</statuses_count>
+        <lang>en</lang>
+        <contributors_enabled>false</contributors_enabled>
+        <follow_request_sent>false</follow_request_sent>
+      </user>
+      <geo/>
+      <coordinates/>
+      <place/>
+      <contributors/>
+      <annotations/>
+      <entities>
+        <user_mentions/>
+        <urls>
+          <url end="47" start="27">
+            <url>http://dlvr.it/2TLtH</url>
+            <expanded_url/>
+          </url>
+        </urls>
+        <hashtags/>
+      </entities>
+    </retweeted_status>
+    <user>
+      <id>777925</id>
+      <name>Matt Harris</name>
+      <screen_name>themattharris</screen_name>
+      <location>San Francisco</location>
+      <description>Developer Advocate at Twitter. Also a hacker and British expat who is married to @cindyli and lives in San Francisco.</description>
+      <profile_image_url>http://a1.twimg.com/profile_images/554181350/matt_normal.jpg</profile_image_url>
+      <url>http://themattharris.com</url>
+      <protected>false</protected>
+      <followers_count>1173</followers_count>
+      <profile_background_color>C0DEED</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>0084B4</profile_link_color>
+      <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+      <friends_count>302</friends_count>
+      <created_at>Sat Feb 17 20:49:54 +0000 2007</created_at>
+      <favourites_count>101</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Tijuana</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1278960292/images/themes/theme1/bg.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+      <statuses_count>2963</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="14" start="3">
+          <id>6844292</id>
+          <screen_name>TwitterEng</screen_name>
+          <name>Twitter Engineering</name>
+        </user_mention>
+      </user_mentions>
+      <urls>
+        <url end="63" start="43">
+          <url>http://dlvr.it/2TLtH</url>
+          <expanded_url/>
+        </url>
+      </urls>
+      <hashtags/>
+    </entities>
+  </status>
+  <status>
+    <created_at>Fri Jul 09 00:44:42 +0000 2010</created_at>
+    <id>18075628159</id>
+    <text>RT @twitterapi: Some of you were still having rate limit reset issues today but should be ok now. If not let us know. ^MH</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweeted_status>
+      <created_at>Fri Jul 09 00:36:42 +0000 2010</created_at>
+      <id>18075130692</id>
+      <text>Some of you were still having rate limit reset issues today but should be ok now. If not let us know. ^MH</text>
+      <source>web</source>
+      <truncated>false</truncated>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <favorited>false</favorited>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <user>
+        <id>6253282</id>
+        <name>Twitter API</name>
+        <screen_name>twitterapi</screen_name>
+        <location>San Francisco, CA</location>
+        <description>The Real Twitter API. I tweet about API changes, service issues and happily answer questions about Twitter and our API. Don't get an answer? It's on my website.</description>
+        <profile_image_url>http://a3.twimg.com/profile_images/689684365/api_normal.png</profile_image_url>
+        <url>http://apiwiki.twitter.com</url>
+        <protected>false</protected>
+        <followers_count>183054</followers_count>
+        <profile_background_color>c1dfee</profile_background_color>
+        <profile_text_color>000000</profile_text_color>
+        <profile_link_color>0000ff</profile_link_color>
+        <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+        <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+        <friends_count>19</friends_count>
+        <created_at>Wed May 23 06:01:13 +0000 2007</created_at>
+        <favourites_count>3</favourites_count>
+        <utc_offset>-28800</utc_offset>
+        <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+        <profile_background_image_url>http://a3.twimg.com/profile_background_images/59931895/twitterapi-background-new.png</profile_background_image_url>
+        <profile_background_tile>false</profile_background_tile>
+        <profile_use_background_image>true</profile_use_background_image>
+        <notifications>true</notifications>
+        <geo_enabled>true</geo_enabled>
+        <verified>true</verified>
+        <following>true</following>
+        <statuses_count>1921</statuses_count>
+        <lang>en</lang>
+        <contributors_enabled>true</contributors_enabled>
+        <follow_request_sent>false</follow_request_sent>
+      </user>
+      <geo/>
+      <coordinates/>
+      <place xmlns:georss="http://www.georss.org/georss">
+        <id>247f43d441defc03</id>
+        <name>Twitter HQ</name>
+        <full_name>Twitter HQ, San Francisco</full_name>
+        <place_type>poi</place_type>
+        <url>http://api.twitter.com/1/geo/id/247f43d441defc03.json</url>
+        <attributes>
+          <attribute>
+            <key>street_address</key>
+            <value>795 Folsom St</value>
+          </attribute>
+        </attributes>
+        <bounding_box>
+          <georss:polygon>37.7821120598956 -122.400612831116 37.7821120598956 -122.400612831116 37.7821120598956 -122.400612831116 37.7821120598956 -122.400612831116</georss:polygon>
+        </bounding_box>
+        <country code="US">The United States of America</country>
+      </place>
+      <contributors>
+        <user_id>777925</user_id>
+      </contributors>
+      <annotations/>
+      <entities>
+        <user_mentions/>
+        <urls/>
+        <hashtags/>
+      </entities>
+    </retweeted_status>
+    <user>
+      <id>777925</id>
+      <name>Matt Harris</name>
+      <screen_name>themattharris</screen_name>
+      <location>San Francisco</location>
+      <description>Developer Advocate at Twitter. Also a hacker and British expat who is married to @cindyli and lives in San Francisco.</description>
+      <profile_image_url>http://a1.twimg.com/profile_images/554181350/matt_normal.jpg</profile_image_url>
+      <url>http://themattharris.com</url>
+      <protected>false</protected>
+      <followers_count>1173</followers_count>
+      <profile_background_color>C0DEED</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>0084B4</profile_link_color>
+      <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+      <friends_count>302</friends_count>
+      <created_at>Sat Feb 17 20:49:54 +0000 2007</created_at>
+      <favourites_count>101</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Tijuana</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1278960292/images/themes/theme1/bg.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+      <statuses_count>2963</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="14" start="3">
+          <id>6253282</id>
+          <screen_name>twitterapi</screen_name>
+          <name>Twitter API</name>
+        </user_mention>
+      </user_mentions>
+      <urls/>
+      <hashtags/>
+    </entities>
+  </status>
+  ...
+  <status>
+    <created_at>Wed May 19 16:27:50 +0000 2010</created_at>
+    <id>14303558463</id>
+    <text>RT @googleio: Introducing WebM, open web media project supported by Chrome, Firefox, Opera, YouTube... http://www.webmproject.org/ #io2010</text>
+    <source>&lt;a href=&quot;http://dev.twitter.com/&quot; rel=&quot;nofollow&quot;&gt;API&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweeted_status>
+      <created_at>Wed May 19 16:25:18 +0000 2010</created_at>
+      <id>14303430405</id>
+      <text>Introducing WebM, open web media project supported by Chrome, Firefox, Opera, YouTube... http://www.webmproject.org/ #io2010</text>
+      <source>web</source>
+      <truncated>false</truncated>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <favorited>false</favorited>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <user>
+        <id>14789629</id>
+        <name>Google I/O</name>
+        <screen_name>googleio</screen_name>
+        <location>San Francisco, CA</location>
+        <description>Google's largest developer event on May 19-20th, 2010 at Moscone West, San Francisco</description>
+        <profile_image_url>http://a1.twimg.com/profile_images/467123648/10logo_normal.png</profile_image_url>
+        <url>http://code.google.com/events/io</url>
+        <protected>false</protected>
+        <followers_count>31059</followers_count>
+        <profile_background_color>43709d</profile_background_color>
+        <profile_text_color>000000</profile_text_color>
+        <profile_link_color>0000FF</profile_link_color>
+        <profile_sidebar_fill_color>d4d6d9</profile_sidebar_fill_color>
+        <profile_sidebar_border_color>3266CD</profile_sidebar_border_color>
+        <friends_count>106</friends_count>
+        <created_at>Thu May 15 18:20:27 +0000 2008</created_at>
+        <favourites_count>82</favourites_count>
+        <utc_offset>-28800</utc_offset>
+        <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+        <profile_background_image_url>http://s.twimg.com/a/1278724399/images/themes/theme1/bg.png</profile_background_image_url>
+        <profile_background_tile>false</profile_background_tile>
+        <profile_use_background_image>false</profile_use_background_image>
+        <notifications>false</notifications>
+        <geo_enabled>false</geo_enabled>
+        <verified>false</verified>
+        <following>false</following>
+        <statuses_count>1129</statuses_count>
+        <lang>en</lang>
+        <contributors_enabled>false</contributors_enabled>
+        <follow_request_sent>false</follow_request_sent>
+      </user>
+      <geo/>
+      <coordinates/>
+      <place/>
+      <contributors/>
+      <annotations/>
+      <entities>
+        <user_mentions/>
+        <urls>
+          <url end="116" start="89">
+            <url>http://www.webmproject.org/</url>
+            <expanded_url/>
+          </url>
+        </urls>
+        <hashtags>
+          <hashtag end="124" start="117">
+            <text>io2010</text>
+          </hashtag>
+        </hashtags>
+      </entities>
+    </retweeted_status>
+    <user>
+      <id>777925</id>
+      <name>Matt Harris</name>
+      <screen_name>themattharris</screen_name>
+      <location>San Francisco</location>
+      <description>Developer Advocate at Twitter. Also a hacker and British expat who is married to @cindyli and lives in San Francisco.</description>
+      <profile_image_url>http://a1.twimg.com/profile_images/554181350/matt_normal.jpg</profile_image_url>
+      <url>http://themattharris.com</url>
+      <protected>false</protected>
+      <followers_count>1173</followers_count>
+      <profile_background_color>C0DEED</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>0084B4</profile_link_color>
+      <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+      <friends_count>302</friends_count>
+      <created_at>Sat Feb 17 20:49:54 +0000 2007</created_at>
+      <favourites_count>101</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Tijuana</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1278960292/images/themes/theme1/bg.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+      <statuses_count>2963</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="12" start="3">
+          <id>14789629</id>
+          <screen_name>googleio</screen_name>
+          <name>Google I/O</name>
+        </user_mention>
+      </user_mentions>
+      <urls>
+        <url end="130" start="103">
+          <url>http://www.webmproject.org/</url>
+          <expanded_url/>
+        </url>
+      </urls>
+      <hashtags>
+        <hashtag end="138" start="131">
+          <text>io2010</text>
+        </hashtag>
+      </hashtags>
+    </entities>
+  </status>
+</statuses>

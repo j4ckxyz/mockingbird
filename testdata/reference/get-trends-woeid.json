@@ -1,0 +1,64 @@
+[
+  {
+    "created_at": "2010-07-15T22:31:11Z",
+    "trends": [
+      {
+        "name": "Premios Juventud",
+        "url": "http://search.twitter.com/search?q=Premios+Juventud",
+        "query": "Premios+Juventud"
+      },
+      {
+        "name": "#agoodrelationship",
+        "url": "http://search.twitter.com/search?q=%23agoodrelationship",
+        "query": "%23agoodrelationship"
+      },
+      {
+        "name": "#thistweetisdedicated2",
+        "url": "http://search.twitter.com/search?q=%23thistweetisdedicated2",
+        "query": "%23thistweetisdedicated2"
+      },
+      {
+        "name": "#bb11",
+        "url": "http://search.twitter.com/search?q=%23bb11",
+        "query": "%23bb11"
+      },
+      {
+        "name": "Oil Spill",
+        "url": "http://search.twitter.com/search?q=Oil+Spill",
+        "query": "Oil+Spill"
+      },
+      {
+        "name": "Inception",
+        "url": "http://search.twitter.com/search?q=Inception",
+        "query": "Inception"
+      },
+      {
+        "name": "iOS",
+        "url": "http://search.twitter.com/search?q=iOS",
+        "query": "iOS"
+      },
+      {
+        "name": "Goldman",
+        "url": "http://search.twitter.com/search?q=Goldman",
+        "query": "Goldman"
+      },
+      {
+        "name": "AnahiPremiosJuventud",
+        "url": "http://search.twitter.com/search?q=AnahiPremiosJuventud",
+        "query": "AnahiPremiosJuventud"
+      },
+      {
+        "name": "DulceMariaLivePJ",
+        "url": "http://search.twitter.com/search?q=DulceMariaLivePJ",
+        "query": "DulceMariaLivePJ"
+      }
+    ],
+    "as_of": "2010-07-15T22:40:45Z",
+    "locations": [
+      {
+        "name": "Worldwide",
+        "woeid": 1
+      }
+    ]
+  }
+]

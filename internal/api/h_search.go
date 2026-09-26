@@ -164,38 +164,96 @@ func (s *Server) trendsCurrent(c *Ctx) (*Resp, error) {
 	return &Resp{Value: out{Trends: map[string][]twitter.TrendQuery{now.Format("2006-01-02 15:04:05"): list}, AsOf: now.Unix()}, Root: "trends", Cacheable: true}, nil
 }
 
+// trendLocation is a Yahoo! WOEID place, as trends/available returned them.
+type trendLocation struct {
+	Name      string `json:"name"`
+	PlaceType struct {
+		Name string `json:"name"`
+		Code int    `json:"code"`
+	} `json:"placeType"`
+	WOEID       int     `json:"woeid"`
+	Country     string  `json:"country"`
+	URL         string  `json:"url"`
+	CountryCode *string `json:"countryCode"`
+}
+
+func worldwide() trendLocation {
+	l := trendLocation{Name: "Worldwide", WOEID: 1, URL: "http://where.yahooapis.com/v1/place/1"}
+	l.PlaceType.Name, l.PlaceType.Code = "Supername", 19
+	return l
+}
+
+type trendLocations []trendLocation
+
+func (ls trendLocations) WriteXML(w *twitter.XMLWriter, name string) {
+	w.Open("locations", "type", "array")
+	for _, l := range ls {
+		w.Open("location")
+		w.Elem("woeid", strconv.Itoa(l.WOEID))
+		w.Elem("name", l.Name)
+		w.Elem("placeTypeName", l.PlaceType.Name, "code", strconv.Itoa(l.PlaceType.Code))
+		w.Elem("country", l.Country, "type", "Country", "code", "")
+		w.Elem("url", l.URL)
+		w.Close("location")
+	}
+	w.Close("locations")
+}
+
 func (s *Server) trendsAvailable(c *Ctx) (*Resp, error) {
-	type loc struct {
+	return &Resp{Value: trendLocations{worldwide()}, Root: "locations"}, nil
+}
+
+type locTrend struct {
+	Name  string `json:"name"`
+	URL   string `json:"url"`
+	Query string `json:"query"`
+}
+
+type locTrendBlock struct {
+	CreatedAt string     `json:"created_at"`
+	Trends    []locTrend `json:"trends"`
+	AsOf      string     `json:"as_of"`
+	Locations []struct {
 		Name  string `json:"name"`
 		WOEID int    `json:"woeid"`
+	} `json:"locations"`
+}
+
+type locTrendBlocks []locTrendBlock
+
+func (bs locTrendBlocks) WriteXML(w *twitter.XMLWriter, name string) {
+	w.Open("matching_trends", "type", "array")
+	for _, b := range bs {
+		w.Open("trends", "as_of", b.AsOf, "created_at", b.CreatedAt)
+		w.Open("locations")
+		for _, l := range b.Locations {
+			w.Open("location")
+			w.Elem("woeid", strconv.Itoa(l.WOEID))
+			w.Elem("name", l.Name)
+			w.Close("location")
+		}
+		w.Close("locations")
+		for _, t := range b.Trends {
+			w.Elem("trend", t.Name, "query", t.Query, "url", t.URL)
+		}
+		w.Close("trends")
 	}
-	return &Resp{Value: []loc{{Name: "Worldwide", WOEID: 1}}, Root: "locations", Item: "location"}, nil
+	w.Close("matching_trends")
 }
 
 func (s *Server) trendsLocation(c *Ctx) (*Resp, error) {
-	type trend struct {
-		Name  string `json:"name"`
-		URL   string `json:"url"`
-		Query string `json:"query"`
-	}
-	type loc struct {
-		Name  string `json:"name"`
-		WOEID int    `json:"woeid"`
-	}
-	type block struct {
-		Trends    []trend `json:"trends"`
-		AsOf      string  `json:"as_of"`
-		CreatedAt string  `json:"created_at"`
-		Locations []loc   `json:"locations"`
-	}
 	if c.Params["woeid"] != "1" {
 		return nil, errNotFound()
 	}
-	now := s.now().UTC().Format(time.RFC3339)
-	b := block{Trends: []trend{}, AsOf: now, CreatedAt: now, Locations: []loc{{Name: "Worldwide", WOEID: 1}}}
+	now := s.now().UTC().Format("2006-01-02T15:04:05Z")
+	b := locTrendBlock{Trends: []locTrend{}, AsOf: now, CreatedAt: now}
+	b.Locations = append(b.Locations, struct {
+		Name  string `json:"name"`
+		WOEID int    `json:"woeid"`
+	}{"Worldwide", 1})
 	for _, t := range s.trendingTopics(c) {
 		q := topicQuery(t)
-		b.Trends = append(b.Trends, trend{Name: q, Query: url.QueryEscape(q), URL: s.cfg.PublicURL.String() + "/search?q=" + url.QueryEscape(q)})
+		b.Trends = append(b.Trends, locTrend{Name: q, Query: url.QueryEscape(q), URL: s.cfg.PublicURL.String() + "/search?q=" + url.QueryEscape(q)})
 	}
-	return &Resp{Value: []block{b}, Root: "matching_trends", Item: "trends", Cacheable: true}, nil
+	return &Resp{Value: locTrendBlocks{b}, Root: "matching_trends", Cacheable: true}, nil
 }

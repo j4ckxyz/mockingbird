@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns:georss="http://www.georss.org/georss" xmlns="http://www.w3.org/2005/Atom" xmlns:twitter="http://api.twitter.com">
+  <title>Twitter public timeline</title>
+  <id>tag:twitter.com,2007:Status</id>
+  <link type="text/html" rel="alternate" href="http://twitter.com/public_timeline"/>
+  <link type="application/atom+xml" rel="self" href="http://api.twitter.com/1/statuses/public_timeline.atom"/>
+  <updated>2010-07-15T23:28:37+00:00</updated>
+  <subtitle>Twitter updates from everyone!</subtitle>
+    <entry>
+      <title>MissChristolyn: Do i really have to go back to work! #bullshit</title>
+      <content type="html">MissChristolyn: Do i really have to go back to work! #bullshit</content>
+      <id>tag:twitter.com,2007:http://twitter.com/MissChristolyn/statuses/18639599000</id>
+      <published>2010-07-15T23:28:36+00:00</published>
+      <updated>2010-07-15T23:28:36+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/MissChristolyn/statuses/18639599000"/>
+      <link type="image/jpeg" rel="image" href="http://a1.twimg.com/profile_images/623652909/profile_image_1263181846554_normal.jpg"/>
+      <author>
+        <name>christolyn momon</name>
+      </author>
+      <twitter:source>&lt;a href=&quot;http://twitter.com/&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</twitter:source>
+      <twitter:place/>
+    </entry>
+    ...
+    <entry>
+      <title>Jaaniiss: &quot;Ay pero qu&#233; ladillada estoy &amp;lt;3 &#9829;&quot;... (?)</title>
+      <content type="html">Jaaniiss: &quot;Ay pero qu&#233; ladillada estoy &amp;lt;3 &#9829;&quot;... (?)</content>
+      <id>tag:twitter.com,2007:http://twitter.com/Jaaniiss/statuses/18639564000</id>
+      <published>2010-07-15T23:28:01+00:00</published>
+      <updated>2010-07-15T23:28:01+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/Jaaniiss/statuses/18639564000"/>
+      <link type="image/jpeg" rel="image" href="http://a3.twimg.com/profile_images/1052761659/4454713562_3abd39f263_normal.jpg"/>
+      <author>
+        <name>Janis Sanabria</name>
+        <uri>http://jaaniiss.tumblr.com</uri>
+      </author>
+      <twitter:source>web</twitter:source>
+      <twitter:place/>
+    </entry>
+    <entry>
+      <title>yukime8: &#20250;&#12360;&#12427;&#12363;&#12431;&#12363;&#12435;&#12394;&#12356;&#12387;&#12390;&#12394;&#12387;&#12390;&#12383;&#12363;&#12425;&#12289;LIVE&#12356;&#12428;&#12383;&#12369;&#12393;&#12418;&#12289;&#22909;&#12365;&#12394;&#20154;&#12395;&#36898;&#12360;&#12394;&#12356;&#12398;&#12399;&#23244;&#12420;&#12540;&#12290;&#12384;&#12387;&#12390;&#20250;&#12356;&#12383;&#12356;&#12376;&#12419;&#12435;&#12290;&#19968;&#32210;&#12395;&#12356;&#12383;&#12356;&#12376;&#12419;&#12435;&#12290;&#12354;&#12353;&#12540;&#12540;&#12540;&#12290;&#12384;&#12369;&#12393;&#12394;&#12435;&#12390;&#35328;&#12387;&#12383;&#12425;&#12356;&#12356;&#12398;&#12363;&#12431;&#12363;&#12425;&#12435;</title>
+      <content type="html">yukime8: &#20250;&#12360;&#12427;&#12363;&#12431;&#12363;&#12435;&#12394;&#12356;&#12387;&#12390;&#12394;&#12387;&#12390;&#12383;&#12363;&#12425;&#12289;LIVE&#12356;&#12428;&#12383;&#12369;&#12393;&#12418;&#12289;&#22909;&#12365;&#12394;&#20154;&#12395;&#36898;&#12360;&#12394;&#12356;&#12398;&#12399;&#23244;&#12420;&#12540;&#12290;&#12384;&#12387;&#12390;&#20250;&#12356;&#12383;&#12356;&#12376;&#12419;&#12435;&#12290;&#19968;&#32210;&#12395;&#12356;&#12383;&#12356;&#12376;&#12419;&#12435;&#12290;&#12354;&#12353;&#12540;&#12540;&#12540;&#12290;&#12384;&#12369;&#12393;&#12394;&#12435;&#12390;&#35328;&#12387;&#12383;&#12425;&#12356;&#12356;&#12398;&#12363;&#12431;&#12363;&#12425;&#12435;</content>
+      <id>tag:twitter.com,2007:http://twitter.com/yukime8/statuses/18639559000</id>
+      <published>2010-07-15T23:27:56+00:00</published>
+      <updated>2010-07-15T23:27:56+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/yukime8/statuses/18639559000"/>
+      <link type="image/pjpeg" rel="image" href="http://a0.twimg.com/profile_images/799566596/1111_normal.jpg"/>
+      <author>
+        <name>&#12422;&#12365;&#12417;</name>
+      </author>
+      <twitter:source>&lt;a href=&quot;http://yubitter.com/&quot; rel=&quot;nofollow&quot;&gt;yubitter&lt;/a&gt;</twitter:source>
+      <twitter:place/>
+    </entry>
+</feed>

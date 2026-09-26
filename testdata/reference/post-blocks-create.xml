@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<user>
+  <id>777925</id>
+  <name>Matt Harris</name>
+  <screen_name>themattharris</screen_name>
+  <location>San Francisco</location>
+  <description>Developer Advocate at Twitter. Also a hacker and British expat who is married to @cindyli and lives in San Francisco.</description>
+  <profile_image_url>http://a1.twimg.com/profile_images/554181350/matt_normal.jpg</profile_image_url>
+  <url>http://themattharris.com</url>
+  <protected>false</protected>
+  <followers_count>1025</followers_count>
+  <profile_background_color>C0DEED</profile_background_color>
+  <profile_text_color>333333</profile_text_color>
+  <profile_link_color>0084B4</profile_link_color>
+  <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+  <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+  <friends_count>294</friends_count>
+  <created_at>Sat Feb 17 20:49:54 +0000 2007</created_at>
+  <favourites_count>95</favourites_count>
+  <utc_offset>-28800</utc_offset>
+  <time_zone>Tijuana</time_zone>
+  <profile_background_image_url>http://s.twimg.com/a/1276711174/images/themes/theme1/bg.png</profile_background_image_url>
+  <profile_background_tile>false</profile_background_tile>
+  <profile_use_background_image>true</profile_use_background_image>
+  <notifications></notifications>
+  <geo_enabled>true</geo_enabled>
+  <verified>false</verified>
+  <following></following>
+  <statuses_count>2924</statuses_count>
+  <lang>en</lang>
+  <contributors_enabled>false</contributors_enabled>
+  <status>
+    <created_at>Tue Jun 22 18:17:48 +0000 2010</created_at>
+    <id>16789004997</id>
+    <text>Going through and updating @twitterapi documentation</text>
+    <source>&lt;a href=&quot;http://itunes.apple.com/app/twitter/id333903271?mt=8&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <geo xmlns:georss="http://www.georss.org/georss">
+      <georss:point>37.78264991 -122.40075845</georss:point>
+    </geo>
+    <coordinates xmlns:georss="http://www.georss.org/georss">
+      <georss:point>37.78264991 -122.40075845</georss:point>
+    </coordinates>
+    <place/>
+    <contributors/>
+  </status>
+</user>

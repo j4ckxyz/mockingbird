@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<category>
+  <name>Twitter</name>
+  <slug>twitter</slug>
+  <categories type="array">
+  </categories>
+  <users type="array">
+    <user>
+      <id>85426644</id>
+      <name>Twitter Espa&#241;ol</name>
+      <screen_name>twitter_es</screen_name>
+      <location>San Francisco, CA</location>
+      <description>&#161;Bienvenidos a la cuenta oficial de Twitter en espa&#241;ol!</description>
+      <profile_image_url>http://a3.twimg.com/profile_images/504883319/twitter_bird_profile_normal.png</profile_image_url>
+      <url>http://blog.es.twitter.com</url>
+      <protected>false</protected>
+      <followers_count>1380308</followers_count>
+      <profile_background_color>000000</profile_background_color>
+      <profile_text_color>000000</profile_text_color>
+      <profile_link_color>CC3300</profile_link_color>
+      <profile_sidebar_fill_color>F7DA93</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>FFFFFF</profile_sidebar_border_color>
+      <friends_count>10</friends_count>
+      <created_at>Mon Oct 26 21:54:02 +0000 2009</created_at>
+      <favourites_count>0</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+      <profile_background_image_url>http://a3.twimg.com/profile_background_images/110315323/bg.jpg</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>false</geo_enabled>
+      <verified>true</verified>
+      <following>false</following>
+      <statuses_count>190</statuses_count>
+      <lang>es</lang>
+      <contributors_enabled>true</contributors_enabled>
+    </user>
+    <user>
+      <id>6253282</id>
+      <name>Twitter API</name>
+      <screen_name>twitterapi</screen_name>
+      <location>San Francisco, CA</location>
+      <description>The Real Twitter API. I tweet about API changes, service issues and happily answer questions about Twitter and our API. Don't get an answer? It's on my website.</description>
+      <profile_image_url>http://a3.twimg.com/profile_images/689684365/api_normal.png</profile_image_url>
+      <url>http://apiwiki.twitter.com</url>
+      <protected>false</protected>
+      <followers_count>160754</followers_count>
+      <profile_background_color>c1dfee</profile_background_color>
+      <profile_text_color>000000</profile_text_color>
+      <profile_link_color>0000ff</profile_link_color>
+      <profile_sidebar_fill_color>e0ff92</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>87bc44</profile_sidebar_border_color>
+      <friends_count>19</friends_count>
+      <created_at>Wed May 23 06:01:13 +0000 2007</created_at>
+      <favourites_count>2</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+      <profile_background_image_url>http://a3.twimg.com/profile_background_images/59931895/twitterapi-background-new.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>true</verified>
+      <following>false</following>
+      <statuses_count>1858</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>true</contributors_enabled>
+    </user>
+    ...
+    <user>
+      <id>3963481</id>
+      <name>Twitter Mobile</name>
+      <screen_name>twittermobile</screen_name>
+      <location>San Francisco, CA</location>
+      <description></description>
+      <profile_image_url>http://a3.twimg.com/profile_images/381297805/mobile_normal.png</profile_image_url>
+      <url>http://twitter.com</url>
+      <protected>false</protected>
+      <followers_count>193148</followers_count>
+      <profile_background_color>ACDED6</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>038543</profile_link_color>
+      <profile_sidebar_fill_color>F6F6F6</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>EEEEEE</profile_sidebar_border_color>
+      <friends_count>15</friends_count>
+      <created_at>Tue Apr 10 01:20:52 +0000 2007</created_at>
+      <favourites_count>1</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1276654401/images/themes/theme18/bg.gif</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>true</verified>
+      <following>false</following>
+      <statuses_count>61</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>true</contributors_enabled>
+    </user>
+  </users>
+</category>

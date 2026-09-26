@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:twitter="http://api.twitter.com">
+  <channel>
+    <title>Twitter public timeline</title>
+    <link>http://twitter.com/public_timeline</link>
+    <atom:link type="application/rss+xml" rel="self" href="http://api.twitter.com/1/statuses/public_timeline.rss"/>
+    <description>Twitter updates from everyone!</description>
+    <language>en-us</language>
+    <ttl>40</ttl>
+  <item>
+    <title>Hennessie: Ur home? RT @JiselyJ: Marc Jacob duffle is being loaded ~ Miami in 7days.. xoxo</title>
+    <description>Hennessie: Ur home? RT @JiselyJ: Marc Jacob duffle is being loaded ~ Miami in 7days.. xoxo</description>
+    <pubDate>Thu, 15 Jul 2010 23:28:14 +0000</pubDate>
+    <guid>http://twitter.com/Hennessie/statuses/18639578000</guid>
+    <link>http://twitter.com/Hennessie/statuses/18639578000</link>
+    <twitter:source>&lt;a href=&quot;http://ubertwitter.com&quot; rel=&quot;nofollow&quot;&gt;UberTwitter&lt;/a&gt;</twitter:source>
+    <twitter:place/>
+  </item>
+  ...
+  <item>
+    <title>ekkyvalent: Lin folback dong :D RT @arlienmayrisqi: RT @rahardianbayu: RT @ekkyvalent: Kok jam segini gelap bener dah -____-</title>
+    <description>ekkyvalent: Lin folback dong :D RT @arlienmayrisqi: RT @rahardianbayu: RT @ekkyvalent: Kok jam segini gelap bener dah -____-</description>
+    <pubDate>Thu, 15 Jul 2010 23:27:38 +0000</pubDate>
+    <guid>http://twitter.com/ekkyvalent/statuses/18639540000</guid>
+    <link>http://twitter.com/ekkyvalent/statuses/18639540000</link>
+    <twitter:source>&lt;a href=&quot;http://ubertwitter.com&quot; rel=&quot;nofollow&quot;&gt;UberTwitter&lt;/a&gt;</twitter:source>
+    <twitter:place/>
+  </item>
+  <item>
+    <title>saori0919: &#36933;&#21051;&#8230;&#12363;&#12394;&#65311;&#12363;&#12394;&#12363;&#12394;(&#180;^&#969;^&#65344;)&#65311;</title>
+    <description>saori0919: &#36933;&#21051;&#8230;&#12363;&#12394;&#65311;&#12363;&#12394;&#12363;&#12394;(&#180;^&#969;^&#65344;)&#65311;</description>
+    <pubDate>Thu, 15 Jul 2010 23:27:32 +0000</pubDate>
+    <guid>http://twitter.com/saori0919/statuses/18639534000</guid>
+    <link>http://twitter.com/saori0919/statuses/18639534000</link>
+    <twitter:source>&lt;a href=&quot;http://twtr.jp&quot; rel=&quot;nofollow&quot;&gt;Keitai Web&lt;/a&gt;</twitter:source>
+    <twitter:place/>
+  </item>
+  </channel>
+</rss>

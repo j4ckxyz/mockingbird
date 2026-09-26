@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:georss="http://www.georss.org/georss" xmlns:twitter="http://api.twitter.com">
+  <channel>
+    <title>Twitter / themattharris</title>
+    <link>http://twitter.com/themattharris</link>
+    <atom:link type="application/rss+xml" rel="self" href="https://api.twitter.com/1/statuses/user_timeline.rss"/>
+    <description>Twitter updates from Matt Harris / themattharris.</description>
+    <language>en-us</language>
+    <ttl>40</ttl>
+  <item>
+    <title>themattharris: Another great workout tonight, this time a 45 min run, speed 5.5, incline randomising between 0 and 8. Now to relax with some Knight Rider</title>
+    <description>themattharris: Another great workout tonight, this time a 45 min run, speed 5.5, incline randomising between 0 and 8. Now to relax with some Knight Rider</description>
+    <pubDate>Wed, 14 Jul 2010 05:56:17 +0000</pubDate>
+    <guid>http://twitter.com/themattharris/statuses/18498353208</guid>
+    <link>http://twitter.com/themattharris/statuses/18498353208</link>
+    <twitter:source>web</twitter:source>
+    <twitter:place xmlns:georss="http://www.georss.org/georss">
+      <twitter:id>5a110d312052166f</twitter:id>
+      <twitter:name>San Francisco</twitter:name>
+      <twitter:full_name>San Francisco, CA</twitter:full_name>
+      <twitter:place_type>city</twitter:place_type>
+      <twitter:url>http://api.twitter.com/1/geo/id/5a110d312052166f.json</twitter:url>
+      <twitter:attributes/>
+      <twitter:bounding_box>
+        <georss:polygon>37.70813196 -122.51368188 37.70813196 -122.35845384 37.83245301 -122.35845384 37.83245301 -122.51368188</georss:polygon>
+      </twitter:bounding_box>
+      <twitter:country code="US">The United States of America</twitter:country>
+    </twitter:place>
+  </item>
+  <item>
+    <title>themattharris: Nice. Whole Foods carries Sam Smith's amongst some other UK ales. Not sure why I didn't know this before.</title>
+    <description>themattharris: Nice. Whole Foods carries Sam Smith's amongst some other UK ales. Not sure why I didn't know this before.</description>
+    <pubDate>Mon, 12 Jul 2010 00:27:26 +0000</pubDate>
+    <guid>http://twitter.com/themattharris/statuses/18314939923</guid>
+    <link>http://twitter.com/themattharris/statuses/18314939923</link>
+    <twitter:source>&lt;a href=&quot;http://twitter.com/&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</twitter:source>
+    <georss:point>37.78124892 -122.39994481</georss:point>
+    <twitter:place xmlns:georss="http://www.georss.org/georss">
+      <twitter:id>2b6ff8c22edd9576</twitter:id>
+      <twitter:name>SoMa</twitter:name>
+      <twitter:full_name>SoMa, San Francisco</twitter:full_name>
+      <twitter:place_type>neighborhood</twitter:place_type>
+      <twitter:url>http://api.twitter.com/1/geo/id/2b6ff8c22edd9576.json</twitter:url>
+      <twitter:attributes/>
+      <twitter:bounding_box>
+        <georss:polygon>37.76893497 -122.42284884 37.76893497 -122.3964 37.78752897 -122.3964 37.78752897 -122.42284884</georss:polygon>
+      </twitter:bounding_box>
+      <twitter:country code="US">The United States of America</twitter:country>
+    </twitter:place>
+  </item>
+  ...
+  <item>
+    <title>themattharris: I'm still getting used to this farenheit thing but I think I've got the basics. 80-89 is hot, 90-99 is really hot and 100+ is freakin insane</title>
+    <description>themattharris: I'm still getting used to this farenheit thing but I think I've got the basics. 80-89 is hot, 90-99 is really hot and 100+ is freakin insane</description>
+    <pubDate>Sat, 03 Jul 2010 21:24:02 +0000</pubDate>
+    <guid>http://twitter.com/themattharris/statuses/17677826621</guid>
+    <link>http://twitter.com/themattharris/statuses/17677826621</link>
+    <twitter:source>&lt;a href=&quot;http://twitter.com/&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</twitter:source>
+    <georss:point>39.07571937 -77.49050023</georss:point>
+    <twitter:place xmlns:georss="http://www.georss.org/georss">
+      <twitter:id>0a0c5fadce900696</twitter:id>
+      <twitter:name>Broad Run</twitter:name>
+      <twitter:full_name>Broad Run, VA</twitter:full_name>
+      <twitter:place_type>city</twitter:place_type>
+      <twitter:url>http://api.twitter.com/1/geo/id/0a0c5fadce900696.json</twitter:url>
+      <twitter:attributes/>
+      <twitter:bounding_box>
+        <georss:polygon>39.00709 -77.528884 39.00709 -77.378433 39.100589 -77.378433 39.100589 -77.528884</georss:polygon>
+      </twitter:bounding_box>
+      <twitter:country code="US">The United States of America</twitter:country>
+    </twitter:place>
+  </item>
+  </channel>
+</rss>

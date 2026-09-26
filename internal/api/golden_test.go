@@ -86,6 +86,11 @@ func compareJSON(t *testing.T, path string, ref, got any) {
 	switch r := ref.(type) {
 	case map[string]any:
 		g := got.(map[string]any)
+		if datedKeys(r) && datedKeys(g) {
+			// trends/current etc. key their lists by timestamp.
+			compareJSON(t, path+"[date]", firstValue(r), firstValue(g))
+			return
+		}
 		for k, rv := range r {
 			key := strings.TrimPrefix(path+"."+k, ".")
 			short := k
@@ -111,6 +116,29 @@ func compareJSON(t *testing.T, path string, ref, got any) {
 			compareJSON(t, path+"[0]", r[0], g[0])
 		}
 	}
+}
+
+var dateKey = regexp.MustCompile(`^\d{4}-\d\d-\d\d( \d\d:\d\d(:\d\d)?)?$`)
+
+func datedKeys(m map[string]any) bool {
+	if len(m) == 0 {
+		return false
+	}
+	for k := range m {
+		if !dateKey.MatchString(k) {
+			return false
+		}
+	}
+	return true
+}
+
+func firstValue(m map[string]any) any {
+	keys := make([]string, 0, len(m))
+	for k := range m {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	return m[keys[0]]
 }
 
 type xnode struct {
@@ -248,11 +276,13 @@ func snapshot(t *testing.T, name string, body []byte) {
 }
 
 type goldenCase struct {
-	ref   string
-	path  string
-	auth  func(h *harness) reqOpt
-	setup func(t *testing.T, h *harness)
-	order bool
+	ref    string
+	path   string
+	method string
+	form   url.Values
+	auth   func(h *harness) reqOpt
+	setup  func(t *testing.T, h *harness)
+	order  bool
 }
 
 func TestGoldenAgainstArchivedReferences(t *testing.T) {
@@ -267,6 +297,13 @@ func TestGoldenAgainstArchivedReferences(t *testing.T) {
 	block := func(t *testing.T, h *harness) {
 		if r := h.post("/blocks/create/carol.other.example.json", nil, alice); r.code != 200 {
 			t.Fatalf("block: %d %s", r.code, r.body)
+		}
+	}
+	retweet := func(t *testing.T, h *harness) {
+		var sts []struct{ ID int64 }
+		json.Unmarshal(h.fetch(t, "/statuses/user_timeline/bob.test.json", alice), &sts)
+		if r := h.post(fmt.Sprintf("/statuses/retweet/%d.json", sts[0].ID), nil, alice); r.code != 200 {
+			t.Fatalf("retweet: %d %s", r.code, r.body)
 		}
 	}
 	saved := func(t *testing.T, h *harness) {
@@ -315,6 +352,36 @@ func TestGoldenAgainstArchivedReferences(t *testing.T) {
 		{ref: "search.json", path: "/search.json?q=mall", auth: aliceAuth},
 		{ref: "get-trends.json", path: "/trends.json", auth: aliceAuth},
 		{ref: "get-trends-current.json", path: "/trends/current.json", auth: aliceAuth},
+		{ref: "get-trends-daily.json", path: "/trends/daily.json", auth: aliceAuth},
+		{ref: "get-trends-weekly.json", path: "/trends/weekly.json", auth: aliceAuth},
+		{ref: "get-trends-available.json", path: "/trends/available.json", auth: aliceAuth},
+		{ref: "get-trends-available.xml", path: "/trends/available.xml", auth: aliceAuth, order: true},
+		{ref: "get-trends-woeid.json", path: "/trends/1.json", auth: aliceAuth},
+		{ref: "get-trends-woeid.xml", path: "/trends/1.xml", auth: aliceAuth, order: true},
+		{ref: "get-statuses-public_timeline.json", path: "/statuses/public_timeline.json", auth: aliceAuth},
+		{ref: "get-statuses-public_timeline.xml", path: "/statuses/public_timeline.xml", auth: aliceAuth, order: true},
+		{ref: "get-statuses-retweeted_by_me.json", path: "/statuses/retweeted_by_me.json", auth: aliceAuth, setup: retweet},
+		{ref: "get-statuses-retweeted_by_me.xml", path: "/statuses/retweeted_by_me.xml", auth: aliceAuth, setup: retweet, order: true},
+		{ref: "get-statuses-retweeted_to_me.xml", path: "/statuses/retweeted_to_me.xml", auth: func(*harness) reqOpt { return basic("bob.test", bobPW) }, setup: retweet, order: true},
+		{ref: "get-statuses-retweets_of_me.json", path: "/statuses/retweets_of_me.json", auth: func(*harness) reqOpt { return basic("bob.test", bobPW) }, setup: retweet},
+		{ref: "get-statuses-retweets_of_me.xml", path: "/statuses/retweets_of_me.xml", auth: func(*harness) reqOpt { return basic("bob.test", bobPW) }, setup: retweet, order: true},
+		{ref: "get-users-search.xml", path: "/users/search.xml?q=bob", auth: aliceAuth, order: true},
+		{ref: "post-account-end_session.json", path: "/account/end_session.json", method: "POST", auth: aliceAuth},
+		{ref: "post-account-end_session.xml", path: "/account/end_session.xml", method: "POST", auth: aliceAuth, order: true},
+		{ref: "post-account-update_profile.json", path: "/account/update_profile.json", method: "POST", auth: aliceAuth},
+		{ref: "post-account-update_profile.xml", path: "/account/update_profile.xml", method: "POST", auth: aliceAuth, order: true},
+		{ref: "post-account-update_profile_colors.json", path: "/account/update_profile_colors.json", method: "POST", auth: aliceAuth},
+		{ref: "post-account-update_delivery_device.json", path: "/account/update_delivery_device.json", method: "POST", auth: aliceAuth},
+		{ref: "post-blocks-create.json", path: "/blocks/create/carol.other.example.json", method: "POST", auth: aliceAuth},
+		{ref: "post-blocks-create.xml", path: "/blocks/create/carol.other.example.xml", method: "POST", auth: aliceAuth, order: true},
+		{ref: "post-blocks-destroy.json", path: "/blocks/destroy/carol.other.example.json", method: "POST", auth: aliceAuth, setup: block},
+		{ref: "post-blocks-destroy.xml", path: "/blocks/destroy/carol.other.example.xml", method: "POST", auth: aliceAuth, setup: block, order: true},
+		{ref: "post-report_spam.json", path: "/report_spam.json?screen_name=carol.other.example", method: "POST", auth: aliceAuth},
+		{ref: "post-report_spam.xml", path: "/report_spam.xml?screen_name=carol.other.example", method: "POST", auth: aliceAuth, order: true},
+		{ref: "post-direct_messages-new.json", path: "/direct_messages/new.json", method: "POST", form: url.Values{"user": {"bob.test"}, "text": {"hello there"}}, auth: func(*harness) reqOpt { return basic("alice.test", aliceDM) }},
+		{ref: "post-direct_messages-new.xml", path: "/direct_messages/new.xml", method: "POST", form: url.Values{"user": {"bob.test"}, "text": {"hello there"}}, auth: func(*harness) reqOpt { return basic("alice.test", aliceDM) }, order: true},
+		{ref: "post-saved_searches-create.xml", path: "/saved_searches/create.xml", method: "POST", form: url.Values{"query": {"bluesky"}}, auth: aliceAuth, order: true},
+		{ref: "post-saved_searches-destroy-id.xml", path: "/saved_searches/destroy/1.xml", method: "POST", auth: aliceAuth, setup: saved, order: true},
 	}
 	ran := 0
 	for _, tc := range cases {
@@ -340,7 +407,16 @@ func TestGoldenAgainstArchivedReferences(t *testing.T) {
 			if strings.Contains(tc.ref, "mentions") {
 				h.post("/statuses/update.json", url.Values{"status": {"hey @alice.test"}}, basic("bob.test", bobPW))
 			}
-			got := h.fetch(t, path, auth)
+			var got []byte
+			if tc.method == "POST" {
+				r := h.post(path, tc.form, auth)
+				if r.code != 200 {
+					t.Fatalf("POST %s: %d %s", path, r.code, r.body)
+				}
+				got = r.body
+			} else {
+				got = h.fetch(t, path, auth)
+			}
 			ran++
 			if strings.HasSuffix(tc.ref, ".json") {
 				var rv, gv any

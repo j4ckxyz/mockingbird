@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xml:lang="en-US" xmlns:georss="http://www.georss.org/georss" xmlns="http://www.w3.org/2005/Atom" xmlns:twitter="http://api.twitter.com">
+  <title>Twitter / Retweets of themattharris</title>
+  <id>tag:twitter.com,2007:Status</id>
+  <link type="text/html" rel="alternate" href="http://twitter.com/themattharris/retweets_of_me"/>
+  <link type="application/atom+xml" rel="self" href="https://api.twitter.com/1/statuses/retweets_of_me.atom?include_entities=1"/>
+  <updated>2010-07-16T19:28:55+00:00</updated>
+  <subtitle>Twitter retweets of Matt Harris / themattharris.</subtitle>
+    <entry>
+      <title>themattharris: I'll be speaking at the Social App Workshop (@appworkshop) on July 24 in San Francisco. More info on http://t.co/xYJ6w7D</title>
+      <content type="html">themattharris: I'll be speaking at the Social App Workshop (@appworkshop) on July 24 in San Francisco. More info on http://t.co/xYJ6w7D</content>
+      <id>tag:twitter.com,2007:http://twitter.com/themattharris/statuses/18149084800</id>
+      <published>2010-07-09T21:37:02+00:00</published>
+      <updated>2010-07-09T21:37:02+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/themattharris/statuses/18149084800"/>
+      <link type="image/jpeg" rel="image" href="http://a1.twimg.com/profile_images/554181350/matt_normal.jpg"/>
+      <author>
+        <name>Matt Harris</name>
+        <uri>http://themattharris.com</uri>
+      </author>
+      <twitter:source>web</twitter:source>
+      <twitter:place xmlns:georss="http://www.georss.org/georss">
+        <twitter:id>247f43d441defc03</twitter:id>
+        <twitter:name>Twitter HQ</twitter:name>
+        <twitter:full_name>Twitter HQ, San Francisco</twitter:full_name>
+        <twitter:place_type>poi</twitter:place_type>
+        <twitter:url>http://api.twitter.com/1/geo/id/247f43d441defc03.json</twitter:url>
+        <twitter:attributes>
+          <twitter:attribute>
+            <twitter:key>street_address</twitter:key>
+            <twitter:value>795 Folsom St</twitter:value>
+          </twitter:attribute>
+        </twitter:attributes>
+        <twitter:bounding_box>
+          <georss:polygon>37.7821120598956 -122.400612831116 37.7821120598956 -122.400612831116 37.7821120598956 -122.400612831116 37.7821120598956 -122.400612831116</georss:polygon>
+        </twitter:bounding_box>
+        <twitter:country code="US">The United States of America</twitter:country>
+      </twitter:place>
+    </entry>
+    <entry>
+      <title>themattharris: Had a great time with @raffi talking to the #devnest london meetup about @twitterapi. Thanks for having us!</title>
+      <content type="html">themattharris: Had a great time with @raffi talking to the #devnest london meetup about @twitterapi. Thanks for having us!</content>
+      <id>tag:twitter.com,2007:http://twitter.com/themattharris/statuses/17895384846</id>
+      <published>2010-07-06T20:46:40+00:00</published>
+      <updated>2010-07-06T20:46:40+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/themattharris/statuses/17895384846"/>
+      <link type="image/jpeg" rel="image" href="http://a1.twimg.com/profile_images/554181350/matt_normal.jpg"/>
+      <author>
+        <name>Matt Harris</name>
+        <uri>http://themattharris.com</uri>
+      </author>
+      <twitter:source>web</twitter:source>
+      <twitter:place/>
+    </entry>
+    ...
+    <entry>
+      <title>themattharris: Yay! I'm going to be a Developer Advocate at Twitter! #superexcited</title>
+      <content type="html">themattharris: Yay! I'm going to be a Developer Advocate at Twitter! #superexcited</content>
+      <id>tag:twitter.com,2007:http://twitter.com/themattharris/statuses/12900467455</id>
+      <published>2010-04-26T19:34:26+00:00</published>
+      <updated>2010-04-26T19:34:26+00:00</updated>
+      <link type="text/html" rel="alternate" href="http://twitter.com/themattharris/statuses/12900467455"/>
+      <link type="image/jpeg" rel="image" href="http://a1.twimg.com/profile_images/554181350/matt_normal.jpg"/>
+      <author>
+        <name>Matt Harris</name>
+        <uri>http://themattharris.com</uri>
+      </author>
+      <twitter:source>&lt;a href=&quot;http://itunes.apple.com/app/twitter/id333903271?mt=8&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</twitter:source>
+      <twitter:place/>
+    </entry>
+</feed>

@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statuses type="array">
+  <status>
+    <created_at>Fri Jul 16 19:06:11 +0000 2010</created_at>
+    <id>18709044167</id>
+    <text>RT @cjdowner: Recap: &quot;Yeah, it's got problems. But check out how bad these guys are. I'll give you a free bumper if you stfu.&quot;</text>
+    <source>&lt;a href=&quot;http://twitter.com/&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweeted_status>
+      <created_at>Fri Jul 16 19:00:50 +0000 2010</created_at>
+      <id>18708707563</id>
+      <text>Recap: &quot;Yeah, it's got problems. But check out how bad these guys are. I'll give you a free bumper if you stfu.&quot;</text>
+      <source>&lt;a href=&quot;http://twitter.com&quot; rel=&quot;nofollow&quot;&gt;Tweetie for Mac&lt;/a&gt;</source>
+      <truncated>false</truncated>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <favorited>false</favorited>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <user>
+        <id>15159694</id>
+        <name>Christopher Downer</name>
+        <screen_name>cjdowner</screen_name>
+        <location>Brighton, UK</location>
+        <description>UI designer at Realmac Software.</description>
+        <profile_image_url>http://a3.twimg.com/profile_images/1067071521/Untitled-1_normal.png</profile_image_url>
+        <url>http://christopherdowner.com/</url>
+        <protected>false</protected>
+        <followers_count>460</followers_count>
+        <profile_background_color>ffffff</profile_background_color>
+        <profile_text_color>5a6260</profile_text_color>
+        <profile_link_color>bf573d</profile_link_color>
+        <profile_sidebar_fill_color>f6f6f6</profile_sidebar_fill_color>
+        <profile_sidebar_border_color>eeeeee</profile_sidebar_border_color>
+        <friends_count>115</friends_count>
+        <created_at>Wed Jun 18 16:43:18 +0000 2008</created_at>
+        <favourites_count>24</favourites_count>
+        <utc_offset>0</utc_offset>
+        <time_zone>London</time_zone>
+        <profile_background_image_url>http://a3.twimg.com/profile_background_images/74668203/Untitled-1.gif</profile_background_image_url>
+        <profile_background_tile>true</profile_background_tile>
+        <profile_use_background_image>true</profile_use_background_image>
+        <notifications>false</notifications>
+        <geo_enabled>true</geo_enabled>
+        <verified>false</verified>
+        <following>false</following>
+        <statuses_count>8079</statuses_count>
+        <lang>en</lang>
+        <contributors_enabled>false</contributors_enabled>
+        <follow_request_sent>false</follow_request_sent>
+      </user>
+      <geo/>
+      <coordinates/>
+      <place/>
+      <contributors/>
+      <annotations/>
+      <entities>
+        <user_mentions/>
+        <urls/>
+        <hashtags/>
+      </entities>
+    </retweeted_status>
+    <user>
+      <id>714033</id>
+      <name>Nik Fletcher</name>
+      <screen_name>nikf</screen_name>
+      <location>Brighton, UK</location>
+      <description>Worker Person, Realmac Software ~ Developer of @HappeningiPhone ~ Wordsmith, nikf.org</description>
+      <profile_image_url>http://a3.twimg.com/profile_images/401628783/Big_Support_Ninja_normal.jpg</profile_image_url>
+      <url>http://nikf.org</url>
+      <protected>false</protected>
+      <followers_count>2246</followers_count>
+      <profile_background_color>C0DEED</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>0084B4</profile_link_color>
+      <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+      <friends_count>290</friends_count>
+      <created_at>Sat Jan 27 13:49:18 +0000 2007</created_at>
+      <favourites_count>994</favourites_count>
+      <utc_offset>0</utc_offset>
+      <time_zone>London</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1279228556/images/themes/theme1/bg.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>true</following>
+      <statuses_count>14180</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="12" start="3">
+          <id>15159694</id>
+          <screen_name>cjdowner</screen_name>
+          <name>Christopher Downer</name>
+        </user_mention>
+      </user_mentions>
+      <urls/>
+      <hashtags/>
+    </entities>
+  </status>
+  <status>
+    <created_at>Fri Jul 16 17:49:58 +0000 2010</created_at>
+    <id>18704366894</id>
+    <text>RT @Lessien: The Verizon Droid sticker. Where was the goddamn outrage about this &quot;solution?&quot;   http://j.mp/bdHcje</text>
+    <source>&lt;a href=&quot;http://twitter.com/&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweeted_status>
+      <created_at>Fri Jul 16 17:48:36 +0000 2010</created_at>
+      <id>18704280090</id>
+      <text>The Verizon Droid sticker. Where was the goddamn outrage about this &quot;solution?&quot;   http://j.mp/bdHcje</text>
+      <source>web</source>
+      <truncated>false</truncated>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <favorited>false</favorited>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <user>
+        <id>987681</id>
+        <name>Danielle Romain</name>
+        <screen_name>Lessien</screen_name>
+        <location>Bay Area, CA</location>
+        <description>Opinionated about everything</description>
+        <profile_image_url>http://a1.twimg.com/profile_images/451746561/me_normal.jpg</profile_image_url>
+        <url></url>
+        <protected>false</protected>
+        <followers_count>647</followers_count>
+        <profile_background_color>ACDED6</profile_background_color>
+        <profile_text_color>333333</profile_text_color>
+        <profile_link_color>038543</profile_link_color>
+        <profile_sidebar_fill_color>F6F6F6</profile_sidebar_fill_color>
+        <profile_sidebar_border_color>EEEEEE</profile_sidebar_border_color>
+        <friends_count>668</friends_count>
+        <created_at>Mon Mar 12 05:11:44 +0000 2007</created_at>
+        <favourites_count>405</favourites_count>
+        <utc_offset>-28800</utc_offset>
+        <time_zone>Pacific Time (US &amp; Canada)</time_zone>
+        <profile_background_image_url>http://s.twimg.com/a/1279228556/images/themes/theme18/bg.gif</profile_background_image_url>
+        <profile_background_tile>false</profile_background_tile>
+        <profile_use_background_image>true</profile_use_background_image>
+        <notifications>false</notifications>
+        <geo_enabled>false</geo_enabled>
+        <verified>false</verified>
+        <following>false</following>
+        <statuses_count>3461</statuses_count>
+        <lang>en</lang>
+        <contributors_enabled>false</contributors_enabled>
+        <follow_request_sent>false</follow_request_sent>
+      </user>
+      <geo/>
+      <coordinates/>
+      <place/>
+      <contributors/>
+      <annotations/>
+      <entities>
+        <user_mentions/>
+        <urls>
+          <url end="100" start="82">
+            <url>http://j.mp/bdHcje</url>
+            <expanded_url/>
+          </url>
+        </urls>
+        <hashtags/>
+      </entities>
+    </retweeted_status>
+    <user>
+      <id>48903</id>
+      <name>Aral Balkan</name>
+      <screen_name>aral</screen_name>
+      <location></location>
+      <description>Interaction designer &amp; developer w. a passion for creating beautiful user experiences.
+
+  Author of 'Avit, Feathers &amp; Feathers Visage iPhone apps.</description>
+      <profile_image_url>http://a3.twimg.com/profile_images/489752759/twitterProfilePhoto_normal.jpg</profile_image_url>
+      <url>http://aralbalkan.com</url>
+      <protected>false</protected>
+      <followers_count>5696</followers_count>
+      <profile_background_color>FFFFFF</profile_background_color>
+      <profile_text_color>000000</profile_text_color>
+      <profile_link_color>28712A</profile_link_color>
+      <profile_sidebar_fill_color>FFFFFF</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>4177A5</profile_sidebar_border_color>
+      <friends_count>751</friends_count>
+      <created_at>Thu Dec 07 19:55:38 +0000 2006</created_at>
+      <favourites_count>953</favourites_count>
+      <utc_offset>0</utc_offset>
+      <time_zone>London</time_zone>
+      <profile_background_image_url>http://a1.twimg.com/profile_background_images/19872/twitter-bg.jpg</profile_background_image_url>
+      <profile_background_tile>true</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>true</following>
+      <statuses_count>24788</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="11" start="3">
+          <id>987681</id>
+          <screen_name>Lessien</screen_name>
+          <name>Danielle Romain</name>
+        </user_mention>
+      </user_mentions>
+      <urls>
+        <url end="113" start="95">
+          <url>http://j.mp/bdHcje</url>
+          <expanded_url/>
+        </url>
+      </urls>
+      <hashtags/>
+    </entities>
+  </status>
+  ...
+  <status>
+    <created_at>Fri Jul 09 14:36:35 +0000 2010</created_at>
+    <id>18122707793</id>
+    <text>RT @phillydotcom: Don't forget to join Chubby #Checker at noon today at City Hall to celebrate 50 yrs of Twistory! http://ow.ly/29epV</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <retweeted_status>
+      <created_at>Fri Jul 09 14:31:43 +0000 2010</created_at>
+      <id>18122354583</id>
+      <text>Don't forget to join Chubby #Checker at noon today at City Hall to celebrate 50 yrs of Twistory! http://ow.ly/29epV</text>
+      <source>&lt;a href=&quot;http://www.hootsuite.com&quot; rel=&quot;nofollow&quot;&gt;HootSuite&lt;/a&gt;</source>
+      <truncated>false</truncated>
+      <in_reply_to_status_id></in_reply_to_status_id>
+      <in_reply_to_user_id></in_reply_to_user_id>
+      <favorited>false</favorited>
+      <in_reply_to_screen_name></in_reply_to_screen_name>
+      <user>
+        <id>14221917</id>
+        <name>Philly.com</name>
+        <screen_name>phillydotcom</screen_name>
+        <location>Philadelphia, PA</location>
+        <description>Online home of the Philadelphia Inquirer and Daily News. Anything and everything Philly.</description>
+        <profile_image_url>http://a3.twimg.com/profile_images/879087223/PhiComLogo_200x200-V1_normal.gif</profile_image_url>
+        <url>http://www.philly.com</url>
+        <protected>false</protected>
+        <followers_count>5439</followers_count>
+        <profile_background_color>800604</profile_background_color>
+        <profile_text_color>030202</profile_text_color>
+        <profile_link_color>b51d22</profile_link_color>
+        <profile_sidebar_fill_color>c4c4c4</profile_sidebar_fill_color>
+        <profile_sidebar_border_color>030303</profile_sidebar_border_color>
+        <friends_count>1289</friends_count>
+        <created_at>Wed Mar 26 01:57:54 +0000 2008</created_at>
+        <favourites_count>0</favourites_count>
+        <utc_offset>-18000</utc_offset>
+        <time_zone>Eastern Time (US &amp; Canada)</time_zone>
+        <profile_background_image_url>http://a1.twimg.com/profile_background_images/3461802/city_hall.jpg</profile_background_image_url>
+        <profile_background_tile>false</profile_background_tile>
+        <profile_use_background_image>true</profile_use_background_image>
+        <notifications>false</notifications>
+        <geo_enabled>false</geo_enabled>
+        <verified>false</verified>
+        <following>false</following>
+        <statuses_count>9467</statuses_count>
+        <lang>en</lang>
+        <contributors_enabled>false</contributors_enabled>
+        <follow_request_sent>false</follow_request_sent>
+      </user>
+      <geo/>
+      <coordinates/>
+      <place/>
+      <contributors/>
+      <annotations/>
+      <entities>
+        <user_mentions/>
+        <urls>
+          <url end="115" start="97">
+            <url>http://ow.ly/29epV</url>
+            <expanded_url/>
+          </url>
+        </urls>
+        <hashtags>
+          <hashtag end="36" start="28">
+            <text>Checker</text>
+          </hashtag>
+        </hashtags>
+      </entities>
+    </retweeted_status>
+    <user>
+      <id>279713</id>
+      <name>Kimberly Blessing</name>
+      <screen_name>obiwankimberly</screen_name>
+      <location>Philadelphia</location>
+      <description>Web developer, standards evangelist, and technology executive who has worked with numerous organizations to successfully make the transition to Web standards.</description>
+      <profile_image_url>http://a0.twimg.com/profile_images/1018393880/me_normal.jpg</profile_image_url>
+      <url>http://www.obiwankimberly.com</url>
+      <protected>false</protected>
+      <followers_count>968</followers_count>
+      <profile_background_color>ffffff</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>333333</profile_link_color>
+      <profile_sidebar_fill_color>cccccc</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>666666</profile_sidebar_border_color>
+      <friends_count>450</friends_count>
+      <created_at>Wed Dec 27 05:02:30 +0000 2006</created_at>
+      <favourites_count>18</favourites_count>
+      <utc_offset>-18000</utc_offset>
+      <time_zone>Eastern Time (US &amp; Canada)</time_zone>
+      <profile_background_image_url>http://a3.twimg.com/profile_background_images/4325545/k-icon.gif</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>false</geo_enabled>
+      <verified>false</verified>
+      <following>true</following>
+      <statuses_count>3173</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="16" start="3">
+          <id>14221917</id>
+          <screen_name>phillydotcom</screen_name>
+          <name>Philly.com</name>
+        </user_mention>
+      </user_mentions>
+      <urls>
+        <url end="133" start="115">
+          <url>http://ow.ly/29epV</url>
+          <expanded_url/>
+        </url>
+      </urls>
+      <hashtags>
+        <hashtag end="54" start="46">
+          <text>Checker</text>
+        </hashtag>
+      </hashtags>
+    </entities>
+  </status>
+</statuses>

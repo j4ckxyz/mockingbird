@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<matching_trends type="array">
+<trends as_of="2010-07-15T22:39:53Z" created_at="2010-07-15T22:31:11Z">
+  <locations>
+    <location>
+      <woeid>1</woeid>
+      <name>Worldwide</name>
+    </location>
+  </locations>
+  <trend query="Premios+Juventud" url="http://search.twitter.com/search?q=Premios+Juventud">Premios Juventud</trend>
+  <trend query="%23agoodrelationship" url="http://search.twitter.com/search?q=%23agoodrelationship">#agoodrelationship</trend>
+  <trend query="%23thistweetisdedicated2" url="http://search.twitter.com/search?q=%23thistweetisdedicated2">#thistweetisdedicated2</trend>
+  <trend query="%23bb11" url="http://search.twitter.com/search?q=%23bb11">#bb11</trend>
+  <trend query="Oil+Spill" url="http://search.twitter.com/search?q=Oil+Spill">Oil Spill</trend>
+  <trend query="Inception" url="http://search.twitter.com/search?q=Inception">Inception</trend>
+  <trend query="iOS" url="http://search.twitter.com/search?q=iOS">iOS</trend>
+  <trend query="Goldman" url="http://search.twitter.com/search?q=Goldman">Goldman</trend>
+  <trend query="AnahiPremiosJuventud" url="http://search.twitter.com/search?q=AnahiPremiosJuventud">AnahiPremiosJuventud</trend>
+  <trend query="DulceMariaLivePJ" url="http://search.twitter.com/search?q=DulceMariaLivePJ">DulceMariaLivePJ</trend>
+</trends>
+</matching_trends>

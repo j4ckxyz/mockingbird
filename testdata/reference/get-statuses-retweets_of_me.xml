@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<statuses type="array">
+  <status>
+    <created_at>Fri Jul 09 21:37:02 +0000 2010</created_at>
+    <id>18149084800</id>
+    <text>I'll be speaking at the Social App Workshop (@appworkshop) on July 24 in San Francisco. More info on http://t.co/xYJ6w7D</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <user>
+      <id>777925</id>
+      <name>Matt Harris</name>
+      <screen_name>themattharris</screen_name>
+      <location>San Francisco</location>
+      <description>Developer Advocate at Twitter. Also a hacker and British expat who is married to @cindyli and lives in San Francisco.</description>
+      <profile_image_url>http://a1.twimg.com/profile_images/554181350/matt_normal.jpg</profile_image_url>
+      <url>http://themattharris.com</url>
+      <protected>false</protected>
+      <followers_count>1173</followers_count>
+      <profile_background_color>C0DEED</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>0084B4</profile_link_color>
+      <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+      <friends_count>302</friends_count>
+      <created_at>Sat Feb 17 20:49:54 +0000 2007</created_at>
+      <favourites_count>101</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Tijuana</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1278960292/images/themes/theme1/bg.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+      <statuses_count>2963</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place xmlns:georss="http://www.georss.org/georss">
+      <id>247f43d441defc03</id>
+      <name>Twitter HQ</name>
+      <full_name>Twitter HQ, San Francisco</full_name>
+      <place_type>poi</place_type>
+      <url>http://api.twitter.com/1/geo/id/247f43d441defc03.json</url>
+      <attributes>
+        <attribute>
+          <key>street_address</key>
+          <value>795 Folsom St</value>
+        </attribute>
+      </attributes>
+      <bounding_box>
+        <georss:polygon>37.7821120598956 -122.400612831116 37.7821120598956 -122.400612831116 37.7821120598956 -122.400612831116 37.7821120598956 -122.400612831116</georss:polygon>
+      </bounding_box>
+      <country code="US">The United States of America</country>
+    </place>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="57" start="45">
+          <id>161483791</id>
+          <screen_name>appworkshop</screen_name>
+          <name>appworkshop</name>
+        </user_mention>
+      </user_mentions>
+      <urls>
+        <url end="120" start="101">
+          <url>http://t.co/xYJ6w7D</url>
+          <expanded_url>http://www.socialappworkshop.com/</expanded_url>
+        </url>
+      </urls>
+      <hashtags/>
+    </entities>
+  </status>
+  <status>
+    <created_at>Tue Jul 06 20:46:40 +0000 2010</created_at>
+    <id>17895384846</id>
+    <text>Had a great time with @raffi talking to the #devnest london meetup about @twitterapi. Thanks for having us!</text>
+    <source>web</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <user>
+      <id>777925</id>
+      <name>Matt Harris</name>
+      <screen_name>themattharris</screen_name>
+      <location>San Francisco</location>
+      <description>Developer Advocate at Twitter. Also a hacker and British expat who is married to @cindyli and lives in San Francisco.</description>
+      <profile_image_url>http://a1.twimg.com/profile_images/554181350/matt_normal.jpg</profile_image_url>
+      <url>http://themattharris.com</url>
+      <protected>false</protected>
+      <followers_count>1172</followers_count>
+      <profile_background_color>C0DEED</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>0084B4</profile_link_color>
+      <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+      <friends_count>302</friends_count>
+      <created_at>Sat Feb 17 20:49:54 +0000 2007</created_at>
+      <favourites_count>101</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Tijuana</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1278960292/images/themes/theme1/bg.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+      <statuses_count>2963</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions>
+        <user_mention end="28" start="22">
+          <id>8285392</id>
+          <screen_name>raffi</screen_name>
+          <name>raffi</name>
+        </user_mention>
+        <user_mention end="84" start="73">
+          <id>6253282</id>
+          <screen_name>twitterapi</screen_name>
+          <name>Twitter API</name>
+        </user_mention>
+      </user_mentions>
+      <urls/>
+      <hashtags>
+        <hashtag end="52" start="44">
+          <text>devnest</text>
+        </hashtag>
+      </hashtags>
+    </entities>
+  </status>
+  ...
+  <status>
+    <created_at>Mon Apr 26 19:34:26 +0000 2010</created_at>
+    <id>12900467455</id>
+    <text>Yay! I'm going to be a Developer Advocate at Twitter! #superexcited</text>
+    <source>&lt;a href=&quot;http://itunes.apple.com/app/twitter/id333903271?mt=8&quot; rel=&quot;nofollow&quot;&gt;Twitter for iPhone&lt;/a&gt;</source>
+    <truncated>false</truncated>
+    <in_reply_to_status_id></in_reply_to_status_id>
+    <in_reply_to_user_id></in_reply_to_user_id>
+    <favorited>false</favorited>
+    <in_reply_to_screen_name></in_reply_to_screen_name>
+    <user>
+      <id>777925</id>
+      <name>Matt Harris</name>
+      <screen_name>themattharris</screen_name>
+      <location>San Francisco</location>
+      <description>Developer Advocate at Twitter. Also a hacker and British expat who is married to @cindyli and lives in San Francisco.</description>
+      <profile_image_url>http://a1.twimg.com/profile_images/554181350/matt_normal.jpg</profile_image_url>
+      <url>http://themattharris.com</url>
+      <protected>false</protected>
+      <followers_count>1172</followers_count>
+      <profile_background_color>C0DEED</profile_background_color>
+      <profile_text_color>333333</profile_text_color>
+      <profile_link_color>0084B4</profile_link_color>
+      <profile_sidebar_fill_color>DDEEF6</profile_sidebar_fill_color>
+      <profile_sidebar_border_color>C0DEED</profile_sidebar_border_color>
+      <friends_count>302</friends_count>
+      <created_at>Sat Feb 17 20:49:54 +0000 2007</created_at>
+      <favourites_count>101</favourites_count>
+      <utc_offset>-28800</utc_offset>
+      <time_zone>Tijuana</time_zone>
+      <profile_background_image_url>http://s.twimg.com/a/1278960292/images/themes/theme1/bg.png</profile_background_image_url>
+      <profile_background_tile>false</profile_background_tile>
+      <profile_use_background_image>true</profile_use_background_image>
+      <notifications>false</notifications>
+      <geo_enabled>true</geo_enabled>
+      <verified>false</verified>
+      <following>false</following>
+      <statuses_count>2963</statuses_count>
+      <lang>en</lang>
+      <contributors_enabled>false</contributors_enabled>
+      <follow_request_sent>false</follow_request_sent>
+    </user>
+    <geo/>
+    <coordinates/>
+    <place/>
+    <contributors/>
+    <annotations/>
+    <entities>
+      <user_mentions/>
+      <urls/>
+      <hashtags>
+        <hashtag end="67" start="54">
+          <text>superexcited</text>
+        </hashtag>
+      </hashtags>
+    </entities>
+  </status>
+</statuses>

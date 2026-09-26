@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hash>
+  <request>/1/account/end_session.xml</request>
+  <error>Logged out.</error>
+</hash>

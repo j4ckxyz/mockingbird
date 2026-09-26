@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locations type="array">
+  <location>
+    <woeid>23424803</woeid>
+    <name>Ireland</name>
+    <placeTypeName code="12">Country</placeTypeName>
+    <country type="Country" code="IE">Ireland</country>
+    <url>http://where.yahooapis.com/v1/place/23424803</url>
+  </location>
+  <location>
+    <woeid>23424975</woeid>
+    <name>United Kingdom</name>
+    <placeTypeName code="12">Country</placeTypeName>
+    <country type="Country" code="GB">United Kingdom</country>
+    <url>http://where.yahooapis.com/v1/place/23424975</url>
+  </location>
+  ...
+  <location>
+    <woeid>44418</woeid>
+    <name>London</name>
+    <placeTypeName code="7">Town</placeTypeName>
+    <country type="Country" code="GB">United Kingdom</country>
+    <url>http://where.yahooapis.com/v1/place/44418</url>
+  </location>
+</locations>
