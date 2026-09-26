@@ -46,6 +46,13 @@ type Post struct {
 	Reposts   map[string]string // reposter DID -> repost URI
 }
 
+type repostEvent struct {
+	by   string
+	uri  string
+	post *Post
+	at   time.Time
+}
+
 // Server is the fake. Its zero value is not usable; call New.
 type Server struct {
 	mu       sync.RWMutex
@@ -56,6 +63,7 @@ type Server struct {
 	follows  map[string]map[string]string
 	blocks   map[string]map[string]string
 	tokens   map[string]string // refresh token -> DID
+	reposts  []repostEvent
 	seq      atomic.Int64
 
 	// Latency is added to every request (load testing).
@@ -205,6 +213,9 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	viewer, scope, okAuth := s.auth(r)
+	if !okAuth && r.Header.Get("Authorization") == "" && r.Method == http.MethodGet && strings.HasPrefix(nsid, "app.bsky.") && nsid != "app.bsky.feed.getTimeline" {
+		viewer, okAuth = "", true // public AppView style anonymous read
+	}
 	if !okAuth {
 		xerr(w, 401, "InvalidToken", "bad token")
 		return
@@ -232,7 +243,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query()
 	switch nsid {
 	case "app.bsky.feed.getTimeline":
-		s.feed(w, q, func(p *Post) bool { return p.Author == viewer || s.follows[viewer][p.Author] != "" }, viewer)
+		s.timeline(w, q, viewer)
 	case "app.bsky.feed.getAuthorFeed":
 		actor := s.resolveActor(q.Get("actor"))
 		s.feed(w, q, func(p *Post) bool { return p.Author == actor }, viewer)
@@ -754,6 +765,7 @@ func (s *Server) createRecord(w http.ResponseWriter, r *http.Request, viewer str
 			p.Likes[viewer] = uri
 		} else {
 			p.Reposts[viewer] = uri
+			s.reposts = append(s.reposts, repostEvent{by: viewer, uri: uri, post: p, at: time.Now()})
 		}
 		ok(w, map[string]string{"uri": uri, "cid": "bafyrec"})
 	case "app.bsky.graph.follow":
@@ -967,4 +979,52 @@ func (s *Server) Seed(n, follows, posts int, password string) {
 		}
 	}
 	sort.SliceStable(s.order, func(i, j int) bool { return s.order[i].IndexedAt.After(s.order[j].IndexedAt) })
+}
+
+// timeline merges followed accounts' posts and reposts, newest first.
+func (s *Server) timeline(w http.ResponseWriter, q map[string][]string, viewer string) {
+	offset, limit := pageArgs(q)
+	s.mu.RLock()
+	defer s.mu.RUnlock()
+	type entry struct {
+		at   time.Time
+		item map[string]any
+	}
+	var all []entry
+	for _, p := range s.order {
+		if p.Author == viewer || s.follows[viewer][p.Author] != "" {
+			all = append(all, entry{p.IndexedAt, nil})
+			all[len(all)-1].item = s.feedItem(p, viewer)
+		}
+	}
+	for _, ev := range s.reposts {
+		if ev.by == viewer || s.follows[viewer][ev.by] != "" {
+			if s.posts[ev.post.URI] == nil || ev.post.Reposts[ev.by] != ev.uri {
+				continue
+			}
+			item := s.feedItem(ev.post, viewer)
+			item["reason"] = map[string]any{"$type": "app.bsky.feed.defs#reasonRepost", "by": s.profile(s.accounts[ev.by], viewer, false),
+				"uri": ev.uri, "indexedAt": ev.at.UTC().Format("2006-01-02T15:04:05.000Z")}
+			all = append(all, entry{ev.at, item})
+		}
+	}
+	sort.SliceStable(all, func(i, j int) bool { return all[i].at.After(all[j].at) })
+	if offset > len(all) {
+		offset = len(all)
+	}
+	all = all[offset:]
+	next := ""
+	if len(all) > limit {
+		all = all[:limit]
+		next = strconv.Itoa(offset + limit)
+	}
+	items := []any{}
+	for _, e := range all {
+		items = append(items, e.item)
+	}
+	out := map[string]any{"feed": items}
+	if next != "" {
+		out["cursor"] = next
+	}
+	ok(w, out)
 }
