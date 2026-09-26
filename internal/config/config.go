@@ -27,7 +27,6 @@ type Config struct {
 	// Public identity of the bridge
 	PublicURL   *url.URL // base URL used in generated links (images, post pages)
 	BridgeHosts []string // hostnames that serve the bridge's own pages and API
-	APIHosts    []string // hostnames treated as the REST API (twitter.com, api.twitter.com)
 	SearchHosts []string // hostnames treated as the Search API (search.twitter.com)
 
 	DataDir string
@@ -96,7 +95,6 @@ func load(getenv func(string) string) (*Config, error) {
 		ImageCDNURL:                  strings.TrimRight(e.str("MB_IMAGE_CDN_URL", "https://cdn.bsky.app"), "/"),
 		PublicTimelineFeed:           e.str("MB_PUBLIC_TIMELINE_FEED", "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot"),
 		DefaultHandleHost:            strings.Trim(e.str("MB_DEFAULT_HANDLE_HOST", "bsky.social"), "."),
-		APIHosts:                     e.list("MB_API_HOSTS", "twitter.com,www.twitter.com,api.twitter.com"),
 		SearchHosts:                  e.list("MB_SEARCH_HOSTS", "search.twitter.com"),
 		ImageCacheBytes:              int64(e.int("MB_IMAGE_CACHE_MB", 512)) << 20,
 		ResponseCacheTTL:             e.dur("MB_RESPONSE_CACHE_TTL", 20*time.Second),
