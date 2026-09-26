@@ -5,10 +5,10 @@ import (
 	"net/url"
 	"strconv"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/paging"
-	"github.com/jackgilbert/mockingbird/internal/translate"
-	"github.com/jackgilbert/mockingbird/internal/twitter"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/paging"
+	"github.com/j4ckxyz/mockingbird/internal/translate"
+	"github.com/j4ckxyz/mockingbird/internal/twitter"
 )
 
 func (s *Server) homeTimeline(c *Ctx) (*Resp, error) {

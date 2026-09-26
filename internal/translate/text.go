@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
 )
 
 // EscapeHTML escapes &, < and > the way Twitter's text field did ("escaped

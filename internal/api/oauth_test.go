@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/config"
+	"github.com/j4ckxyz/mockingbird/internal/config"
 )
 
 // RFC 5849 section 1.2 / OAuth Core 1.0 Appendix A example.

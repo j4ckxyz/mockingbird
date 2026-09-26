@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/xml"
 	"fmt"
-	"github.com/jackgilbert/mockingbird/internal/fakepds"
+	"github.com/j4ckxyz/mockingbird/internal/fakepds"
 	"image"
 	"image/jpeg"
 	"io"

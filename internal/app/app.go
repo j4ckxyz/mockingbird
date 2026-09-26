@@ -19,22 +19,22 @@ import (
 
 	"github.com/bluesky-social/indigo/atproto/identity"
 
-	"github.com/jackgilbert/mockingbird/internal/api"
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/config"
-	"github.com/jackgilbert/mockingbird/internal/ident"
-	"github.com/jackgilbert/mockingbird/internal/media"
-	"github.com/jackgilbert/mockingbird/internal/metrics"
-	"github.com/jackgilbert/mockingbird/internal/netguard"
-	"github.com/jackgilbert/mockingbird/internal/secret"
-	"github.com/jackgilbert/mockingbird/internal/session"
-	"github.com/jackgilbert/mockingbird/internal/store"
-	"github.com/jackgilbert/mockingbird/internal/tlslegacy"
-	"github.com/jackgilbert/mockingbird/internal/web"
+	"github.com/j4ckxyz/mockingbird/internal/api"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/config"
+	"github.com/j4ckxyz/mockingbird/internal/ident"
+	"github.com/j4ckxyz/mockingbird/internal/media"
+	"github.com/j4ckxyz/mockingbird/internal/metrics"
+	"github.com/j4ckxyz/mockingbird/internal/netguard"
+	"github.com/j4ckxyz/mockingbird/internal/secret"
+	"github.com/j4ckxyz/mockingbird/internal/session"
+	"github.com/j4ckxyz/mockingbird/internal/store"
+	"github.com/j4ckxyz/mockingbird/internal/tlslegacy"
+	"github.com/j4ckxyz/mockingbird/internal/web"
 )
 
 // UserAgent identifies the bridge upstream.
-const UserAgent = "mockingbird-bridge (+https://github.com/jackgilbert/mockingbird)"
+const UserAgent = "mockingbird-bridge (+https://github.com/j4ckxyz/mockingbird)"
 
 // Options override pieces for tests and tools.
 type Options struct {

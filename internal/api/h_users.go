@@ -8,11 +8,11 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/cache"
-	"github.com/jackgilbert/mockingbird/internal/store"
-	"github.com/jackgilbert/mockingbird/internal/translate"
-	"github.com/jackgilbert/mockingbird/internal/twitter"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/cache"
+	"github.com/j4ckxyz/mockingbird/internal/store"
+	"github.com/j4ckxyz/mockingbird/internal/translate"
+	"github.com/j4ckxyz/mockingbird/internal/twitter"
 )
 
 func (s *Server) userWithStatus(c *Ctx, actor string) (*Resp, error) {

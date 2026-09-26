@@ -16,7 +16,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/fakepds"
+	"github.com/j4ckxyz/mockingbird/internal/fakepds"
 )
 
 var update = flag.Bool("update", false, "rewrite testdata/golden snapshots")

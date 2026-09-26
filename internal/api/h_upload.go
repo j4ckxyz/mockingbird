@@ -12,12 +12,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/media"
-	"github.com/jackgilbert/mockingbird/internal/secret"
-	"github.com/jackgilbert/mockingbird/internal/session"
-	"github.com/jackgilbert/mockingbird/internal/store"
-	"github.com/jackgilbert/mockingbird/internal/twitter"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/media"
+	"github.com/j4ckxyz/mockingbird/internal/secret"
+	"github.com/j4ckxyz/mockingbird/internal/session"
+	"github.com/j4ckxyz/mockingbird/internal/store"
+	"github.com/j4ckxyz/mockingbird/internal/twitter"
 )
 
 // TwitPic-compatible image upload.

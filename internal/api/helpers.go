@@ -9,12 +9,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/ident"
-	"github.com/jackgilbert/mockingbird/internal/paging"
-	"github.com/jackgilbert/mockingbird/internal/store"
-	"github.com/jackgilbert/mockingbird/internal/translate"
-	"github.com/jackgilbert/mockingbird/internal/twitter"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/ident"
+	"github.com/j4ckxyz/mockingbird/internal/paging"
+	"github.com/j4ckxyz/mockingbird/internal/store"
+	"github.com/j4ckxyz/mockingbird/internal/translate"
+	"github.com/j4ckxyz/mockingbird/internal/twitter"
 )
 
 // links implements translate.Links.

@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/translate"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/translate"
 )
 
 var base = time.Date(2024, 6, 1, 0, 0, 0, 0, time.UTC)

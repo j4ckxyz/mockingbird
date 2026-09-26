@@ -1,4 +1,4 @@
-module github.com/jackgilbert/mockingbird
+module github.com/j4ckxyz/mockingbird
 
 go 1.26.0
 

@@ -12,7 +12,7 @@ import (
 
 	"golang.org/x/sync/singleflight"
 
-	"github.com/jackgilbert/mockingbird/internal/session"
+	"github.com/j4ckxyz/mockingbird/internal/session"
 )
 
 // Auth modes.

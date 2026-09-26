@@ -10,7 +10,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/translate"
+	"github.com/j4ckxyz/mockingbird/internal/translate"
 )
 
 // Fetch returns one upstream page.

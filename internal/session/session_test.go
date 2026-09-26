@@ -8,12 +8,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/fakepds"
-	"github.com/jackgilbert/mockingbird/internal/ident"
-	"github.com/jackgilbert/mockingbird/internal/netguard"
-	"github.com/jackgilbert/mockingbird/internal/secret"
-	"github.com/jackgilbert/mockingbird/internal/store"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/fakepds"
+	"github.com/j4ckxyz/mockingbird/internal/ident"
+	"github.com/j4ckxyz/mockingbird/internal/netguard"
+	"github.com/j4ckxyz/mockingbird/internal/secret"
+	"github.com/j4ckxyz/mockingbird/internal/store"
 )
 
 type env struct {

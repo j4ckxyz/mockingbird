@@ -9,7 +9,7 @@ import (
 
 	"golang.org/x/time/rate"
 
-	"github.com/jackgilbert/mockingbird/internal/cache"
+	"github.com/j4ckxyz/mockingbird/internal/cache"
 )
 
 // Limiter is a set of token buckets keyed by string.

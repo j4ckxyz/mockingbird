@@ -19,10 +19,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/app"
-	"github.com/jackgilbert/mockingbird/internal/config"
-	"github.com/jackgilbert/mockingbird/internal/loadtest"
-	"github.com/jackgilbert/mockingbird/internal/logging"
+	"github.com/j4ckxyz/mockingbird/internal/app"
+	"github.com/j4ckxyz/mockingbird/internal/config"
+	"github.com/j4ckxyz/mockingbird/internal/loadtest"
+	"github.com/j4ckxyz/mockingbird/internal/logging"
 )
 
 // version is set at build time with -ldflags "-X main.version=...".

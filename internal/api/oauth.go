@@ -16,9 +16,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/cache"
-	"github.com/jackgilbert/mockingbird/internal/secret"
-	"github.com/jackgilbert/mockingbird/internal/session"
+	"github.com/j4ckxyz/mockingbird/internal/cache"
+	"github.com/j4ckxyz/mockingbird/internal/secret"
+	"github.com/j4ckxyz/mockingbird/internal/session"
 )
 
 // OAuth model

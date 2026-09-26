@@ -10,7 +10,7 @@ import (
 
 	"github.com/rivo/uniseg"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
 )
 
 func jsonUnmarshal(b []byte, v any) error { return json.Unmarshal(b, v) }

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/twitter"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/twitter"
 )
 
 // search implements search.twitter.com/search.json and .atom.

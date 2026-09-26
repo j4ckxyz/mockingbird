@@ -4,8 +4,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/jackgilbert/mockingbird/internal/store"
-	"github.com/jackgilbert/mockingbird/internal/twitter"
+	"github.com/j4ckxyz/mockingbird/internal/store"
+	"github.com/j4ckxyz/mockingbird/internal/twitter"
 )
 
 // help/test returns "ok" in JSON and <ok>true</ok> in XML, as Twitter did.

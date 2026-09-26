@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/cache"
-	"github.com/jackgilbert/mockingbird/internal/store"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/cache"
+	"github.com/j4ckxyz/mockingbird/internal/store"
 )
 
 func TestEscapeHTML(t *testing.T) {

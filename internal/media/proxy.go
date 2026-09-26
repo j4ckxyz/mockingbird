@@ -31,8 +31,8 @@ import (
 	_ "golang.org/x/image/webp"
 	"golang.org/x/sync/singleflight"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/cache"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/cache"
 )
 
 // Proxy fetches, resizes and caches images.

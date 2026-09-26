@@ -24,12 +24,12 @@ import (
 
 	"golang.org/x/sync/singleflight"
 
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/cache"
-	"github.com/jackgilbert/mockingbird/internal/ident"
-	"github.com/jackgilbert/mockingbird/internal/ratelimit"
-	"github.com/jackgilbert/mockingbird/internal/secret"
-	"github.com/jackgilbert/mockingbird/internal/store"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/cache"
+	"github.com/j4ckxyz/mockingbird/internal/ident"
+	"github.com/j4ckxyz/mockingbird/internal/ratelimit"
+	"github.com/j4ckxyz/mockingbird/internal/secret"
+	"github.com/j4ckxyz/mockingbird/internal/store"
 )
 
 // Errors surfaced to clients.

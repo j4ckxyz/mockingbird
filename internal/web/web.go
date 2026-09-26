@@ -20,13 +20,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jackgilbert/mockingbird/internal/api"
-	"github.com/jackgilbert/mockingbird/internal/atp"
-	"github.com/jackgilbert/mockingbird/internal/cache"
-	"github.com/jackgilbert/mockingbird/internal/config"
-	"github.com/jackgilbert/mockingbird/internal/media"
-	"github.com/jackgilbert/mockingbird/internal/store"
-	"github.com/jackgilbert/mockingbird/internal/translate"
+	"github.com/j4ckxyz/mockingbird/internal/api"
+	"github.com/j4ckxyz/mockingbird/internal/atp"
+	"github.com/j4ckxyz/mockingbird/internal/cache"
+	"github.com/j4ckxyz/mockingbird/internal/config"
+	"github.com/j4ckxyz/mockingbird/internal/media"
+	"github.com/j4ckxyz/mockingbird/internal/store"
+	"github.com/j4ckxyz/mockingbird/internal/translate"
 )
 
 // Deps are the web handler's collaborators.
