@@ -129,7 +129,7 @@ func New(cfg *config.Config, o Options) (*App, error) {
 		Images: images, Public: public, Metrics: m, Logger: log, CA: caDER})
 	apiSrv.SetWeb(web.New(web.Deps{Config: cfg, API: apiSrv, Store: st, Public: public, Signer: signer, Logger: log, CA: caDER}))
 	a.API, a.Handler = apiSrv, apiSrv
-	a.Admin = adminHandler(m, apiSrv)
+	a.Admin = adminHandler(m, apiSrv, cfg)
 
 	m.Gauge("mockingbird_sessions", "Stored sessions.", func() float64 { return float64(a.sessions.Load()) })
 	m.Gauge("mockingbird_image_cache_bytes", "Image cache size in bytes.", func() float64 { b, _ := imgCache.Size(); return float64(b) })
@@ -162,7 +162,7 @@ func (a *App) Maintain(ctx context.Context) {
 // adminHandler serves metrics, pprof and the unknown-endpoint report. Every
 // request is re-checked against the peer address, in addition to binding
 // only loopback or Tailscale addresses.
-func adminHandler(m *metrics.Metrics, apiSrv *api.Server) http.Handler {
+func adminHandler(m *metrics.Metrics, apiSrv *api.Server, cfg *config.Config) http.Handler {
 	mux := http.NewServeMux()
 	mux.Handle("/metrics", m.Handler())
 	mux.HandleFunc("/debug/pprof/", pprof.Index)
@@ -180,7 +180,7 @@ func adminHandler(m *metrics.Metrics, apiSrv *api.Server) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		host, _, _ := net.SplitHostPort(r.RemoteAddr)
 		a, err := netip.ParseAddr(host)
-		if err != nil || !config.IsAdminPeer(a) {
+		if err != nil || !cfg.AdminPeerAllowed(a) {
 			http.Error(w, "forbidden", http.StatusForbidden)
 			return
 		}

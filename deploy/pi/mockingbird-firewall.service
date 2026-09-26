@@ -1,0 +1,15 @@
+[Unit]
+Description=mockingbird egress firewall (nftables table inet mockingbird)
+Documentation=file:///etc/mockingbird/firewall.nft
+DefaultDependencies=no
+Before=docker.service network-pre.target
+Wants=network-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/sbin/nft -f /etc/mockingbird/firewall.nft
+ExecStop=/usr/sbin/nft delete table inet mockingbird
+
+[Install]
+WantedBy=multi-user.target

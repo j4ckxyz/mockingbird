@@ -1,0 +1,75 @@
+# Production deployment on the Pi behind an existing Cloudflare Tunnel.
+#
+#   Internet -> Cloudflare edge -> cloudflared (on the Pi) -> 127.0.0.1:18480 -> container
+#
+# Isolation:
+#  - Ports are published on 127.0.0.1 only: nothing on the LAN, Tailscale or
+#    the internet can reach the container except through cloudflared.
+#  - The container sits on its own bridge network (10.89.72.0/24). The
+#    mockingbird-firewall nftables table drops any new connection from that
+#    subnet to private, LAN, CGNAT/Tailscale and loopback ranges, and to the
+#    Pi itself, independently of the bridge's own SSRF guard.
+#  - Read-only root filesystem, non-root user, no capabilities,
+#    no-new-privileges, memory/CPU/PID limits, and watchtower opted out.
+
+name: mockingbird
+
+services:
+  mockingbird:
+    build:
+      context: ../..
+    image: mockingbird:local
+    container_name: mockingbird
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      MB_DATA_DIR: /data
+      MB_HTTP_ADDR: ":8080"
+      # Admin/metrics: reachable only via the loopback publish below.
+      MB_ADMIN_ADDR: "0.0.0.0:9090"
+      MB_ADMIN_IN_CONTAINER: "true"
+      MB_ADMIN_TRUSTED_PEERS: "10.89.72.1"
+      # cloudflared reaches the container through the bridge gateway;
+      # trust its X-Forwarded-For so rate limits see real client IPs.
+      MB_TRUSTED_PROXIES: "10.89.72.1,127.0.0.1"
+    ports:
+      - "127.0.0.1:18480:8080"
+      - "127.0.0.1:18490:9090"
+    networks:
+      - mockingbird
+    dns:
+      - 1.1.1.1
+      - 9.9.9.9
+    volumes:
+      - data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    user: "65532:65532"
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    cpus: 2
+    pids_limit: 256
+    labels:
+      com.centurylinklabs.watchtower.enable: "false"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  mockingbird:
+    driver: bridge
+    enable_ipv6: false
+    driver_opts:
+      com.docker.network.bridge.name: br-mockingbird
+    ipam:
+      config:
+        - subnet: 10.89.72.0/24
+          gateway: 10.89.72.1
+
+volumes:
+  data:

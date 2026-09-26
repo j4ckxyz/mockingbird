@@ -1,0 +1,37 @@
+#!/usr/sbin/nft -f
+# mockingbird egress guard.
+#
+# A separate table, so it never touches Docker's, Tailscale's or anyone
+# else's rules, and nothing here flushes the ruleset. The two base chains run
+# just before the standard filter chains; a drop here is final.
+#
+# Traffic from the mockingbird container network may reach the public
+# internet only: no LAN, no other containers, no Tailscale, no services on
+# the Pi itself.
+
+table inet mockingbird
+delete table inet mockingbird
+
+table inet mockingbird {
+	set nonpublic4 {
+		type ipv4_addr
+		flags interval
+		elements = {
+			0.0.0.0/8, 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16,
+			172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16,
+			198.18.0.0/15, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 240.0.0.0/4
+		}
+	}
+
+	chain forward {
+		type filter hook forward priority filter - 10; policy accept;
+		ip saddr 10.89.72.0/24 ct state new ip daddr @nonpublic4 counter drop comment "mockingbird: no private/LAN egress"
+		iifname "br-mockingbird" meta nfproto ipv6 counter drop comment "mockingbird: no IPv6"
+	}
+
+	chain input {
+		type filter hook input priority filter - 10; policy accept;
+		ip saddr 10.89.72.0/24 ct state new counter drop comment "mockingbird: no connections to the Pi itself"
+		iifname "br-mockingbird" meta nfproto ipv6 counter drop comment "mockingbird: no IPv6"
+	}
+}

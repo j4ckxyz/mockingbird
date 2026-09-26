@@ -7,3 +7,4 @@
 /testdata/wayback/raw/
 /coverage.out
 /testdata/wayback/*.txt
+/deploy/pi/.env

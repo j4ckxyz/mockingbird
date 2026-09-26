@@ -23,6 +23,12 @@ type Config struct {
 	HTTPAddr      string   // plain HTTP listener, e.g. ":8080"
 	LegacyTLSAddr string   // optional TLS 1.0 listener, e.g. ":8443"; empty disables
 	AdminAddrs    []string // admin/metrics listeners; loopback or Tailscale only
+	// AdminInContainer allows a wildcard admin bind inside a container whose
+	// port is published only on loopback or Tailscale by Docker.
+	AdminInContainer bool
+	// AdminTrustedPeers are extra peers allowed on the admin listener (the
+	// Docker bridge gateway when published through docker-proxy).
+	AdminTrustedPeers []netip.Prefix
 
 	// Public identity of the bridge
 	PublicURL   *url.URL // base URL used in generated links (images, post pages)
@@ -139,16 +145,12 @@ func load(getenv func(string) string) (*Config, error) {
 	}
 
 	for _, p := range e.list("MB_TRUSTED_PROXIES", "") {
-		pfx, err := netip.ParsePrefix(p)
+		pfx, err := parsePrefix(p)
 		if err != nil {
-			addr, aerr := netip.ParseAddr(p)
-			if aerr != nil {
-				e.errs = append(e.errs, fmt.Errorf("MB_TRUSTED_PROXIES: bad entry %q", p))
-				continue
-			}
-			pfx = netip.PrefixFrom(addr, addr.BitLen())
+			e.errs = append(e.errs, fmt.Errorf("MB_TRUSTED_PROXIES: bad entry %q", p))
+			continue
 		}
-		c.TrustedProxies = append(c.TrustedProxies, pfx.Masked())
+		c.TrustedProxies = append(c.TrustedProxies, pfx)
 	}
 
 	// Consumer secrets are secrets, so MB_OAUTH_CONSUMERS_FILE is honoured too.
@@ -162,8 +164,20 @@ func load(getenv func(string) string) (*Config, error) {
 		c.OAuthConsumers[k] = v
 	}
 
+	c.AdminInContainer = e.bool("MB_ADMIN_IN_CONTAINER", false)
+	for _, p := range e.list("MB_ADMIN_TRUSTED_PEERS", "") {
+		pfx, err := parsePrefix(p)
+		if err != nil {
+			e.errs = append(e.errs, fmt.Errorf("MB_ADMIN_TRUSTED_PEERS: bad entry %q", p))
+			continue
+		}
+		c.AdminTrustedPeers = append(c.AdminTrustedPeers, pfx)
+	}
 	for _, a := range c.AdminAddrs {
 		if err := CheckAdminAddr(a); err != nil {
+			if c.AdminInContainer && isWildcard(a) {
+				continue // exposure is decided by Docker's port publishing
+			}
 			e.errs = append(e.errs, err)
 		}
 	}
@@ -174,6 +188,40 @@ func load(getenv func(string) string) (*Config, error) {
 		return nil, errors.Join(e.errs...)
 	}
 	return c, nil
+}
+
+func parsePrefix(p string) (netip.Prefix, error) {
+	if pfx, err := netip.ParsePrefix(p); err == nil {
+		return pfx.Masked(), nil
+	}
+	addr, err := netip.ParseAddr(p)
+	if err != nil {
+		return netip.Prefix{}, err
+	}
+	return netip.PrefixFrom(addr, addr.BitLen()), nil
+}
+
+func isWildcard(hostport string) bool {
+	i := strings.LastIndex(hostport, ":")
+	if i < 0 {
+		return false
+	}
+	h := strings.Trim(hostport[:i], "[]")
+	return h == "" || h == "0.0.0.0" || h == "::"
+}
+
+// AdminPeerAllowed reports whether a peer may use the admin listener.
+func (c *Config) AdminPeerAllowed(a netip.Addr) bool {
+	a = a.Unmap()
+	if IsAdminPeer(a) {
+		return true
+	}
+	for _, p := range c.AdminTrustedPeers {
+		if p.Contains(a) {
+			return true
+		}
+	}
+	return false
 }
 
 // tailscaleV4 and tailscaleV6 are the address ranges Tailscale assigns.
