@@ -106,3 +106,13 @@ Files ending `.broken` did not parse (truncated doc examples) and are not used b
 | `post-saved_searches-create.xml` | https://web.archive.org/web/20110316182028/http://dev.twitter.com/doc/post/saved_searches/create |
 | `post-saved_searches-destroy-id.xml` | https://web.archive.org/web/20110316181934/http://dev.twitter.com/doc/post/saved_searches/destroy/:id |
 | `post-statuses-retweet-id.xml.broken` | https://web.archive.org/web/20110316185537/http://dev.twitter.com/doc/post/statuses/retweet/:id |
+
+## Curated from 2009 apiwiki samples (testdata/archived)
+
+These archived examples were hand-written and needed minimal repairs to parse. The repairs are listed below. They are checked for field presence and types only, not XML order.
+
+| File | From | Repairs |
+|---|---|---|
+| `wiki-friendships-show.json`, `.xml` | `rest-friendships-show.txt` | none (JSON re-indented) |
+| `wiki-search.json` | `search-search.txt` | entity-encoded the `source` anchor; removed the "... truncated ..." marker |
+| `wiki-statuses-show.xml` | `rest-statuses-show.txt` | fixed `<contributors_enabled>false</verified>`; escaped `&` and the `source` anchor |

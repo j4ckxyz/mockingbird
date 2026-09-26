@@ -162,7 +162,7 @@ type RelationshipSide struct {
 	ScreenName           string `json:"screen_name"`
 	Following            bool   `json:"following"`
 	FollowedBy           bool   `json:"followed_by"`
-	NotificationsEnabled *bool  `json:"notifications_enabled,omitempty" xml:",omitempty"`
+	NotificationsEnabled *bool  `json:"notifications_enabled"`
 	Blocking             *bool  `json:"blocking,omitempty" xml:",omitempty"`
 	MarkedSpam           *bool  `json:"marked_spam,omitempty" xml:",omitempty"`
 	WantRetweets         *bool  `json:"want_retweets,omitempty" xml:",omitempty"`

@@ -42,6 +42,8 @@ var optional = map[string]bool{
 	"coordinates.coordinates": true, "coordinates.type": true, "geo.coordinates": true, "geo.type": true,
 	"retweeted_status": true, // present only on retweets
 	"status":           true, // embedded latest status is omitted when a user has not posted
+	// Search API fields that appear only for some results or pages.
+	"next_page": true, "to_user": true, "metadata.recent_retweets": true,
 }
 
 func refPath(name string) string { return filepath.Join("..", "..", "testdata", "reference", name) }
@@ -352,7 +354,10 @@ func TestGoldenAgainstArchivedReferences(t *testing.T) {
 		{ref: "get-friendships-show.xml", path: "/friendships/show.xml?target_screen_name=bob.test", auth: aliceAuth, order: true},
 		{ref: "get-favorites.json", path: "/favorites.json", auth: aliceAuth},
 		{ref: "get-search.json", path: "/search.json?q=mall", auth: aliceAuth},
-		{ref: "search.json", path: "/search.json?q=mall", auth: aliceAuth},
+		{ref: "wiki-search.json", path: "/search.json?q=mall", auth: aliceAuth},
+		{ref: "wiki-friendships-show.json", path: "/friendships/show.json?target_screen_name=bob.test", auth: aliceAuth},
+		{ref: "wiki-friendships-show.xml", path: "/friendships/show.xml?target_screen_name=bob.test", auth: aliceAuth},
+		{ref: "wiki-statuses-show.xml", path: "/statuses/show/%d.xml", auth: aliceAuth},
 		{ref: "get-trends.json", path: "/trends.json", auth: aliceAuth},
 		{ref: "get-trends-current.json", path: "/trends/current.json", auth: aliceAuth},
 		{ref: "get-trends-daily.json", path: "/trends/daily.json", auth: aliceAuth},

@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<relationship><source><id>1</id><screen_name>alice.test</screen_name><following>true</following><followed_by>true</followed_by><notifications_enabled>false</notifications_enabled><blocking>false</blocking><marked_spam>false</marked_spam><want_retweets>true</want_retweets></source><target><id>2</id><screen_name>bob.test</screen_name><following>true</following><followed_by>true</followed_by><notifications_enabled/></target></relationship>
