@@ -40,6 +40,21 @@ Open `http://<your host>/` for the setup page. For clients to reach it from outs
 
 The compose file runs the container with host networking, a read-only root filesystem, all capabilities dropped, `no-new-privileges`, a non-root user (UID 65532) and one named volume for `/data` (database, image cache, TLS material).
 
+### Behind a Cloudflare Tunnel (the Pi deployment)
+
+`deploy/pi/` runs the bridge on its own Docker network with ports published on 127.0.0.1 only. A dedicated nftables table (`deploy/pi/firewall.nft`, loaded by `mockingbird-firewall.service` before Docker) lets that network reach the public internet only.
+
+```sh
+sudo install -d /etc/mockingbird
+sudo install -m 0644 deploy/pi/firewall.nft /etc/mockingbird/
+sudo install -m 0644 deploy/pi/mockingbird-firewall.service /etc/systemd/system/
+sudo systemctl daemon-reload && sudo systemctl enable --now mockingbird-firewall
+cd deploy/pi && cp env.example .env   # then fill in the two keys; chmod 600 .env
+docker compose up -d --build
+```
+
+Then add a public hostname to the existing tunnel in the Cloudflare dashboard (Networks › Tunnels › *tunnel* › Published application routes): `mockingbird.j4ck.xyz`, service `HTTP`, URL `localhost:18480`. Leave "Always Use HTTPS" off for that hostname, and make sure no bot challenge applies to it, because vintage clients speak plain HTTP and cannot solve challenges. `MB_TRUSTED_PROXIES` in the compose file makes the bridge use cloudflared's `X-Forwarded-For`, so rate limits apply per real client IP.
+
 ## Client setup
 
 Every client needs a Bluesky **app password**, created at bsky.app › Settings › Privacy and security › App passwords. Tick *Allow access to your direct messages* if you want DMs. The username is your handle (for example `alice.bsky.social`). A bare name like `alice` expands to `alice.bsky.social` (see `MB_DEFAULT_HANDLE_HOST`). DIDs work too.
