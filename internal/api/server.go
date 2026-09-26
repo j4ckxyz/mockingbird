@@ -15,6 +15,7 @@ import (
 	"net/netip"
 	"net/url"
 	"runtime/debug"
+	"sort"
 	"strings"
 	"sync"
 	"time"
@@ -152,9 +153,20 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				http.Error(rw, "internal error", http.StatusInternalServerError)
 			}
 		}
+		total := s.now().Sub(start)
 		if s.d.Metrics != nil {
-			total := s.now().Sub(start)
 			s.d.Metrics.ObserveRequest(route, rw.status, total, total-time.Duration(upstream.Load()))
+		}
+		if s.log.Enabled(r.Context(), slog.LevelDebug) {
+			// Path and parameter names only: query values can carry tokens.
+			names := make([]string, 0, len(r.URL.Query()))
+			for k := range r.URL.Query() {
+				names = append(names, k)
+			}
+			sort.Strings(names)
+			s.log.Debug("request", "method", r.Method, "host", hostOnly(r.Host), "path", r.URL.Path, "params", strings.Join(names, ","),
+				"route", route, "status", rw.status, "ms", total.Milliseconds(), "upstream_ms", time.Duration(upstream.Load()).Milliseconds(),
+				"user_agent", r.UserAgent())
 		}
 	}()
 
