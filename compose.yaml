@@ -1,0 +1,45 @@
+# docker compose for a Raspberry Pi (or any Linux host).
+#
+# Host networking is used on purpose:
+#  - rate limits and brute-force protection see real client IPs;
+#  - the admin listener binds directly to 127.0.0.1 and the Tailscale
+#    address, never to a public interface.
+#
+# Clients with hardcoded twitter.com hosts connect on port 80 (and 443 for
+# the legacy TLS listener). The container runs as a non-root user, so allow
+# unprivileged binds to those ports on the host once:
+#
+#   echo 'net.ipv4.ip_unprivileged_port_start=80' | sudo tee /etc/sysctl.d/99-mockingbird.conf
+#   sudo sysctl --system
+#
+# Or keep the defaults (8080/8443) and forward 80/443 to them on your router.
+
+services:
+  mockingbird:
+    build:
+      context: .
+    image: mockingbird:local
+    restart: unless-stopped
+    network_mode: host
+    env_file: .env
+    environment:
+      MB_DATA_DIR: /data
+    volumes:
+      - mockingbird-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    user: "65532:65532"
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    pids_limit: 256
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  mockingbird-data:

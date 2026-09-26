@@ -166,7 +166,7 @@ func (s *Server) twitpicError(c *Ctx, code int, msg string) *Resp {
 	var w twitter.XMLWriter
 	w.Header()
 	w.WriteString(`<rsp stat="fail"><err code="` + strconv.Itoa(code) + `" msg="`)
-	w.Text(msg)
+	w.Attr(msg)
 	w.WriteString(`" /></rsp>`)
 	return &Resp{Raw: w.Bytes(), ContentType: "application/xml; charset=utf-8", Status: 401}
 }

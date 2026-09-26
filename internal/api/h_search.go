@@ -17,6 +17,7 @@ func (s *Server) search(c *Ctx) (*Resp, error) {
 	rpp := c.Count(15, 100)
 	page := c.Page()
 	resp := twitter.SearchResponse{Results: []twitter.SearchResult{}, ResultsPerPage: rpp, Page: page, Query: url.QueryEscape(q)}
+	resp.RefreshURL = "?since_id=0&q=" + url.QueryEscape(q)
 	if q == "" {
 		return s.searchResp(c, resp, start), nil
 	}

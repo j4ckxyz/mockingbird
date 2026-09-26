@@ -1,0 +1,6 @@
+.git
+bin
+data
+.env
+testdata/wayback/raw
+*.test

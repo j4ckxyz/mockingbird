@@ -68,7 +68,7 @@ func (w *XMLWriter) Open(name string, attrs ...string) {
 		w.WriteByte(' ')
 		w.WriteString(attrs[i])
 		w.WriteString(`="`)
-		w.Text(attrs[i+1])
+		w.Attr(attrs[i+1])
 		w.WriteByte('"')
 	}
 	w.WriteByte('>')
@@ -90,8 +90,14 @@ func (w *XMLWriter) Elem(name, text string, attrs ...string) {
 
 // Text writes escaped character data, dropping characters XML 1.0 forbids
 // (control characters in posts would otherwise make the whole document
-// unparseable on the device).
-func (w *XMLWriter) Text(s string) {
+// unparseable on the device). Quotes are left alone in element content, as
+// in Twitter's own XML.
+func (w *XMLWriter) Text(s string) { w.escape(s, false) }
+
+// Attr writes an escaped attribute value.
+func (w *XMLWriter) Attr(s string) { w.escape(s, true) }
+
+func (w *XMLWriter) escape(s string, attr bool) {
 	for len(s) > 0 {
 		r, size := utf8.DecodeRuneInString(s)
 		switch {
@@ -101,10 +107,8 @@ func (w *XMLWriter) Text(s string) {
 			w.WriteString("&gt;")
 		case r == '&':
 			w.WriteString("&amp;")
-		case r == '"':
+		case r == '"' && attr:
 			w.WriteString("&quot;")
-		case r == '\'':
-			w.WriteString("&apos;")
 		case r == utf8.RuneError && size == 1:
 			w.WriteRune('�')
 		case isXMLChar(r):
