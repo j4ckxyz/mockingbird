@@ -50,6 +50,8 @@ type Deps struct {
 	Web http.Handler
 	// CA returns the legacy TLS CA certificate (DER), if enabled.
 	CA func() []byte
+	// Now overrides the clock (tests).
+	Now func() time.Time
 }
 
 // Server is the public HTTP handler.
@@ -108,6 +110,9 @@ func New(d Deps) *Server {
 		unknown:  newUnknownLog(d.Logger),
 		oauth:    newOAuthStore(d.Config.OAuthRequestTokenTTL),
 		now:      time.Now,
+	}
+	if d.Now != nil {
+		s.now = d.Now
 	}
 	s.routes = s.buildRoutes()
 	return s

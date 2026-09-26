@@ -235,6 +235,9 @@ func compareXML(t *testing.T, path string, ref, got *xnode, orderMatters bool) {
 
 // goldenHarness builds a deterministic world: fixed times and accounts.
 func goldenHarness(t *testing.T) *harness {
+	fixed := time.Date(2010, 7, 15, 22, 31, 11, 0, time.UTC)
+	harnessNow = func() time.Time { return fixed }
+	t.Cleanup(func() { harnessNow = nil })
 	h := newHarness(t)
 	base := time.Date(2010, 6, 22, 17, 48, 26, 0, time.UTC)
 	p1 := h.pds.AddPost("did:plc:bob", "sure thing. Meet you at the mall around 7? https://example.com/mall", base)

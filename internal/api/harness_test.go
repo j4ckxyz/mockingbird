@@ -29,6 +29,9 @@ import (
 	"github.com/jackgilbert/mockingbird/internal/web"
 )
 
+// harnessNow, when set, fixes the API server's clock.
+var harnessNow func() time.Time
+
 const (
 	alicePW = "aaaa-bbbb-cccc-dddd"
 	aliceDM = "dmdm-dmdm-dmdm-dmdm"
@@ -97,7 +100,8 @@ func newHarness(t *testing.T, mutate ...func(map[string]string)) *harness {
 	public := &atp.Client{HTTP: hc, Host: pdsSrv.URL}
 	quiet := slog.New(slog.NewTextHandler(io.Discard, nil))
 	a := api.New(api.Deps{Config: cfg, Store: st, Keys: keys, Sessions: sessions, Resolver: resolver, Signer: signer,
-		Images: &media.Proxy{Signer: signer, CDN: pdsSrv.URL, HTTP: hc, Cache: cache, Logger: quiet}, Public: public, Metrics: m, Logger: quiet})
+		Images: &media.Proxy{Signer: signer, CDN: pdsSrv.URL, HTTP: hc, Cache: cache, Logger: quiet}, Public: public, Metrics: m, Logger: quiet,
+		Now: harnessNow})
 	a.SetWeb(web.New(web.Deps{Config: cfg, API: a, Store: st, Public: public, Signer: signer, Logger: quiet}))
 	srv := httptest.NewServer(a)
 	t.Cleanup(srv.Close)
