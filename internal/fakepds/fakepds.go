@@ -3,9 +3,13 @@
 package fakepds
 
 import (
+	"bytes"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"image"
+	"image/color"
+	"image/jpeg"
 	"io"
 	"net/http"
 	"sort"
@@ -198,6 +202,12 @@ func ok(w http.ResponseWriter, v any) {
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if s.Latency > 0 {
 		time.Sleep(s.Latency)
+	}
+	if strings.HasPrefix(r.URL.Path, "/img/") {
+		// Stand-in for the Bluesky CDN.
+		w.Header().Set("Content-Type", "image/jpeg")
+		w.Write(fakeJPEG())
+		return
 	}
 	nsid := strings.TrimPrefix(r.URL.Path, "/xrpc/")
 	s.callMu.Lock()
@@ -1040,4 +1050,24 @@ func (s *Server) timeline(w http.ResponseWriter, q map[string][]string, viewer s
 		out["cursor"] = next
 	}
 	ok(w, out)
+}
+
+var (
+	jpegOnce sync.Once
+	jpegData []byte
+)
+
+func fakeJPEG() []byte {
+	jpegOnce.Do(func() {
+		img := image.NewRGBA(image.Rect(0, 0, 400, 400))
+		for y := 0; y < 400; y++ {
+			for x := 0; x < 400; x++ {
+				img.Set(x, y, color.RGBA{uint8(x), uint8(y), 180, 255})
+			}
+		}
+		var b bytes.Buffer
+		jpeg.Encode(&b, img, nil)
+		jpegData = b.Bytes()
+	})
+	return jpegData
 }

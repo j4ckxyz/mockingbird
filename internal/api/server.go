@@ -75,8 +75,11 @@ type Server struct {
 	now      func() time.Time
 }
 
+// cachedResponse holds a gzip-compressed body (or the raw body when it is
+// too small to compress), sized exactly, so the cache stays small.
 type cachedResponse struct {
-	body        []byte
+	gz          []byte
+	raw         []byte
 	contentType string
 	status      int
 }
@@ -96,7 +99,7 @@ func New(d Deps) *Server {
 		short:    cache.New[string, *shortNames](20_000),
 		cursors:  cache.New[string, string](100_000),
 		reposts:  cache.New[string, string](100_000),
-		resp:     cache.New[string, cachedResponse](20_000),
+		resp:     cache.New[string, cachedResponse](5_000),
 		gens:     cache.New[string, int](50_000),
 		ipLimit:  ratelimit.NewLimiter(d.Config.PerIPRate, d.Config.PerIPBurst, 200_000),
 		acLimit:  ratelimit.NewLimiter(d.Config.PerAccountRate, d.Config.PerAccountBurst, 200_000),
@@ -263,30 +266,61 @@ func (w *statusWriter) Write(b []byte) (int, error) {
 	return w.ResponseWriter.Write(b)
 }
 
+// gzipBody compresses a response body into an exactly sized slice, or
+// returns nil when compression is not worthwhile.
+func gzipBody(body []byte) []byte {
+	if len(body) <= 512 {
+		return nil
+	}
+	var buf bytes.Buffer
+	zw := gzipPool.Get().(*gzip.Writer)
+	zw.Reset(&buf)
+	zw.Write(body)
+	zw.Close()
+	gzipPool.Put(zw)
+	return bytes.Clone(buf.Bytes())
+}
+
+// gunzip reverses gzipBody (for cache hits from clients without gzip).
+func gunzip(gz []byte) ([]byte, error) {
+	zr, err := gzip.NewReader(bytes.NewReader(gz))
+	if err != nil {
+		return nil, err
+	}
+	return io.ReadAll(zr)
+}
+
 // write sends a body, gzipped when the client accepts it and it is worth it.
 // Old iPhone OS networking sends Accept-Encoding: gzip, and compression is
-// the biggest single saving on a home upload link.
-func write(w http.ResponseWriter, r *http.Request, status int, contentType string, body []byte) {
+// the biggest single saving on a home upload link. gz may carry an already
+// compressed copy of body (or be nil).
+func write(w http.ResponseWriter, r *http.Request, status int, contentType string, body, gz []byte) {
 	h := w.Header()
 	if contentType != "" {
 		h.Set("Content-Type", contentType)
 	}
 	h.Set("X-Content-Type-Options", "nosniff")
 	h.Add("Vary", "Accept-Encoding")
-	if len(body) > 512 && acceptsGzip(r) {
-		var buf bytes.Buffer
-		zw := gzipPool.Get().(*gzip.Writer)
-		zw.Reset(&buf)
-		zw.Write(body)
-		zw.Close()
-		gzipPool.Put(zw)
-		h.Set("Content-Encoding", "gzip")
-		h.Set("Content-Length", fmt.Sprint(buf.Len()))
-		w.WriteHeader(status)
-		if r.Method != http.MethodHead {
-			w.Write(buf.Bytes())
+	if acceptsGzip(r) {
+		if gz == nil && body != nil {
+			gz = gzipBody(body)
 		}
-		return
+		if gz != nil {
+			h.Set("Content-Encoding", "gzip")
+			h.Set("Content-Length", fmt.Sprint(len(gz)))
+			w.WriteHeader(status)
+			if r.Method != http.MethodHead {
+				w.Write(gz)
+			}
+			return
+		}
+	}
+	if body == nil && gz != nil {
+		var err error
+		if body, err = gunzip(gz); err != nil {
+			http.Error(w, "internal error", http.StatusInternalServerError)
+			return
+		}
 	}
 	h.Set("Content-Length", fmt.Sprint(len(body)))
 	w.WriteHeader(status)

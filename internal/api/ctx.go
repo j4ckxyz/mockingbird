@@ -1,6 +1,7 @@
 package api
 
 import (
+	"bytes"
 	"context"
 	"errors"
 	"fmt"
@@ -211,10 +212,17 @@ func (c *Ctx) render(res *Resp) {
 		c.renderError(ae)
 		return
 	}
+	var gz []byte
 	if c.Sess != nil && res.Cacheable && c.r.Method == http.MethodGet && status == 200 {
-		c.s.resp.AddTTL(c.cacheKey(), cachedResponse{body: body, contentType: ct, status: status}, c.s.cfg.ResponseCacheTTL)
+		cr := cachedResponse{contentType: ct, status: status}
+		if gz = gzipBody(body); gz != nil {
+			cr.gz = gz
+		} else {
+			cr.raw = bytes.Clone(body)
+		}
+		c.s.resp.AddTTL(c.cacheKey(), cr, c.s.cfg.ResponseCacheTTL)
 	}
-	c.send(status, ct, body)
+	c.sendBody(status, ct, body, gz)
 }
 
 func (c *Ctx) encode(res *Resp) ([]byte, string, error) {
@@ -250,7 +258,9 @@ func (c *Ctx) encode(res *Resp) ([]byte, string, error) {
 }
 
 // send writes status, headers and body, honouring suppress_response_codes.
-func (c *Ctx) send(status int, ct string, body []byte) {
+func (c *Ctx) send(status int, ct string, body []byte) { c.sendBody(status, ct, body, nil) }
+
+func (c *Ctx) sendBody(status int, ct string, body, gz []byte) {
 	if c.Sess != nil {
 		c.rateHeaders()
 	}
@@ -260,7 +270,7 @@ func (c *Ctx) send(status int, ct string, body []byte) {
 	h := c.w.Header()
 	h.Set("Cache-Control", "no-cache, max-age=0, must-revalidate")
 	h.Set("Pragma", "no-cache")
-	write(c.w, c.r, status, ct, body)
+	write(c.w, c.r, status, ct, body, gz)
 }
 
 func (c *Ctx) rateHeaders() {

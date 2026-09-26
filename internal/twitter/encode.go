@@ -23,7 +23,7 @@ func EncodeJSON(v any) ([]byte, error) {
 	if err := enc.Encode(v); err != nil {
 		return nil, err
 	}
-	return bytes.TrimRight(buf.Bytes(), "\n"), nil
+	return bytes.TrimRight(buf.Bytes(), "\n"), nil // the buffer is short-lived; cached copies are compacted
 }
 
 var callbackRE = regexp.MustCompile(`^[A-Za-z_$][0-9A-Za-z_$]*(\.[A-Za-z_$][0-9A-Za-z_$]*|\[[0-9]+\])*$`)

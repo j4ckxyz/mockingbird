@@ -24,6 +24,9 @@ type Metrics struct {
 	unknown   prometheus.Counter
 	respCache *prometheus.CounterVec
 	gauges    map[string]prometheus.GaugeFunc
+
+	// Observer, if set, receives every request's timings (load testing).
+	Observer func(route string, code int, total, overhead time.Duration)
 }
 
 // New registers collectors.
@@ -85,6 +88,9 @@ func (m *Metrics) ObserveRequest(route string, code int, total, overhead time.Du
 		overhead = 0
 	}
 	m.overhead.WithLabelValues(route).Observe(overhead.Seconds())
+	if m.Observer != nil {
+		m.Observer(route, code, total, overhead)
+	}
 }
 
 // ObserveUpstream records one XRPC call.
@@ -110,5 +116,5 @@ func (m *Metrics) ResponseCache(hit bool) {
 	}
 }
 
-// Overhead exposes the translation-overhead histogram for the load tester.
+// Registry exposes the registry (tests).
 func (m *Metrics) Registry() *prometheus.Registry { return m.reg }

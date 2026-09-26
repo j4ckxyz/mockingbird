@@ -21,6 +21,7 @@ import (
 
 	"github.com/jackgilbert/mockingbird/internal/app"
 	"github.com/jackgilbert/mockingbird/internal/config"
+	"github.com/jackgilbert/mockingbird/internal/loadtest"
 	"github.com/jackgilbert/mockingbird/internal/logging"
 )
 
@@ -39,6 +40,8 @@ func main() {
 				fmt.Printf("%s=%s\n", name, hex.EncodeToString(b))
 			}
 			return
+		case "loadtest":
+			os.Exit(loadtest.Main(os.Args[2:]))
 		case "version":
 			fmt.Println(version)
 			return

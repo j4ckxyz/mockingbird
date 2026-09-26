@@ -184,7 +184,7 @@ func (s *Server) dispatch(w http.ResponseWriter, r *http.Request, ip string) str
 			if s.d.Metrics != nil {
 				s.d.Metrics.ResponseCache(true)
 			}
-			c.send(cr.status, cr.contentType, cr.body)
+			c.sendBody(cr.status, cr.contentType, cr.raw, cr.gz)
 			return rt.name
 		}
 		if s.d.Metrics != nil {
