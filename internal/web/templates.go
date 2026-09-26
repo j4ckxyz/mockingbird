@@ -80,12 +80,14 @@ OAuth endpoints: <code>{{.Base}}/oauth/request_token</code>, <code>/oauth/author
 Image service (TwitPic-compatible): <code>{{.Base}}/api/upload</code></p></div>
 
 <div class="box"><h2>Tweetie 2 and Twitterrific 1.x (hardcoded hosts)</h2>
-<p>These clients always call <code>twitter.com</code>, <code>api.twitter.com</code> and <code>search.twitter.com</code>. Make those names resolve to this bridge's address:</p>
-<ul>
-<li><b>Simulator:</b> add lines like <code>{{.IP}} twitter.com api.twitter.com search.twitter.com</code> to <code>/etc/hosts</code> on the Mac running it.</li>
-<li><b>Real device:</b> use a DNS server you control (Pi-hole, dnsmasq, your router) to answer those three names with the bridge's address, and set it as the device's DNS server under Settings &rsaquo; Wi-Fi.</li>
+<p>These clients always call <code>twitter.com</code>, <code>api.twitter.com</code> and <code>search.twitter.com</code>, and have no setting to change that. They need those names to point at a bridge on your own network.</p>
+{{if .IP}}<ul>
+<li><b>Simulator:</b> add a line like <code>{{.IP}} twitter.com api.twitter.com search.twitter.com</code> to <code>/etc/hosts</code> on the Mac running it.</li>
+<li><b>Real device:</b> use a DNS server you control (Pi-hole, dnsmasq or your router) to answer those three names with this bridge's address, and set it as the device's DNS server under Settings &rsaquo; Wi-Fi.</li>
 </ul>
-<p>Tweetie 2 signs in with Basic Auth or xAuth; Twitterrific 1.x uses Basic Auth and XML. Both work over plain HTTP.</p></div>
+<p>Tweetie 2 signs in with Basic Auth or xAuth; Twitterrific 1.x uses Basic Auth and XML. Both work over plain HTTP.</p>
+{{else}}<p>This hosted bridge sits behind a content network, so redirecting <code>twitter.com</code> to it won't work. To use these apps, run your own copy of mockingbird on your home network (it's one small Docker container) and point those names at it with your router or Pi-hole. Apps with a custom API root setting can use this hosted bridge directly.</p>{{end}}
+</div>
 
 {{if .TLS}}<div class="box"><h2>HTTPS for clients that insist on it</h2>
 <p>Some clients only use <code>https://</code>. The bridge runs a legacy TLS 1.0 listener with a certificate from its own certificate authority. To trust it, open this page in Mobile Safari on the device and install:</p>

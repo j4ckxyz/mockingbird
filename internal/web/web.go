@@ -181,7 +181,6 @@ func (h *Handler) home(w http.ResponseWriter, r *http.Request) {
 	cfg := h.d.Config
 	d.Base = cfg.PublicURL.String()
 	d.DefaultHost = cfg.DefaultHandleHost
-	d.IP = "<bridge IP>"
 	if host := cfg.PublicURL.Hostname(); net.ParseIP(host) != nil {
 		d.IP = host
 	}
