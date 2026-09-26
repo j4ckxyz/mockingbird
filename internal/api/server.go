@@ -65,6 +65,7 @@ type Server struct {
 	short    *cache.LRU[string, *shortNames]    // viewer did -> short name map
 	cursors  *cache.LRU[string, string]         // viewer|feed|statusID -> cursor
 	reposts  *cache.LRU[string, string]         // repost URI -> reposted post URI
+	dmCache  *cache.LRU[string, []dmCollected]  // viewer|sent -> merged messages
 	resp     *cache.LRU[string, cachedResponse] // response cache
 	gens     *cache.LRU[string, int]            // viewer did -> cache generation
 	genMu    sync.Mutex
@@ -102,6 +103,7 @@ func New(d Deps) *Server {
 		short:    cache.New[string, *shortNames](20_000),
 		cursors:  cache.New[string, string](100_000),
 		reposts:  cache.New[string, string](100_000),
+		dmCache:  cache.New[string, []dmCollected](5_000),
 		resp:     cache.New[string, cachedResponse](5_000),
 		gens:     cache.New[string, int](50_000),
 		ipLimit:  ratelimit.NewLimiter(d.Config.PerIPRate, d.Config.PerIPBurst, 200_000),

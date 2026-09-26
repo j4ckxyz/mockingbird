@@ -3,6 +3,7 @@ package api
 import (
 	"net/url"
 	"sort"
+	"strconv"
 	"strings"
 	"time"
 
@@ -30,6 +31,26 @@ type dmCollected struct {
 // clients want one flat list; Bluesky groups by conversation, so this reads
 // the most recent conversations and merges their recent messages.
 func (s *Server) collectDMs(c *Ctx, sent bool) ([]dmCollected, error) {
+	// One listing costs a listConvos plus a getMessages per conversation, so
+	// the merged result is cached briefly per viewer and direction.
+	key := c.Sess.DID + "|" + strconv.FormatBool(sent)
+	if v, ok := s.dmCache.Get(key); ok {
+		return v, nil
+	}
+	v, err, _ := s.sf.Do("dm:"+key, func() (any, error) {
+		out, err := s.collectDMsUncached(c, sent)
+		if err == nil {
+			s.dmCache.AddTTL(key, out, time.Minute)
+		}
+		return out, err
+	})
+	if err != nil {
+		return nil, err
+	}
+	return v.([]dmCollected), nil
+}
+
+func (s *Server) collectDMsUncached(c *Ctx, sent bool) ([]dmCollected, error) {
 	var convos atp.Convos
 	if err := c.Get("chat.bsky.convo.listConvos", url.Values{"limit": {"20"}}, &convos); err != nil {
 		return nil, upstreamErr(err)
@@ -165,6 +186,7 @@ func (s *Server) directMessageNew(c *Ctx) (*Resp, error) {
 	if fs := translate.BuildFacets(c.Context(), text, s.mentionResolver(c)); len(fs) > 0 {
 		msg["facets"] = fs
 	}
+	s.invalidateDMs(c.Sess.DID, target.DID)
 	var sent atp.ChatMessage
 	if err := c.Post("chat.bsky.convo.sendMessage", map[string]any{"convoId": cv.Convo.ID, "message": msg}, &sent); err != nil {
 		return nil, upstreamErr(err)
@@ -194,6 +216,7 @@ func (s *Server) directMessageDestroy(c *Ctx) (*Resp, error) {
 	if err != nil {
 		return nil, errNotFound()
 	}
+	s.invalidateDMs(c.Sess.DID)
 	var deleted atp.ChatMessage
 	if err := c.Post("chat.bsky.convo.deleteMessageForSelf", map[string]string{"convoId": ref.ConvoID, "messageId": ref.MsgID}, &deleted); err != nil {
 		return nil, upstreamErr(err)
@@ -217,4 +240,13 @@ func (s *Server) directMessageDestroy(c *Ctx) (*Resp, error) {
 		return nil, err
 	}
 	return &Resp{Value: dms[0], Root: "direct_message"}, nil
+}
+
+// invalidateDMs drops cached DM listings for the given accounts. The other
+// party's cache is dropped too when both use this bridge.
+func (s *Server) invalidateDMs(dids ...string) {
+	for _, d := range dids {
+		s.dmCache.Remove(d + "|true")
+		s.dmCache.Remove(d + "|false")
+	}
 }

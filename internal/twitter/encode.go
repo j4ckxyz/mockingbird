@@ -204,7 +204,7 @@ func (w *XMLWriter) Value(name string, v reflect.Value, _ string) {
 		keys := v.MapKeys()
 		sort.Slice(keys, func(i, j int) bool { return fmt.Sprint(keys[i].Interface()) < fmt.Sprint(keys[j].Interface()) })
 		for _, k := range keys {
-			w.Value(fmt.Sprint(k.Interface()), v.MapIndex(k), "")
+			w.Value(xmlName(fmt.Sprint(k.Interface())), v.MapIndex(k), "")
 		}
 		w.Close(name)
 	default:
@@ -301,4 +301,15 @@ func (r RateLimitStatus) WriteXML(w *XMLWriter, name string) {
 
 func timeISO(t Time) string {
 	return timeValue(t).UTC().Format("2006-01-02T15:04:05+00:00")
+}
+
+var badNameChars = regexp.MustCompile(`[^A-Za-z0-9_.-]`)
+
+// xmlName makes an arbitrary map key safe to use as an element name.
+func xmlName(s string) string {
+	s = badNameChars.ReplaceAllString(s, "_")
+	if s == "" || (s[0] >= '0' && s[0] <= '9') || s[0] == '-' || s[0] == '.' {
+		s = "_" + s
+	}
+	return s
 }

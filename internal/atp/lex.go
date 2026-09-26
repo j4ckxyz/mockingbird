@@ -30,6 +30,25 @@ type Profile struct {
 	IndexedAt      string         `json:"indexedAt,omitempty"`
 	Viewer         *ProfileViewer `json:"viewer,omitempty"`
 	Website        string         `json:"website,omitempty"`
+	Labels         []Label        `json:"labels,omitempty"`
+}
+
+// Label is a moderation or self label.
+type Label struct {
+	Src string `json:"src,omitempty"`
+	Val string `json:"val"`
+	Neg bool   `json:"neg,omitempty"`
+}
+
+// NoUnauthenticated reports whether the account asked not to be shown to
+// logged-out viewers (the "!no-unauthenticated" self-label).
+func (p *Profile) NoUnauthenticated() bool {
+	for _, l := range p.Labels {
+		if l.Val == "!no-unauthenticated" && !l.Neg {
+			return true
+		}
+	}
+	return false
 }
 
 // HasCounts reports whether this is a detailed view with counts.

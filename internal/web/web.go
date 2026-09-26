@@ -8,6 +8,7 @@ import (
 	"context"
 	"crypto/sha256"
 	"encoding/base64"
+	"errors"
 	"fmt"
 	"log/slog"
 	"net"
@@ -292,6 +293,9 @@ func xmlEscape(s string) string {
 	return r.Replace(s)
 }
 
+// errHidden marks posts whose authors limit logged-out visibility.
+var errHidden = errors.New("web: author limits logged-out visibility")
+
 // Post pages.
 
 type segment struct{ Text, Href string }
@@ -316,6 +320,12 @@ func (h *Handler) post(w http.ResponseWriter, r *http.Request, id int64) {
 	if !ok {
 		var err error
 		pp, err = h.loadPost(r.Context(), id)
+		if errors.Is(err, errHidden) {
+			d := h.data(r, "Post unavailable")
+			d.Heading, d.Message = "Sign in to see this post", "The author has chosen to show their posts only to people signed in to Bluesky."
+			h.render(w, r, "message", d, http.StatusForbidden)
+			return
+		}
 		if err != nil {
 			d := h.data(r, "Post unavailable")
 			d.Heading, d.Message = "Post unavailable", "This post was deleted, is not public, or Bluesky could not be reached."
@@ -346,6 +356,11 @@ func (h *Handler) loadPost(ctx context.Context, id int64) (*postPage, error) {
 		return nil, store.ErrNotFound
 	}
 	p := &res.Posts[0]
+	if p.Author.NoUnauthenticated() {
+		// The author opted out of being shown to logged-out viewers; this
+		// page is public, so respect that.
+		return nil, errHidden
+	}
 	rec := p.Post()
 	pp := &postPage{
 		Name: p.Author.DisplayName, Handle: p.Author.Handle,
@@ -404,7 +419,7 @@ func (h *Handler) addEmbed(ctx context.Context, pp *postPage, e *atp.EmbedView) 
 		if e.Media != nil {
 			h.addEmbed(ctx, pp, e.Media)
 		}
-		if rec := e.Record(); rec != nil && rec.Type == atp.RecordViewRecord && rec.Author != nil {
+		if rec := e.Record(); rec != nil && rec.Type == atp.RecordViewRecord && rec.Author != nil && !rec.Author.NoUnauthenticated() {
 			q := &quoteRef{Name: orEmpty(rec.Author.DisplayName, rec.Author.Handle), Handle: rec.Author.Handle, Text: rec.Post().Text}
 			ids, err := h.d.Store.StatusIDs(ctx, []store.StatusRef{{URI: rec.URI, SortAt: atp.SortTime(rec.Post().CreatedAt, rec.IndexedAt)}})
 			if err == nil {

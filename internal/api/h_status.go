@@ -138,7 +138,12 @@ func (c *Ctx) selfProfile() (*atp.Profile, error) {
 // identity resolution; bare names through handles the viewer has seen
 // recently, then <name>.<default host>.
 func (s *Server) mentionResolver(c *Ctx) translate.MentionResolver {
+	budget := 10 // resolutions per post; each may hit DNS and HTTPS
 	return func(ctx context.Context, name string) (string, string, bool) {
+		if budget == 0 {
+			return "", "", false
+		}
+		budget--
 		handle := c.fullHandle(name)
 		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 		defer cancel()

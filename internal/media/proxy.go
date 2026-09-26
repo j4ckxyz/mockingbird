@@ -21,6 +21,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"runtime"
 	"sort"
 	"strings"
 	"sync"
@@ -161,6 +162,10 @@ func (p *Proxy) fetch(ctx context.Context, req *Request) ([]byte, error) {
 	return io.ReadAll(resp.Body)
 }
 
+// renderSem bounds concurrent decodes so a burst of cache misses cannot
+// exhaust memory on a small machine.
+var renderSem = make(chan struct{}, max(2, runtime.NumCPU()))
+
 // Render decodes an image and re-encodes it as a baseline JPEG no wider than
 // maxW. Square crops are used for avatar sizes, matching Twitter's avatars.
 func Render(src []byte, maxW int, square bool) ([]byte, error) {
@@ -168,9 +173,13 @@ func Render(src []byte, maxW int, square bool) ([]byte, error) {
 	if err != nil {
 		return nil, fmt.Errorf("media: decode config: %w", err)
 	}
-	if cfg.Width*cfg.Height > 40_000_000 {
+	// 16 megapixels decodes to ~64 MB; Bluesky's CDN never serves more
+	// than ~4 MP, so anything bigger is an upload worth refusing.
+	if cfg.Width <= 0 || cfg.Height <= 0 || cfg.Width*cfg.Height > 16_000_000 {
 		return nil, errors.New("media: image too large")
 	}
+	renderSem <- struct{}{}
+	defer func() { <-renderSem }()
 	img, _, err := image.Decode(bytes.NewReader(src))
 	if err != nil {
 		return nil, fmt.Errorf("media: decode: %w", err)

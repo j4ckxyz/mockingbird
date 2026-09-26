@@ -3,6 +3,7 @@ package api_test
 import (
 	"encoding/xml"
 	"fmt"
+	"github.com/jackgilbert/mockingbird/internal/fakepds"
 	"net/url"
 	"strings"
 	"testing"
@@ -633,5 +634,20 @@ func TestOAuthFlows(t *testing.T) {
 	r = h.post("/oauth/access_token", url.Values{"oauth_consumer_key": {"someapp"}, "oauth_token": {rt}, "oauth_verifier": {loc.Query().Get("oauth_verifier")}})
 	if r.code != 401 {
 		t.Fatalf("request token reused: %d", r.code)
+	}
+}
+
+func TestPostPageRespectsLoggedOutVisibility(t *testing.T) {
+	h := newHarness(t)
+	h.pds.AddAccount(&fakepds.Account{DID: "did:plc:shy", Handle: "shy.test", AppPassword: "shyy-shyy-shyy-shyy", Labels: []string{"!no-unauthenticated"}})
+	h.pds.AddPost("did:plc:shy", "only for signed-in readers", time.Now())
+	var sts []tStatus
+	h.get("/statuses/user_timeline/shy.test.json", alice).json(t, &sts)
+	if len(sts) != 1 {
+		t.Fatalf("timeline: %+v", sts)
+	}
+	r := h.get(fmt.Sprintf("/p/%d", sts[0].ID))
+	if r.code != 403 || strings.Contains(string(r.body), "only for signed-in readers") {
+		t.Fatalf("hidden author's post was shown publicly: %d", r.code)
 	}
 }

@@ -32,6 +32,7 @@ type Account struct {
 	DMPassword  string // accepted with scope com.atproto.appPassPrivileged
 	Password    string // full account password (should be rejected by the bridge)
 	Follows     []string
+	Labels      []string // self-labels such as "!no-unauthenticated"
 }
 
 // Post is a fake post.
@@ -470,6 +471,13 @@ func (s *Server) profile(a *Account, viewer string, detailed bool) map[string]an
 		"did": a.DID, "handle": a.Handle, "displayName": a.DisplayName,
 		"avatar":    "https://cdn.bsky.app/img/avatar/plain/" + a.DID + "/bafkreiavatar@jpeg",
 		"createdAt": "2023-04-01T12:00:00.000Z",
+	}
+	if len(a.Labels) > 0 {
+		var ls []any
+		for _, l := range a.Labels {
+			ls = append(ls, map[string]any{"src": a.DID, "val": l})
+		}
+		p["labels"] = ls
 	}
 	v := map[string]any{}
 	if u := s.follows[viewer][a.DID]; u != "" {
