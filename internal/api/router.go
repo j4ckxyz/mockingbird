@@ -191,7 +191,20 @@ func (s *Server) dispatch(w http.ResponseWriter, r *http.Request, ip string) str
 			s.d.Metrics.ResponseCache(false)
 		}
 	}
-	res, err := rt.h(c)
+	var res *Resp
+	var err error
+	if c.Sess != nil && r.Method == http.MethodGet {
+		// Clients often fire the same request twice (launch plus timer, or
+		// two views of one timeline). Identical concurrent GETs from one
+		// credential share a single upstream round; each renders its own copy.
+		v, e, _ := s.sf.Do("req:"+c.cacheKey(), func() (any, error) { return rt.h(c) })
+		if v != nil {
+			res = v.(*Resp)
+		}
+		err = e
+	} else {
+		res, err = rt.h(c)
+	}
 	if err != nil {
 		c.renderError(err)
 		return rt.name

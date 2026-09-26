@@ -1,9 +1,15 @@
 package api_test
 
 import (
+	"bytes"
 	"encoding/xml"
 	"fmt"
 	"github.com/jackgilbert/mockingbird/internal/fakepds"
+	"image"
+	"image/jpeg"
+	"io"
+	"mime/multipart"
+	"net/http"
 	"net/url"
 	"strings"
 	"testing"
@@ -649,5 +655,88 @@ func TestPostPageRespectsLoggedOutVisibility(t *testing.T) {
 	r := h.get(fmt.Sprintf("/p/%d", sts[0].ID))
 	if r.code != 403 || strings.Contains(string(r.body), "only for signed-in readers") {
 		t.Fatalf("hidden author's post was shown publicly: %d", r.code)
+	}
+}
+
+func TestTwitPicUploadThenPost(t *testing.T) {
+	h := newHarness(t)
+	var buf bytes.Buffer
+	mw := multipart.NewWriter(&buf)
+	mw.WriteField("username", "alice.test")
+	mw.WriteField("password", alicePW)
+	fw, _ := mw.CreateFormFile("media", "photo.jpg")
+	img := image.NewRGBA(image.Rect(0, 0, 640, 480))
+	jpeg.Encode(fw, img, nil)
+	mw.Close()
+	req, _ := http.NewRequest("POST", h.srv.URL+"/api/upload", &buf)
+	req.Header.Set("Content-Type", mw.FormDataContentType())
+	resp, err := http.DefaultClient.Do(req)
+	if err != nil {
+		t.Fatal(err)
+	}
+	body, _ := io.ReadAll(resp.Body)
+	resp.Body.Close()
+	var rsp struct {
+		Stat     string `xml:"stat,attr"`
+		MediaID  string `xml:"mediaid"`
+		MediaURL string `xml:"mediaurl"`
+	}
+	if err := xml.Unmarshal(body, &rsp); err != nil || rsp.Stat != "ok" || !strings.HasPrefix(rsp.MediaURL, "http://bird.test/m/") {
+		t.Fatalf("upload: %d %s", resp.StatusCode, body)
+	}
+	r := h.post("/statuses/update.json", url.Values{"status": {"look at this " + rsp.MediaURL}}, alice)
+	if r.code != 200 {
+		t.Fatalf("update: %d %s", r.code, r.body)
+	}
+	p := h.pds.Posts()[0]
+	if p.Text != "look at this" {
+		t.Fatalf("upload URL should be stripped from the text: %q", p.Text)
+	}
+	embed, _ := p.Embed["$type"].(string)
+	images, _ := p.Embed["images"].([]any)
+	if embed != "app.bsky.embed.images" || len(images) != 1 {
+		t.Fatalf("image embed not attached: %+v", p.Embed)
+	}
+	ar := images[0].(map[string]any)["aspectRatio"].(map[string]any)
+	if ar["width"].(float64) != 640 || ar["height"].(float64) != 480 {
+		t.Fatalf("aspect ratio: %+v", ar)
+	}
+	// Someone else cannot attach alice's upload.
+	r = h.post("/statuses/update.json", url.Values{"status": {"stolen " + rsp.MediaURL}}, basic("bob.test", bobPW))
+	if r.code != 200 || h.pds.Posts()[0].Embed != nil {
+		t.Fatalf("another user's upload was attached: %+v", h.pds.Posts()[0].Embed)
+	}
+	// Bad credentials use TwitPic's error format.
+	var buf2 bytes.Buffer
+	mw = multipart.NewWriter(&buf2)
+	mw.WriteField("username", "alice.test")
+	mw.WriteField("password", "wrong")
+	mw.Close()
+	req, _ = http.NewRequest("POST", h.srv.URL+"/api/upload", &buf2)
+	req.Header.Set("Content-Type", mw.FormDataContentType())
+	resp, _ = http.DefaultClient.Do(req)
+	body, _ = io.ReadAll(resp.Body)
+	if !strings.Contains(string(body), `<rsp stat="fail"><err code="1001"`) {
+		t.Fatalf("twitpic error: %s", body)
+	}
+}
+
+func TestIdenticalConcurrentRequestsCoalesce(t *testing.T) {
+	h := newHarness(t)
+	h.seed()
+	h.get("/account/verify_credentials.json", alice) // log in first
+	h.pds.Latency = 150 * time.Millisecond
+	before := h.pds.CallCount("app.bsky.feed.getTimeline")
+	done := make(chan int, 5)
+	for i := 0; i < 5; i++ {
+		go func() { done <- h.get("/statuses/home_timeline.json?count=5", alice).code }()
+	}
+	for i := 0; i < 5; i++ {
+		if code := <-done; code != 200 {
+			t.Fatalf("status %d", code)
+		}
+	}
+	if n := h.pds.CallCount("app.bsky.feed.getTimeline") - before; n != 1 {
+		t.Fatalf("5 identical concurrent requests made %d upstream timeline calls, want 1", n)
 	}
 }
