@@ -72,6 +72,10 @@ func (r *route) match(parts []string) (map[string]string, bool) {
 // normalize strips the version prefix and format extension:
 // "/1/statuses/show/123.json" -> ("statuses/show/123", "json").
 func normalize(p string) (string, string) {
+	// Clients configured with a trailing slash on the API root send "//x".
+	for strings.Contains(p, "//") {
+		p = strings.ReplaceAll(p, "//", "/")
+	}
 	p = strings.TrimPrefix(p, "/")
 	for _, pre := range []string{"1/", "api/"} {
 		if strings.HasPrefix(p, pre) && !strings.HasPrefix(p, "api/upload") {
