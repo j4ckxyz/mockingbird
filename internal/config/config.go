@@ -45,7 +45,8 @@ type Config struct {
 	PLCURL             string
 	AppViewProxy       string // atproto-proxy value for app.bsky.* calls
 	ChatProxy          string // atproto-proxy value for chat.bsky.* calls
-	PublicAppViewURL   string // unauthenticated AppView for post pages and anonymous search
+	PublicAppViewURL   string // unauthenticated AppView for post pages
+	PublicSearchURL    string // AppView that allows anonymous searchPosts
 	ImageCDNURL        string
 	PublicTimelineFeed string // feed generator AT-URI used for statuses/public_timeline
 	DefaultHandleHost  string // suffix appended to dotless handles at login, e.g. "bsky.social"
@@ -98,6 +99,7 @@ func load(getenv func(string) string) (*Config, error) {
 		AppViewProxy:                 e.str("MB_APPVIEW_PROXY", "did:web:api.bsky.app#bsky_appview"),
 		ChatProxy:                    e.str("MB_CHAT_PROXY", "did:web:api.bsky.chat#bsky_chat"),
 		PublicAppViewURL:             strings.TrimRight(e.str("MB_PUBLIC_APPVIEW_URL", "https://public.api.bsky.app"), "/"),
+		PublicSearchURL:              strings.TrimRight(e.str("MB_PUBLIC_SEARCH_URL", "https://api.bsky.app"), "/"),
 		ImageCDNURL:                  strings.TrimRight(e.str("MB_IMAGE_CDN_URL", "https://cdn.bsky.app"), "/"),
 		PublicTimelineFeed:           e.str("MB_PUBLIC_TIMELINE_FEED", "at://did:plc:z72i7hdynmk6r22z27h6tvur/app.bsky.feed.generator/whats-hot"),
 		DefaultHandleHost:            strings.Trim(e.str("MB_DEFAULT_HANDLE_HOST", "bsky.social"), "."),

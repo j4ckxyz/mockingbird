@@ -126,7 +126,7 @@ func New(cfg *config.Config, o Options) (*App, error) {
 		return tlsMat.CADER
 	}
 	apiSrv := api.New(api.Deps{Config: cfg, Store: st, Keys: keys, Sessions: sessions, Resolver: dir, Signer: signer,
-		Images: images, Public: public, Metrics: m, Logger: log, CA: caDER})
+		Images: images, Public: public, PublicSearch: &atp.Client{HTTP: pdsHTTP, Host: cfg.PublicSearchURL, Hook: m.ObserveUpstream}, Metrics: m, Logger: log, CA: caDER})
 	apiSrv.SetWeb(web.New(web.Deps{Config: cfg, API: apiSrv, Store: st, Public: public, Signer: signer, Logger: log, CA: caDER}))
 	a.API, a.Handler = apiSrv, apiSrv
 	a.Admin = adminHandler(m, apiSrv, cfg)

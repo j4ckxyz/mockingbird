@@ -44,8 +44,11 @@ type Deps struct {
 	Signer   *media.Signer
 	Images   *media.Proxy
 	Public   *atp.Client // unauthenticated AppView
-	Metrics  *metrics.Metrics
-	Logger   *slog.Logger
+	// PublicSearch serves anonymous Search API requests: 2009 clients call
+	// search without credentials, and public.api.bsky.app refuses that.
+	PublicSearch *atp.Client
+	Metrics      *metrics.Metrics
+	Logger       *slog.Logger
 	// Web serves non-API pages (setup, post pages, OAuth login form, CA).
 	Web http.Handler
 	// CA returns the legacy TLS CA certificate (DER), if enabled.

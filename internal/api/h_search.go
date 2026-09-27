@@ -44,7 +44,13 @@ func (s *Server) search(c *Ctx) (*Resp, error) {
 			params.Set("cursor", cursor)
 		}
 		var res atp.Posts
-		if err := c.Get("app.bsky.feed.searchPosts", params, &res); err != nil {
+		var err error
+		if c.Sess == nil && s.d.PublicSearch != nil {
+			err = s.d.PublicSearch.Do(c.Context(), &atp.Request{NSID: "app.bsky.feed.searchPosts", Params: params}, &res)
+		} else {
+			err = c.Get("app.bsky.feed.searchPosts", params, &res)
+		}
+		if err != nil {
 			if c.Sess == nil {
 				// The public AppView may refuse anonymous search; old
 				// clients expect an empty result, not an error.
