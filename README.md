@@ -2,6 +2,8 @@
 
 **Use your old iPhone Twitter apps with Bluesky.**
 
+<a href="https://bsky.app/profile/did:plc:4hawmtgzjx3vclfyphbhfn7v"><img src="https://img.shields.io/bluesky/followers/did:plc:4hawmtgzjx3vclfyphbhfn7v?style=social&logo=bluesky&label=Follow%20%40j4ck.xyz" alt="Follow @j4ck.xyz on Bluesky"></a>
+
 mockingbird is a small bridge that lets Twitter apps from 2009 and 2010, such as Tweetie 2 and Twitterrific, read and post to Bluesky. The app thinks it is talking to the old Twitter; mockingbird quietly translates everything to and from your Bluesky account.
 
 Try the hosted bridge at **http://mockingbird.j4ck.xyz**, or run your own in a few minutes.
@@ -155,5 +157,7 @@ Everything mockingbird keeps is in one Docker volume, so back that up if you lik
 - [docs/security.md](docs/security.md): exactly how accounts and your network are protected
 - [docs/development.md](docs/development.md): tests, the load tester and the code layout
 - [NOTES.md](NOTES.md): quirks of the old Twitter API and its apps
+
+The code is on [GitHub](https://github.com/j4ckxyz/mockingbird) and [Tangled](https://tangled.org/j4ck.xyz/mockingbird). Made by [@j4ck.xyz](https://bsky.app/profile/did:plc:4hawmtgzjx3vclfyphbhfn7v). MIT licensed; see [LICENSE](LICENSE).
 
 mockingbird is not affiliated with Twitter, X Corp or Bluesky Social PBC.

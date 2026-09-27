@@ -9,3 +9,4 @@
 /testdata/wayback/*.txt
 /deploy/pi/.env
 .DS_Store
+__pycache__/
