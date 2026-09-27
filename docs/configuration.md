@@ -36,7 +36,7 @@ All settings are environment variables in `.env`. Anything secret can instead be
 | `MB_PER_IP_RATE` / `MB_PER_IP_BURST` | `5` / `60` | Requests per second (and burst) allowed per internet address. |
 | `MB_PER_ACCOUNT_RATE` / `MB_PER_ACCOUNT_BURST` | `1` / `40` | The same, per Bluesky account. |
 | `MB_REPORTED_RATE_LIMIT` | `350` | The hourly limit reported to apps (kept generous so they never slow themselves down). |
-| `MB_OAUTH_CONSUMERS` | none | `key:secret` pairs for apps whose signatures should be checked. |
+| `MB_OAUTH_CONSUMERS` | none | `key:secret` pairs for apps whose signatures should be checked. These apps may also redirect to a website after sign-in without the confirmation step. |
 | `MB_OAUTH_TIMESTAMP_WINDOW` | `1h` | Allowed clock difference for signed requests. |
 | `MB_SESSION_IDLE_EXPIRY` | `1440h` | Unused sign-ins are forgotten after this (60 days). |
 | `MB_TLS_EXTRA_HOSTS` | the Twitter hostnames | Extra names on the HTTPS certificate. |

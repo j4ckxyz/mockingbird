@@ -66,6 +66,13 @@ func TestVerifySignatureKnownConsumer(t *testing.T) {
 	}
 	c := &Ctx{s: s, r: r, Form: r.Form}
 	cs, ts := "kAcSOqF21Fu85e7zjz7ZN2U4ZRhfV3WpwPAoE3Z7kBw", "LswwdoUaIvS8ltyTt5jkRh4J50vUPVVHtR2YPi5kE"
+	// A forged request must not burn the nonce of the genuine one.
+	good := p["oauth_signature"]
+	p["oauth_signature"] = "forged="
+	if err := s.verifySignature(c, p, cs, ts); err == nil || !strings.Contains(err.Error(), "signature") {
+		t.Fatalf("forged signature: %v", err)
+	}
+	p["oauth_signature"] = good
 	if err := s.verifySignature(c, p, cs, ts); err != nil {
 		t.Fatalf("valid signature rejected: %v", err)
 	}

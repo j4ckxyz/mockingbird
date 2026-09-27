@@ -163,7 +163,7 @@ func (s *Server) directMessageNew(c *Ctx) (*Resp, error) {
 	if ref == "" {
 		return nil, errForbidden("There was an error sending your message: recipient missing.")
 	}
-	actor, err := c.actor(ref)
+	actor, err := c.writeActor(ref)
 	if err != nil {
 		return nil, err
 	}

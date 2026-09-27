@@ -24,6 +24,8 @@ label{display:block;font-weight:bold;margin:10px 0 4px}
 input.t{width:95%;font-size:16px;padding:6px;border:1px solid #aaa;-webkit-border-radius:4px;border-radius:4px}
 .btn{margin-top:14px;font-size:16px;font-weight:bold;color:#fff;background:#2a8ad0;border:1px solid #1f6fa8;padding:7px 18px;-webkit-border-radius:5px;border-radius:5px}
 .pin{font:bold 32px Monaco,Menlo,monospace;letter-spacing:4px;text-align:center;margin:12px 0}
+a.btn{display:inline-block;text-decoration:none}
+.dest{font-weight:bold;font-size:18px;text-align:center;margin:12px 0;word-wrap:break-word}
 .post .who{overflow:hidden;margin-bottom:8px}.post .av{float:left;width:48px;height:48px;margin-right:10px;-webkit-border-radius:4px;border-radius:4px}
 .post .nm{font-weight:bold;color:#333}.post .h{color:#999}.post .txt{font-size:18px;line-height:1.35;margin:4px 0 10px;word-wrap:break-word}
 .post .img{display:block;max-width:100%;margin:8px 0;-webkit-border-radius:4px;border-radius:4px}
@@ -93,7 +95,7 @@ Image service (TwitPic-compatible): <code>{{.Base}}/api/upload</code></p></div>
 {{if .TLS}}<div class="box"><h2>HTTPS for clients that insist on it</h2>
 <p>Some clients only use <code>https://</code>. The bridge runs a legacy TLS 1.0 listener with a certificate from its own certificate authority. To trust it, open this page in Mobile Safari on the device and install:</p>
 <p><a href="/mockingbird.mobileconfig">Install profile (.mobileconfig)</a> &middot; <a href="/ca.crt">Download CA certificate</a></p>
-<div class="warn">Installing this CA means your device trusts certificates the bridge issues{{if .NameConstrained}} (limited to {{.TLSHosts}}){{end}}. Anyone who obtained the bridge's CA key could impersonate those sites to your device. Only install it on a device you use for vintage apps, and remove it from Settings &rsaquo; General &rsaquo; Profiles when you are done.</div>
+<div class="warn">Installing this CA means your device trusts certificates the bridge issues{{if .NameConstrained}} (limited to {{.TLSHosts}} and their subdomains){{end}}. Anyone who obtained the bridge's CA key could impersonate those sites to your device. Only install it on a device you use for vintage apps, and remove it from Settings &rsaquo; General &rsaquo; Profiles when you are done.</div>
 <p class="dim">SHA-256 fingerprint: <code>{{.CAFingerprint}}</code></p></div>{{end}}
 
 <div class="box"><h2>What works</h2>
@@ -104,7 +106,11 @@ Image service (TwitPic-compatible): <code>{{.Base}}/api/upload</code></p></div>
 <div class="box"><h1>Sign in to use this app</h1>
 {{if .Page.Error}}<div class="err">{{.Page.Error}}</div>{{end}}
 {{if .Page.PIN}}<p>You're signed in. Enter this PIN in your app to finish:</p><div class="pin">{{.Page.PIN}}</div>
+{{else if .Page.Continue}}<p>You're signed in. The app asked to be sent to:</p><div class="dest">{{.Page.Destination}}</div>
+<div class="warn">Whoever runs <b>{{.Page.Destination}}</b> will be able to use your Bluesky account. Only continue if you started this sign-in from an app on this device. If someone sent you this link, stop here and revoke the app password.</div>
+<p><a class="btn" href="{{.Page.Continue}}" rel="noreferrer">Continue to {{.Page.Destination}}</a></p>
 {{else if .Page.Token}}<p>An app wants to use your Bluesky account through mockingbird. Use an <b>app password</b>, never your main password.</p>
+{{if .Page.Destination}}<p>After you sign in, you will be sent to <b>{{.Page.Destination}}</b>. If you did not start this from an app on this device, do not sign in.</p>{{end}}
 <form method="post" action="/oauth/authorize">
 <input type="hidden" name="oauth_token" value="{{.Page.Token}}">
 <label for="handle">Bluesky handle</label><input class="t" id="handle" name="handle" type="text" autocapitalize="off" autocorrect="off" value="{{.Page.Handle}}" placeholder="alice.bsky.social">

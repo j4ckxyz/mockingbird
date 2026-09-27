@@ -50,6 +50,13 @@ type harness struct {
 
 func newHarness(t *testing.T, mutate ...func(map[string]string)) *harness {
 	t.Helper()
+	return newHarnessWithAccounts(t, nil, mutate...)
+}
+
+// newHarnessWithAccounts adds accounts before the identity directory is
+// built (the fake directory is a snapshot).
+func newHarnessWithAccounts(t *testing.T, extra []*fakepds.Account, mutate ...func(map[string]string)) *harness {
+	t.Helper()
 	pds := fakepds.New()
 	pdsSrv := httptest.NewServer(pds)
 	t.Cleanup(pdsSrv.Close)
@@ -59,6 +66,9 @@ func newHarness(t *testing.T, mutate ...func(map[string]string)) *harness {
 	pds.AddAccount(&fakepds.Account{DID: "did:plc:bob", Handle: "bob.test", DisplayName: "Bob",
 		AppPassword: bobPW, DMPassword: bobDM, Follows: []string{"did:plc:alice"}})
 	pds.AddAccount(&fakepds.Account{DID: "did:plc:carol", Handle: "carol.other.example", DisplayName: "Carol"})
+	for _, a := range extra {
+		pds.AddAccount(a)
+	}
 
 	dir := t.TempDir()
 	env := map[string]string{

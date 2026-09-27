@@ -241,13 +241,14 @@ func (s *Server) followerIDs(c *Ctx) (*Resp, error) {
 	return s.idsGraph(c, "app.bsky.graph.getFollowers")
 }
 
-// targetProfile resolves the request's target user to a detailed profile.
+// targetProfile resolves the target user of a follow, block or similar
+// action to a detailed profile.
 func (c *Ctx) targetProfile() (*atp.Profile, error) {
 	ref := c.userArg()
 	if ref == "" {
 		return nil, errNotFound()
 	}
-	actor, err := c.actor(ref)
+	actor, err := c.writeActor(ref)
 	if err != nil {
 		return nil, err
 	}

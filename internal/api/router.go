@@ -1,6 +1,7 @@
 package api
 
 import (
+	"context"
 	"encoding/base64"
 	"errors"
 	"log/slog"
@@ -201,7 +202,15 @@ func (s *Server) dispatch(w http.ResponseWriter, r *http.Request, ip string) str
 		// Clients often fire the same request twice (launch plus timer, or
 		// two views of one timeline). Identical concurrent GETs from one
 		// credential share a single upstream round; each renders its own copy.
-		v, e, _ := s.sf.Do("req:"+c.cacheKey(), func() (any, error) { return rt.h(c) })
+		// The shared call runs detached from this client's connection, so
+		// one client hanging up does not fail the others waiting on it.
+		v, e, _ := s.sf.Do("req:"+c.cacheKey(), func() (any, error) {
+			ctx, cancel := context.WithTimeout(context.WithoutCancel(r.Context()), requestTimeout)
+			defer cancel()
+			shared := *c
+			shared.r = r.WithContext(ctx)
+			return rt.h(&shared)
+		})
 		if v != nil {
 			res = v.(*Resp)
 		}

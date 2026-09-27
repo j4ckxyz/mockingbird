@@ -84,6 +84,32 @@ func TestSeparateIDSpaces(t *testing.T) {
 	}
 }
 
+// Listing the same messages again must not consume IDs: new messages get
+// the next ID, keeping DM IDs dense and far below 2^31.
+func TestDMIDsRepeatDoesNotBurnIDs(t *testing.T) {
+	s := openTest(t)
+	ctx := context.Background()
+	now := time.Now()
+	refs := []DMRef{{ConvoID: "c", MsgID: "1", SortAt: now}, {ConvoID: "c", MsgID: "2", SortAt: now.Add(time.Second)}}
+	for i := 0; i < 5; i++ {
+		ids, err := s.DMIDs(ctx, refs)
+		if err != nil || ids[DMRef{ConvoID: "c", MsgID: "1"}] != 1 || ids[DMRef{ConvoID: "c", MsgID: "2"}] != 2 {
+			t.Fatalf("round %d: %v %v", i, ids, err)
+		}
+	}
+	ids, err := s.DMIDs(ctx, append(refs, DMRef{ConvoID: "c", MsgID: "3", SortAt: now.Add(2 * time.Second)}))
+	if err != nil || ids[DMRef{ConvoID: "c", MsgID: "3"}] != 3 {
+		t.Fatalf("new message after repeats: %v %v", ids, err)
+	}
+	// A message first seen without a time gets it backfilled.
+	s.DMIDs(ctx, []DMRef{{ConvoID: "d", MsgID: "x"}})
+	ids, _ = s.DMIDs(ctx, []DMRef{{ConvoID: "d", MsgID: "x", SortAt: now}})
+	r, err := s.DMByID(ctx, ids[DMRef{ConvoID: "d", MsgID: "x"}])
+	if err != nil || r.SortAt.UnixMilli() != now.UnixMilli() {
+		t.Fatalf("sort_at not backfilled: %+v %v", r, err)
+	}
+}
+
 func TestUserHandleUpdate(t *testing.T) {
 	s := openTest(t)
 	ctx := context.Background()

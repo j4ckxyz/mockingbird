@@ -492,14 +492,24 @@ func TestSearchHostAndFormats(t *testing.T) {
 	if r.code != 200 || !strings.Contains(string(r.body), "<feed") {
 		t.Fatalf("atom: %d %s", r.code, r.body)
 	}
-	// JSONP
-	r = h.get("/search.json?q=bob&callback=handle_results", alice)
+	// JSONP, for anonymous requests only.
+	r = h.get("/search.json?q=bob&callback=handle_results")
 	if !strings.HasPrefix(string(r.body), "/**/handle_results({") || !strings.HasPrefix(r.hdr.Get("Content-Type"), "text/javascript") {
 		t.Fatalf("jsonp: %s", r.body)
 	}
-	r = h.get("/search.json?q=bob&callback=alert(1)//", alice)
+	r = h.get("/search.json?q=bob&callback=alert(1)//")
 	if r.code != 400 || strings.Contains(string(r.body), "alert(1)") {
 		t.Fatalf("bad callback accepted: %d %s", r.code, r.body)
+	}
+	// With credentials the callback is ignored: a browser holding saved
+	// Basic credentials would otherwise leak the user's data to any site.
+	r = h.get("/search.json?q=bob&callback=handle_results", alice)
+	if r.code != 200 || strings.Contains(string(r.body), "handle_results") || !strings.HasPrefix(r.hdr.Get("Content-Type"), "application/json") {
+		t.Fatalf("authenticated jsonp: %d %s", r.code, r.body)
+	}
+	r = h.get("/direct_messages.json?callback=steal", alice)
+	if strings.Contains(string(r.body), "steal") {
+		t.Fatalf("authenticated jsonp on DMs: %s", r.body)
 	}
 	// Anonymous search is allowed.
 	r = h.get("/search.json?q=bob", host("search.twitter.com"))

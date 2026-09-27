@@ -63,9 +63,10 @@ type Server struct {
 	cfg      *config.Config
 	log      *slog.Logger
 	ids      *idCache
-	handles  *cache.LRU[string, string]         // did -> handle
-	profiles *cache.LRU[string, *atp.Profile]   // did -> detailed profile (counts)
-	short    *cache.LRU[string, *shortNames]    // viewer did -> short name map
+	handles  *cache.LRU[string, string]       // did -> handle
+	profiles *cache.LRU[string, *atp.Profile] // did -> detailed profile (counts)
+	short    *cache.LRU[string, *shortNames]  // viewer did -> short name map
+	shortMu  sync.Mutex
 	cursors  *cache.LRU[string, string]         // viewer|feed|statusID -> cursor
 	reposts  *cache.LRU[string, string]         // repost URI -> reposted post URI
 	dmCache  *cache.LRU[string, []dmCollected]  // viewer|sent -> merged messages
@@ -187,18 +188,36 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		route = "ratelimited"
 		return
 	}
-	r.Body = http.MaxBytesReader(rw, r.Body, s.bodyLimit(r))
-	ctx, cancel := context.WithTimeout(r.Context(), 45*time.Second)
+	upload := isUploadPath(r.URL.Path)
+	timeout, limit := requestTimeout, int64(64<<10)
+	if upload {
+		// A photo over EDGE (about 100 kbit/s) takes well over the server's
+		// 30-second read timeout, so uploads get their own deadlines.
+		timeout, limit = uploadTimeout, 5<<20
+		rc := http.NewResponseController(w)
+		rc.SetReadDeadline(time.Now().Add(uploadTimeout))
+		rc.SetWriteDeadline(time.Now().Add(uploadTimeout + 30*time.Second))
+	}
+	r.Body = http.MaxBytesReader(rw, r.Body, limit)
+	ctx, cancel := context.WithTimeout(r.Context(), timeout)
 	defer cancel()
 	r = r.WithContext(ctx)
 	route = s.dispatch(rw, r, ip)
 }
 
-func (s *Server) bodyLimit(r *http.Request) int64 {
-	if strings.Contains(r.URL.Path, "upload") || strings.Contains(r.URL.Path, "update_profile_image") {
-		return 5 << 20
+const (
+	requestTimeout = 45 * time.Second
+	uploadTimeout  = 5 * time.Minute
+)
+
+// isUploadPath reports the endpoints that accept image bodies.
+func isUploadPath(p string) bool {
+	path, _ := normalize(p)
+	switch path {
+	case "api/upload", "api/uploadAndPost", "2/upload", "account/update_profile_image", "account/update_profile_background_image":
+		return true
 	}
-	return 64 << 10
+	return false
 }
 
 // clientIP returns the peer address, honouring X-Forwarded-For only from
@@ -367,17 +386,22 @@ func acceptsGzip(r *http.Request) bool {
 }
 
 // shortNames maps a bare name ("alice") to full handles the viewer has seen
-// recently ("alice.example.com"), for resolving dotless @mentions.
+// recently ("alice.example.com"), for resolving dotless @mentions. Several
+// handles can share a first label; the most recent comes first.
 type shortNames struct {
 	mu sync.Mutex
-	m  *cache.LRU[string, string]
+	m  *cache.LRU[string, []string]
 }
 
+const maxShortNameHandles = 4
+
 func (s *Server) shortNamesFor(did string) *shortNames {
+	s.shortMu.Lock()
+	defer s.shortMu.Unlock()
 	if sn, ok := s.short.Get(did); ok {
 		return sn
 	}
-	sn := &shortNames{m: cache.New[string, string](512)}
+	sn := &shortNames{m: cache.New[string, []string](512)}
 	s.short.Add(did, sn)
 	return sn
 }
@@ -386,12 +410,27 @@ func (sn *shortNames) add(handle string) {
 	if handle == "" || handle == "handle.invalid" {
 		return
 	}
+	handle = strings.ToLower(handle)
 	first, _, _ := strings.Cut(handle, ".")
-	sn.m.Add(strings.ToLower(first), handle)
+	sn.mu.Lock()
+	defer sn.mu.Unlock()
+	old, _ := sn.m.Get(first)
+	hs := make([]string, 0, min(len(old)+1, maxShortNameHandles))
+	hs = append(hs, handle)
+	for _, h := range old {
+		if h != handle && len(hs) < maxShortNameHandles {
+			hs = append(hs, h)
+		}
+	}
+	sn.m.Add(first, hs)
 }
 
-func (sn *shortNames) get(name string) (string, bool) {
-	return sn.m.Get(strings.ToLower(name))
+// get returns the handles seen for name, most recent first.
+func (sn *shortNames) get(name string) []string {
+	sn.mu.Lock()
+	defer sn.mu.Unlock()
+	hs, _ := sn.m.Get(strings.ToLower(name))
+	return append([]string(nil), hs...)
 }
 
 // hourCount tracks per-viewer request counts for plausible rate headers.

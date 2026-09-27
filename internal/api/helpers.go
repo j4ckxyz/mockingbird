@@ -3,7 +3,9 @@ package api
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/url"
+	"slices"
 	"sort"
 	"strconv"
 	"strings"
@@ -55,13 +57,21 @@ func (s *Server) detailedProfiles(ctx context.Context, c *Ctx, dids []string) ma
 	if len(miss) == 0 {
 		return out
 	}
-	ctx, cancel := context.WithTimeout(ctx, 3*time.Second)
-	defer cancel()
 	sort.Strings(miss)
+	deadline := time.Now().Add(3 * time.Second) // budget for all batches
+	// Coalesce per viewer: the fetch runs as this viewer's session, which
+	// must not be borrowed for another user's request.
+	viewer := "anon"
+	if c.Sess != nil {
+		viewer = string(c.Sess.Key)
+	}
 	for i := 0; i < len(miss); i += 25 {
 		batch := miss[i:min(i+25, len(miss))]
-		key := "profiles:" + strings.Join(batch, ",")
+		key := "profiles:" + viewer + ":" + strings.Join(batch, ",")
 		v, err, _ := s.sf.Do(key, func() (any, error) {
+			// Detached, so a waiter is not failed by the first caller leaving.
+			ctx, cancel := context.WithDeadline(context.WithoutCancel(ctx), deadline)
+			defer cancel()
 			var res atp.Profiles
 			err := c.Caller().Do(ctx, &atp.Request{NSID: "app.bsky.actor.getProfiles", Params: url.Values{"actors": batch}}, &res)
 			return res.Profiles, err
@@ -99,19 +109,66 @@ func (c *Ctx) actor(ref string) (string, error) {
 	return c.fullHandle(ref), nil
 }
 
-// fullHandle expands a dotless screen name: first from handles the viewer
-// has seen recently, then with the default host (alice -> alice.bsky.social).
+// fullHandle expands a dotless screen name for reading: first the handle
+// the viewer saw most recently, then the default host (alice ->
+// alice.bsky.social). Clients truncate linked "@alice.example.com" at the
+// first dot, so this is how a tapped name finds the right profile.
 func (c *Ctx) fullHandle(name string) string {
 	name = strings.ToLower(name)
 	if strings.Contains(name, ".") {
 		return name
 	}
 	if c.Sess != nil {
-		if h, ok := c.s.shortNamesFor(c.Sess.DID).get(name); ok {
-			return h
+		if hs := c.s.shortNamesFor(c.Sess.DID).get(name); len(hs) > 0 {
+			return hs[0]
 		}
 	}
 	return ident.NormalizeIdentifier(name, c.s.cfg.DefaultHandleHost)
+}
+
+// writeHandle expands a dotless name for an action that reaches another
+// account (following, blocking, messaging, mentioning). Recency alone is not
+// enough here: anyone whose handle starts "alice." could appear in the
+// viewer's timeline and capture messages meant for another alice. So the
+// name must be unambiguous across the handles the viewer has seen and the
+// default-host account.
+func (c *Ctx) writeHandle(ctx context.Context, name string) (string, error) {
+	name = strings.ToLower(name)
+	if strings.Contains(name, ".") {
+		return name, nil
+	}
+	def := ident.NormalizeIdentifier(name, c.s.cfg.DefaultHandleHost)
+	var cands []string
+	if c.Sess != nil {
+		cands = c.s.shortNamesFor(c.Sess.DID).get(name)
+	}
+	if len(cands) == 0 {
+		return def, nil
+	}
+	if !slices.Contains(cands, def) {
+		rctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+		who, err := c.s.d.Resolver.Resolve(rctx, def)
+		cancel()
+		if err == nil && who.Handle == def {
+			cands = append(cands, def)
+		}
+	}
+	if len(cands) == 1 {
+		return cands[0], nil
+	}
+	return "", &APIError{Status: 403, Msg: fmt.Sprintf("More than one account is called @%s (%s). Use the full handle.", name, strings.Join(cands, ", "))}
+}
+
+// writeActor is actor for actions that reach another account.
+func (c *Ctx) writeActor(ref string) (string, error) {
+	ref = strings.TrimSpace(strings.TrimPrefix(ref, "@"))
+	if ref == "" || strings.HasPrefix(ref, "did:") || strings.Contains(ref, ".") {
+		return c.actor(ref)
+	}
+	if n, err := strconv.ParseInt(ref, 10, 64); err == nil && n > 0 {
+		return c.actor(ref)
+	}
+	return c.writeHandle(c.Context(), ref)
 }
 
 // userArg reads the target user of a request: path :id, or id / user_id /

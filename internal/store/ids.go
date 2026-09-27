@@ -5,6 +5,7 @@ import (
 	"database/sql"
 	"errors"
 	"sort"
+	"strings"
 	"time"
 )
 
@@ -259,6 +260,22 @@ func (s *Store) DMIDs(ctx context.Context, refs []DMRef) (map[DMRef]int64, error
 		}
 	}
 	sort.SliceStable(sorted, func(i, j int) bool { return sorted[i].SortAt.Before(sorted[j].SortAt) })
+	// Look up known messages first. Every listing repeats most messages, and
+	// an upsert that hits a conflict still consumes an AUTOINCREMENT value,
+	// which would push new DM IDs past 2^31 within months.
+	if err := s.lookupDMs(ctx, sorted, out); err != nil {
+		return nil, err
+	}
+	missing := sorted[:0:0]
+	for _, r := range sorted {
+		if _, ok := out[DMRef{ConvoID: r.ConvoID, MsgID: r.MsgID}]; !ok {
+			missing = append(missing, r)
+		}
+	}
+	if len(missing) == 0 {
+		return out, nil
+	}
+	sorted = missing
 	tx, err := s.w.BeginTx(ctx, nil)
 	if err != nil {
 		return nil, err
@@ -281,6 +298,43 @@ func (s *Store) DMIDs(ctx context.Context, refs []DMRef) (map[DMRef]int64, error
 		out[key] = id
 	}
 	return out, tx.Commit()
+}
+
+// lookupDMs fills out with existing DM IDs.
+func (s *Store) lookupDMs(ctx context.Context, refs []DMRef, out map[DMRef]int64) error {
+	const chunk = 400
+	for i := 0; i < len(refs); i += chunk {
+		part := refs[i:min(i+chunk, len(refs))]
+		args := make([]any, 0, 2*len(part))
+		timed := make(map[DMRef]bool, len(part))
+		for _, r := range part {
+			args = append(args, r.ConvoID, r.MsgID)
+			timed[DMRef{ConvoID: r.ConvoID, MsgID: r.MsgID}] = !r.SortAt.IsZero()
+		}
+		values := strings.TrimSuffix(strings.Repeat("(?,?),", len(part)), ",")
+		rows, err := s.r.QueryContext(ctx, `SELECT id, convo_id, msg_id, sort_at IS NOT NULL FROM dm_ids WHERE (convo_id, msg_id) IN (VALUES `+values+`)`, args...)
+		if err != nil {
+			return err
+		}
+		for rows.Next() {
+			var id int64
+			var k DMRef
+			var hasTime bool
+			if err := rows.Scan(&id, &k.ConvoID, &k.MsgID, &hasTime); err != nil {
+				rows.Close()
+				return err
+			}
+			if !hasTime && timed[k] {
+				continue // let the upsert backfill the time
+			}
+			out[k] = id
+		}
+		rows.Close()
+		if err := rows.Err(); err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // DMByID returns the conversation and message IDs for a DM ID.

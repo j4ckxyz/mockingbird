@@ -172,6 +172,8 @@ func upstreamErr(err error) error {
 	switch {
 	case errors.Is(err, session.ErrRevoked):
 		return &APIError{Status: 401, Msg: "Could not authenticate you. Your Bluesky session has expired or the app password was revoked.", Cause: err}
+	case errors.Is(err, context.Canceled):
+		return &APIError{Status: 502, Msg: "The request was cancelled. Try again.", Cause: err}
 	case errors.Is(err, context.DeadlineExceeded):
 		return &APIError{Status: 502, Msg: "Bluesky is taking too long to respond. Try again.", Cause: err}
 	}
@@ -248,13 +250,25 @@ func (c *Ctx) encode(res *Resp) ([]byte, string, error) {
 	if err != nil {
 		return nil, "", err
 	}
-	if cb := c.Form.Get("callback"); cb != "" {
+	if cb := c.jsonpCallback(); cb != "" {
 		if !twitter.ValidCallback(cb) {
 			return nil, "", &APIError{Status: 400, Msg: "Invalid callback"}
 		}
 		return twitter.WrapJSONP(cb, b), "text/javascript; charset=utf-8", nil
 	}
 	return b, "application/json; charset=utf-8", nil
+}
+
+// jsonpCallback returns the JSONP callback name, only for anonymous
+// requests. A browser that has saved Basic credentials for the bridge sends
+// them with any page's <script src>, so JSONP on an authenticated response
+// would let any website read that user's timeline and messages. No native
+// client uses JSONP.
+func (c *Ctx) jsonpCallback() string {
+	if c.Sess != nil {
+		return ""
+	}
+	return c.Form.Get("callback")
 }
 
 // send writes status, headers and body, honouring suppress_response_codes.
@@ -313,7 +327,7 @@ func (c *Ctx) renderError(err error) {
 	default:
 		b, _ = twitter.EncodeJSON(body)
 		ct = "application/json; charset=utf-8"
-		if cb := c.Form.Get("callback"); cb != "" && twitter.ValidCallback(cb) {
+		if cb := c.jsonpCallback(); cb != "" && twitter.ValidCallback(cb) {
 			b, ct = twitter.WrapJSONP(cb, b), "text/javascript; charset=utf-8"
 		}
 	}

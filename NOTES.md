@@ -27,7 +27,8 @@ A running log of things that matter for 2009-2010 Twitter clients. Add to it as 
 - Images, videos and quote posts become links in the text: to `/p/<id>` (a no-JavaScript page) for media, and to the quoted post's `/p/<id>`. Link cards append their URL if it isn't already in the text.
 - XML 1.0 forbids most control characters. One post containing U+0007 would make an entire timeline unparseable on the device, so the XML writer drops them.
 - Old clients count down from 140 and may refuse to send longer posts. The bridge accepts up to 300 graphemes (Bluesky's limit) and returns Twitter's 403 "Status is over 300 characters." beyond that.
-- Clients linkify `@word` and stop at the first dot, so tapping `@alice.bsky.social` opens `users/show/alice`. Bare names resolve to handles the viewer has seen recently, then to `<name>.bsky.social` (`MB_DEFAULT_HANDLE_HOST`). The same rule applies to outgoing `@mentions` and to the login username.
+- Clients linkify `@word` and stop at the first dot, so tapping `@alice.bsky.social` opens `users/show/alice`. For reading (profiles, timelines), bare names resolve to the handle the viewer saw most recently, then to `<name>.bsky.social` (`MB_DEFAULT_HANDLE_HOST`). For actions that reach another account (follow, block, DM, outgoing `@mentions`), the name must be unambiguous: if the viewer has seen `alice.example.com` and `alice.bsky.social` also exists, the request is refused with "Use the full handle" (mentions stay plain text). Otherwise anyone with a look-alike `alice.*` handle who appeared in the timeline could capture DMs meant for someone else. The login username only ever uses the default host.
+- OAuth: an unverified app's `http(s)` callback is shown as a *Continue* link instead of a redirect. Apps whose web view intercepts the callback URL still see the navigation when the user taps it; watch whether any client instead expects the redirect to happen by itself.
 
 ## Timelines
 

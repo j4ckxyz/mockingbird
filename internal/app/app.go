@@ -14,6 +14,7 @@ import (
 	"net/netip"
 	"net/url"
 	"path/filepath"
+	"strings"
 	"sync/atomic"
 	"time"
 
@@ -118,6 +119,10 @@ func New(cfg *config.Config, o Options) (*App, error) {
 			return nil, err
 		}
 		a.TLS = tlsMat.Config()
+		if len(tlsMat.Warnings) > 0 {
+			log.Warn("legacy TLS: these hosts are outside the CA's name constraints, so devices that enforce them will reject the certificate; delete the tls directory in the data volume to issue a new CA (devices must reinstall it)",
+				"hosts", strings.Join(tlsMat.Warnings, ","))
+		}
 	}
 	caDER := func() []byte {
 		if tlsMat == nil {

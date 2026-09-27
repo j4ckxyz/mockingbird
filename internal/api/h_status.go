@@ -135,18 +135,26 @@ func (c *Ctx) selfProfile() (*atp.Profile, error) {
 }
 
 // mentionResolver resolves @names for outgoing posts: full handles through
-// identity resolution; bare names through handles the viewer has seen
-// recently, then <name>.<default host>.
+// identity resolution; bare names only when unambiguous (see writeHandle).
+// Ambiguous or unknown names stay plain text.
 func (s *Server) mentionResolver(c *Ctx) translate.MentionResolver {
 	budget := 10 // resolutions per post; each may hit DNS and HTTPS
+	deadline := time.Now().Add(15 * time.Second)
 	return func(ctx context.Context, name string) (string, string, bool) {
-		if budget == 0 {
+		if budget == 0 || time.Now().After(deadline) {
 			return "", "", false
 		}
 		budget--
-		handle := c.fullHandle(name)
-		ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
+		d := time.Now().Add(5 * time.Second)
+		if deadline.Before(d) {
+			d = deadline
+		}
+		ctx, cancel := context.WithDeadline(ctx, d)
 		defer cancel()
+		handle, err := c.writeHandle(ctx, name)
+		if err != nil {
+			return "", "", false
+		}
 		who, err := s.d.Resolver.Resolve(ctx, handle)
 		if err != nil || who.Handle == "handle.invalid" {
 			return "", "", false

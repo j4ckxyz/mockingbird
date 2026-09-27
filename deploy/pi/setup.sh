@@ -18,7 +18,7 @@ fi
 here="$(cd "$(dirname "$0")" && pwd)"
 cd "$here"
 
-for cmd in docker openssl sudo; do
+for cmd in docker openssl sudo curl; do
 	command -v "$cmd" >/dev/null || { echo "missing: $cmd" >&2; exit 1; }
 done
 docker compose version >/dev/null || { echo "missing: docker compose plugin" >&2; exit 1; }

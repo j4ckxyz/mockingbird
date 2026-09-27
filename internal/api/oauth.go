@@ -14,6 +14,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"github.com/j4ckxyz/mockingbird/internal/cache"
@@ -33,18 +34,40 @@ import (
 // unused nonce. Only an HMAC of the token is stored server-side.
 
 type requestToken struct {
+	// Set at creation, then read-only.
 	secret    string
 	consumer  string
 	callback  string
-	verifier  string
-	login     *session.LoginResult
 	createdAt time.Time
+
+	// Set once by the sign-in form and consumed once by access_token.
+	mu       sync.Mutex
+	verifier string
+	login    *session.LoginResult
+	failures int  // wrong verifiers presented
+	used     bool // exchanged, or burned after too many wrong verifiers
 }
 
+// maxVerifierFailures burns a request token after this many wrong PINs, so
+// the 7-digit verifier cannot be guessed.
+const maxVerifierFailures = 3
+
 type oauthStore struct {
-	tokens *cache.LRU[string, *requestToken]
-	nonces *cache.LRU[string, bool]
-	ttl    time.Duration
+	tokens  *cache.LRU[string, *requestToken]
+	nonceMu sync.Mutex
+	nonces  *cache.LRU[string, bool]
+	ttl     time.Duration
+}
+
+// useNonce records a nonce, reporting false if it was already used.
+func (o *oauthStore) useNonce(nonce string, ttl time.Duration) bool {
+	o.nonceMu.Lock()
+	defer o.nonceMu.Unlock()
+	if _, used := o.nonces.Get(nonce); used {
+		return false
+	}
+	o.nonces.AddTTL(nonce, true, ttl)
+	return true
 }
 
 func newOAuthStore(ttl time.Duration) *oauthStore {
@@ -134,23 +157,34 @@ func splitPort(h string) (string, string, error) {
 	return h[:i], h[i+1:], nil
 }
 
-// verifySignature checks a request from a configured consumer.
+// verifySignature checks a request from a configured consumer: timestamp
+// window, then signature, then nonce. The nonce is recorded only once the
+// signature is valid, so forged requests cannot fill the nonce cache.
 func (s *Server) verifySignature(c *Ctx, p map[string]string, consumerSecret, tokenSecret string) error {
 	sig := p["oauth_signature"]
 	if sig == "" {
 		return errors.New("missing signature")
 	}
-	if w := s.cfg.OAuthTimestampWindow; w > 0 {
+	w := s.cfg.OAuthTimestampWindow
+	if w > 0 {
 		ts, err := strconv.ParseInt(p["oauth_timestamp"], 10, 64)
 		if err != nil || s.now().Sub(time.Unix(ts, 0)).Abs() > w {
 			return errors.New("timestamp outside window")
 		}
+	}
+	if err := s.checkSignature(c, p, sig, consumerSecret, tokenSecret); err != nil {
+		return err
+	}
+	if w > 0 {
 		nonce := p["oauth_consumer_key"] + "|" + p["oauth_timestamp"] + "|" + p["oauth_nonce"]
-		if _, used := s.oauth.nonces.Get(nonce); used {
+		if !s.oauth.useNonce(nonce, 2*w) {
 			return errors.New("nonce reused")
 		}
-		s.oauth.nonces.AddTTL(nonce, true, 2*w)
 	}
+	return nil
+}
+
+func (s *Server) checkSignature(c *Ctx, p map[string]string, sig, consumerSecret, tokenSecret string) error {
 	switch strings.ToUpper(p["oauth_signature_method"]) {
 	case "PLAINTEXT":
 		want := percentEncode(consumerSecret) + "&" + percentEncode(tokenSecret)
@@ -264,8 +298,9 @@ func (s *Server) oauthAccessToken(c *Ctx) (*Resp, error) {
 		}
 		login = res
 	} else {
-		rt, ok := s.oauth.tokens.Get(p["oauth_token"])
-		if !ok || rt.login == nil || rt.consumer != consumer {
+		tokID := p["oauth_token"]
+		rt, ok := s.oauth.tokens.Get(tokID)
+		if !ok || rt.consumer != consumer {
 			return nil, &APIError{Status: 401, Msg: "Invalid / expired Token"}
 		}
 		if known {
@@ -273,11 +308,10 @@ func (s *Server) oauthAccessToken(c *Ctx) (*Resp, error) {
 				return nil, &APIError{Status: 401, Msg: "Failed to validate oauth signature and token", Cause: err}
 			}
 		}
-		if rt.verifier != "" && !secret.EqualString(p["oauth_verifier"], rt.verifier) {
-			return nil, &APIError{Status: 401, Msg: "Invalid oauth_verifier parameter"}
+		var err error
+		if login, err = s.redeemRequestToken(tokID, rt, p["oauth_verifier"]); err != nil {
+			return nil, err
 		}
-		s.oauth.tokens.Remove(p["oauth_token"])
-		login = rt.login
 	}
 	uid, err := s.builder(c).UserID(c.Context(), login.Identity.DID, login.Identity.Handle)
 	if err != nil {
@@ -291,6 +325,56 @@ func (s *Server) oauthAccessToken(c *Ctx) (*Resp, error) {
 		"user_id": {strconv.FormatInt(uid, 10)}, "screen_name": {login.Identity.Handle}}), nil
 }
 
+// redeemRequestToken consumes an authorized request token exactly once. The
+// verifier is always required; wrong ones count towards burning the token.
+func (s *Server) redeemRequestToken(tokID string, rt *requestToken, verifier string) (*session.LoginResult, error) {
+	rt.mu.Lock()
+	defer rt.mu.Unlock()
+	if rt.used || rt.login == nil || rt.verifier == "" {
+		return nil, &APIError{Status: 401, Msg: "Invalid / expired Token"}
+	}
+	if !secret.EqualString(verifier, rt.verifier) {
+		rt.failures++
+		if rt.failures >= maxVerifierFailures {
+			rt.used = true
+			s.oauth.tokens.Remove(tokID)
+		}
+		return nil, &APIError{Status: 401, Msg: "Invalid oauth_verifier parameter"}
+	}
+	rt.used = true
+	s.oauth.tokens.Remove(tokID)
+	return rt.login, nil
+}
+
+// Callback kinds.
+const (
+	callbackPIN = iota // "oob": show the verifier as a PIN
+	callbackApp        // custom URL scheme handled by an app on the device
+	callbackWeb        // http(s) URL
+)
+
+// classifyCallback sorts an oauth_callback into a kind. Script-bearing and
+// local schemes are refused.
+func classifyCallback(cb string) (int, *url.URL, error) {
+	if cb == "" || cb == "oob" {
+		return callbackPIN, nil, nil
+	}
+	u, err := url.Parse(cb)
+	if err != nil || u.Scheme == "" {
+		return 0, nil, errors.New("invalid callback")
+	}
+	switch strings.ToLower(u.Scheme) {
+	case "http", "https":
+		if u.Host == "" {
+			return 0, nil, errors.New("invalid callback")
+		}
+		return callbackWeb, u, nil
+	case "javascript", "data", "vbscript", "file", "about", "blob", "filesystem":
+		return 0, nil, errors.New("invalid callback")
+	}
+	return callbackApp, u, nil
+}
+
 // AuthorizePage is the data for the OAuth login form.
 type AuthorizePage struct {
 	Token    string
@@ -298,6 +382,12 @@ type AuthorizePage struct {
 	Handle   string
 	Consumer string
 	PIN      string
+	// Destination is the web host the browser will be sent to after
+	// sign-in, shown so a phishing link's destination is visible.
+	Destination string
+	// Continue, when set, is the callback URL for an app the bridge cannot
+	// verify: the user must confirm by following it.
+	Continue string
 }
 
 // OAuthAuthorize handles GET/POST /oauth/authorize (and /oauth/authenticate):
@@ -317,7 +407,24 @@ func (s *Server) OAuthAuthorize(w http.ResponseWriter, r *http.Request, render f
 		render(w, r, AuthorizePage{Error: "This sign-in link has expired. Go back to your app and try again."})
 		return
 	}
+	kind, cbURL, err := classifyCallback(rt.callback)
+	if err != nil {
+		render(w, r, AuthorizePage{Error: "The app supplied an invalid callback."})
+		return
+	}
 	page := AuthorizePage{Token: tok, Consumer: rt.consumer}
+	if kind == callbackWeb {
+		page.Destination = cbURL.Host
+	}
+	rt.mu.Lock()
+	done := rt.used || rt.login != nil
+	rt.mu.Unlock()
+	if done {
+		// A request token is authorized once; a second sign-in could swap
+		// in a different account before the app exchanges it.
+		render(w, r, AuthorizePage{Error: "This sign-in link has already been used. Go back to your app and try again."})
+		return
+	}
 	if r.Method != http.MethodPost {
 		render(w, r, page)
 		return
@@ -332,27 +439,39 @@ func (s *Server) OAuthAuthorize(w http.ResponseWriter, r *http.Request, render f
 		render(w, r, page)
 		return
 	}
-	rt.login = res
 	n, err := crand.Int(crand.Reader, big.NewInt(9_000_000))
 	if err != nil {
 		http.Error(w, "internal error", http.StatusInternalServerError)
 		return
 	}
-	rt.verifier = strconv.FormatInt(n.Int64()+1_000_000, 10) // 7-digit PIN, as Twitter used
-	if rt.callback == "oob" || rt.callback == "" {
-		page.PIN = rt.verifier
+	verifier := strconv.FormatInt(n.Int64()+1_000_000, 10) // 7-digit PIN, as Twitter used
+	rt.mu.Lock()
+	if rt.used || rt.login != nil {
+		rt.mu.Unlock()
+		render(w, r, AuthorizePage{Error: "This sign-in link has already been used. Go back to your app and try again."})
+		return
+	}
+	rt.verifier, rt.login = verifier, res
+	rt.mu.Unlock()
+
+	if kind == callbackPIN {
+		page.PIN = verifier
 		render(w, r, page)
 		return
 	}
-	u, err := url.Parse(rt.callback)
-	if err != nil || (u.Scheme == "javascript" || u.Scheme == "data") {
-		page.Error = "The app supplied an invalid callback."
-		render(w, r, page)
-		return
-	}
-	q := u.Query()
+	q := cbURL.Query()
 	q.Set("oauth_token", tok)
-	q.Set("oauth_verifier", rt.verifier)
-	u.RawQuery = q.Encode()
-	http.Redirect(w, r, u.String(), http.StatusFound)
+	q.Set("oauth_verifier", verifier)
+	cbURL.RawQuery = q.Encode()
+	_, verified := s.cfg.OAuthConsumers[rt.consumer]
+	if kind == callbackWeb && !verified {
+		// Anyone can request a token with any web callback, so an automatic
+		// redirect would hand the account to whoever sent the link. Apps
+		// whose web view intercepts the callback still see the navigation
+		// when the user follows this link.
+		page.Continue = cbURL.String()
+		render(w, r, page)
+		return
+	}
+	http.Redirect(w, r, cbURL.String(), http.StatusFound)
 }

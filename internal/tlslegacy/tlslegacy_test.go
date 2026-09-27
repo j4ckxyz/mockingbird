@@ -74,3 +74,23 @@ func TestLeafReissuedWhenHostsChange(t *testing.T) {
 		t.Fatal("CA must survive host changes")
 	}
 }
+
+// A host added after a name-constrained CA was issued is flagged; hosts the
+// constraints already cover (including subdomains) are not.
+func TestConstraintViolationsReported(t *testing.T) {
+	dir := t.TempDir()
+	m1, err := Load(Options{Dir: dir, CommonName: "a.example", Hosts: []string{"twitter.com"}, NameConstraints: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(m1.Warnings) != 0 {
+		t.Fatalf("unexpected warnings: %v", m1.Warnings)
+	}
+	m2, err := Load(Options{Dir: dir, CommonName: "a.example", Hosts: []string{"twitter.com", "api.twitter.com", "b.example"}, NameConstraints: true})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(m2.Warnings) != 1 || m2.Warnings[0] != "b.example" {
+		t.Fatalf("warnings: %v", m2.Warnings)
+	}
+}

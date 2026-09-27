@@ -41,7 +41,11 @@ type Material struct {
 	CA    *x509.Certificate
 	CADER []byte
 	Leaf  tls.Certificate
-	caKey *rsa.PrivateKey
+	// Warnings lists hostnames the leaf carries but the CA's name
+	// constraints do not permit (hosts added after the CA was created).
+	// Verifiers that enforce constraints reject the certificate for them.
+	Warnings []string
+	caKey    *rsa.PrivateKey
 }
 
 // Suites enabled on the legacy listener. iPhone OS 3 offers the RSA key
@@ -103,7 +107,36 @@ func Load(opts Options) (*Material, error) {
 		}
 	}
 	m.Leaf = tls.Certificate{Certificate: [][]byte{leaf.Raw, ca.Raw}, PrivateKey: leafKey, Leaf: leaf}
+	m.Warnings = constraintViolations(ca, hosts)
 	return m, nil
+}
+
+// constraintViolations returns the hosts the CA's name constraints do not
+// permit. The constraints are fixed when the CA is created, so hosts added
+// later can fall outside them. (Verifiers that enforce constraints then
+// reject the whole certificate, not just those names.)
+func constraintViolations(ca *x509.Certificate, hosts []string) []string {
+	if len(ca.PermittedDNSDomains) == 0 && len(ca.PermittedIPRanges) == 0 {
+		return nil
+	}
+	var bad []string
+	for _, h := range hosts {
+		ok := false
+		if ip := net.ParseIP(h); ip != nil {
+			for _, r := range ca.PermittedIPRanges {
+				ok = ok || r.Contains(ip)
+			}
+		} else {
+			for _, d := range ca.PermittedDNSDomains {
+				d = strings.ToLower(strings.TrimPrefix(d, "."))
+				ok = ok || h == d || strings.HasSuffix(h, "."+d)
+			}
+		}
+		if !ok {
+			bad = append(bad, h)
+		}
+	}
+	return bad
 }
 
 func normalizeHosts(hosts []string, cn string) []string {

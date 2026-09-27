@@ -210,11 +210,27 @@ func (h *Handler) theme(w http.ResponseWriter, r *http.Request) {
 	}
 	http.SetCookie(w, &http.Cookie{Name: "mb_theme", Value: set, Path: "/", MaxAge: 365 * 24 * 3600, HttpOnly: true, SameSite: http.SameSiteLaxMode})
 	back := r.URL.Query().Get("r")
-	// Only local paths: no open redirect.
-	if !strings.HasPrefix(back, "/") || strings.HasPrefix(back, "//") || strings.Contains(back, "\\") {
+	if !localPath(back) {
 		back = "/"
 	}
 	http.Redirect(w, r, back, http.StatusSeeOther)
+}
+
+// localPath reports whether p is a path on this site, so redirecting to it
+// cannot leave the site. Browsers drop tabs and newlines from URLs, so
+// "/\t/evil.example" would become "//evil.example": any control character
+// is refused, as are backslashes (treated as "/" by browsers).
+func localPath(p string) bool {
+	if !strings.HasPrefix(p, "/") || strings.HasPrefix(p, "//") || strings.Contains(p, "\\") {
+		return false
+	}
+	for i := 0; i < len(p); i++ {
+		if p[i] < 0x20 || p[i] == 0x7f {
+			return false
+		}
+	}
+	u, err := url.Parse(p)
+	return err == nil && u.Scheme == "" && u.Host == ""
 }
 
 func (h *Handler) static(w http.ResponseWriter, r *http.Request, name string) {
