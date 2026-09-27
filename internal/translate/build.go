@@ -4,6 +4,8 @@ import (
 	"context"
 	"strings"
 	"time"
+	"unicode"
+	"unicode/utf8"
 
 	"github.com/j4ckxyz/mockingbird/internal/atp"
 	"github.com/j4ckxyz/mockingbird/internal/cache"
@@ -33,8 +35,52 @@ type Builder struct {
 	OnProfile func(p *atp.Profile)
 }
 
-// Source is the "source" attribution on every status.
+// Source is the "source" attribution on statuses whose record does not name
+// the client that made them.
 const Source = `<a href="https://bsky.app" rel="nofollow">Bluesky</a>`
+
+// maxViaRunes bounds a record's "via" before it is shown as the source.
+const maxViaRunes = 64
+
+// SourceFor returns the status "source" for a post record's "via" field:
+// the client's name as plain text, as Twitter showed "web", or Source when
+// the record names none. The value comes from whoever wrote the record, so
+// it is stripped of control characters, capped in length and HTML-escaped
+// (the REST API's source is raw HTML).
+func SourceFor(via string) string {
+	var b strings.Builder
+	n := 0
+	space := false
+	for _, r := range strings.TrimSpace(via) {
+		if n == maxViaRunes {
+			break
+		}
+		if unicode.IsSpace(r) {
+			space = true
+			continue
+		}
+		if unicode.IsControl(r) || r == utf8.RuneError || unicode.Is(unicode.Cf, r) {
+			continue
+		}
+		if space && b.Len() > 0 {
+			b.WriteByte(' ')
+			n++
+		}
+		space = false
+		b.WriteRune(r)
+		n++
+	}
+	if b.Len() == 0 {
+		return Source
+	}
+	return strings.ReplaceAll(EscapeHTML(b.String()), `"`, "&quot;")
+}
+
+// searchSource entity-encodes a REST source for the Search API, which
+// carried it escaped once more.
+func searchSource(src string) string {
+	return strings.ReplaceAll(EscapeHTML(src), `"`, "&quot;")
+}
 
 // Default profile colours from Twitter's documented defaults.
 const (
@@ -274,7 +320,7 @@ func (x *batch) buildPost(p *atp.PostView, parent *atp.PostView) twitter.Status 
 	st := twitter.Status{
 		CreatedAt: twitter.Time(p.SortAt()),
 		ID:        id,
-		Source:    Source,
+		Source:    SourceFor(rec.Via),
 		IDStr:     twitter.IDString(id),
 	}
 	st.Text = PostText(rec, p.Embed, x.b.Links.PostPage(id), func(uri string) string {
@@ -450,7 +496,7 @@ func (b *Builder) SearchResults(ctx context.Context, posts []atp.PostView) ([]tw
 			ID:              st.ID,
 			FromUserID:      st.User.ID,
 			ISOLanguageCode: lang,
-			Source:          strings.ReplaceAll(EscapeHTML(Source), `"`, "&quot;"),
+			Source:          searchSource(st.Source),
 			ProfileImageURL: st.User.ProfileImageURL,
 			CreatedAt:       twitter.SearchTime(p.SortAt()),
 			IDStr:           st.IDStr,

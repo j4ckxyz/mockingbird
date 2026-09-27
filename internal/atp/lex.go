@@ -102,6 +102,9 @@ type PostRecord struct {
 	Embed     json.RawMessage `json:"embed,omitempty"`
 	Langs     []string        `json:"langs,omitempty"`
 	CreatedAt string          `json:"createdAt"`
+	// Via names the client that made the post. It is not part of the
+	// app.bsky lexicon; some clients add it (e.g. "Witchsky Web App").
+	Via string `json:"via,omitempty"`
 }
 
 // PostViewer is viewer-relative state on a post.

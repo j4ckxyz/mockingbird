@@ -22,6 +22,7 @@ A running log of things that matter for 2009-2010 Twitter clients. Add to it as 
 ## Text
 
 - Twitter's `text` was "escaped and HTML encoded": `<`, `>` and `&` arrive as entities in both JSON and XML (XML then escapes the `&` again). Quotes were **not** escaped in element text. Some clients echo the entities back when quoting or retweeting, so outgoing text is unescaped first.
+- `source` comes from the post record's `via` field when it has one (a non-lexicon field some clients write, such as "Witchsky Web App"), shown as escaped plain text like Twitter's "web", capped at 64 characters. Without it, `source` is a link to Bluesky. Posts made through the bridge carry `"via": "Tweetie"`.
 - The Search API's `source` is entity-encoded (`&lt;a href=&quot;...`); the REST API's `source` is raw HTML.
 - Bluesky shortens long links in the visible text (`example.com/very/lo...`) and keeps the target in a facet. Old clients only see text, so link facets are expanded to the full URL.
 - Images, videos and quote posts become links in the text: to `/p/<id>` (a no-JavaScript page) for media, and to the quoted post's `/p/<id>`. Link cards append their URL if it isn't already in the text.

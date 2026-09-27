@@ -248,3 +248,28 @@ func TestDIDFromURI(t *testing.T) {
 		t.Fatal("collection/rkey")
 	}
 }
+
+// A post record's "via" names its client; it becomes the status source as
+// escaped plain text, falling back to the Bluesky link.
+func TestSourceFor(t *testing.T) {
+	cases := map[string]string{
+		"":                       Source,
+		"   ":                    Source,
+		"​\x07":                  Source,
+		"Witchsky Web App":       "Witchsky Web App",
+		"  Tweetie  ":            "Tweetie",
+		"a\n\tb   c":             "a b c",
+		`<a href="x">y</a>`:      "&lt;a href=&quot;x&quot;&gt;y&lt;/a&gt;",
+		"Tom & Jerry":            "Tom &amp; Jerry",
+		"zero‍width":             "zerowidth",
+		strings.Repeat("x", 100): strings.Repeat("x", maxViaRunes),
+	}
+	for in, want := range cases {
+		if got := SourceFor(in); got != want {
+			t.Errorf("SourceFor(%q) = %q, want %q", in, got, want)
+		}
+	}
+	if got := searchSource(SourceFor("A&B")); got != "A&amp;amp;B" {
+		t.Errorf("search source: %q", got)
+	}
+}

@@ -45,6 +45,7 @@ type Post struct {
 	Reply     map[string]any
 	Embed     map[string]any // record embed
 	EmbedView map[string]any // hydrated view
+	Via       string         // client name in the record's "via" field
 	CreatedAt time.Time
 	IndexedAt time.Time
 	Likes     map[string]string // liker DID -> like URI
@@ -522,6 +523,9 @@ func (s *Server) postView(p *Post, viewer string) map[string]any {
 	if p.Embed != nil {
 		rec["embed"] = p.Embed
 	}
+	if p.Via != "" {
+		rec["via"] = p.Via
+	}
 	v := map[string]any{
 		"uri": p.URI, "cid": p.CID, "author": s.profile(s.accounts[p.Author], viewer, false), "record": rec,
 		"replyCount": 0, "repostCount": len(p.Reposts), "likeCount": len(p.Likes), "quoteCount": 0,
@@ -783,6 +787,7 @@ func (s *Server) createRecord(w http.ResponseWriter, r *http.Request, viewer str
 		reply, _ := in.Record["reply"].(map[string]any)
 		embed, _ := in.Record["embed"].(map[string]any)
 		p := s.addPostLocked(viewer, text, time.Now(), facets, reply, embed)
+		p.Via, _ = in.Record["via"].(string)
 		ok(w, map[string]string{"uri": p.URI, "cid": p.CID})
 	case "app.bsky.feed.like", "app.bsky.feed.repost":
 		subj, _ := in.Record["subject"].(map[string]any)

@@ -159,3 +159,45 @@ func TestSlowUploadOutlivesReadTimeout(t *testing.T) {
 		t.Fatalf("slow upload was cut off: %s", b)
 	}
 }
+
+// Posts show the client named in their record's "via" field, and posts made
+// through the bridge are marked as coming from Tweetie.
+func TestViaSource(t *testing.T) {
+	h := newHarness(t)
+	p := h.pds.AddPost("did:plc:bob", "posted from elsewhere", time.Now())
+	p.Via = "Witchsky Web App"
+	h.pds.AddPost("did:plc:bob", "no via here", time.Now().Add(time.Second))
+
+	// Anonymous user timeline.
+	var sts []struct {
+		Text   string `json:"text"`
+		Source string `json:"source"`
+	}
+	h.get("/statuses/user_timeline/bob.test.json").json(t, &sts)
+	got := map[string]string{}
+	for _, s := range sts {
+		got[s.Text] = s.Source
+	}
+	if got["posted from elsewhere"] != "Witchsky Web App" || got["no via here"] != `<a href="https://bsky.app" rel="nofollow">Bluesky</a>` {
+		t.Fatalf("sources: %v", got)
+	}
+	r := h.get("/statuses/user_timeline/bob.test.xml")
+	if !strings.Contains(string(r.body), "<source>Witchsky Web App</source>") {
+		t.Fatalf("xml source: %s", r.body)
+	}
+
+	// Posting through the bridge writes via: Tweetie.
+	r = h.post("/statuses/update.json", url.Values{"status": {"hello from 2009"}}, alice)
+	if r.code != 200 || !strings.Contains(string(r.body), `"source":"Tweetie"`) {
+		t.Fatalf("update: %d %s", r.code, r.body)
+	}
+	var mine *fakepds.Post
+	for _, q := range h.pds.Posts() {
+		if q.Text == "hello from 2009" {
+			mine = q
+		}
+	}
+	if mine == nil || mine.Via != "Tweetie" {
+		t.Fatalf("record via not written: %+v", mine)
+	}
+}

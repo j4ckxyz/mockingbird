@@ -27,6 +27,10 @@ func (s *Server) showStatus(c *Ctx) (*Resp, error) {
 	return r, nil
 }
 
+// postVia is written into the "via" field of posts made through the bridge,
+// so other clients can show where they came from.
+const postVia = "Tweetie"
+
 var uploadURLRE = regexp.MustCompile(`\s*https?://[^\s/]+/m/([A-Za-z0-9_-]{16,64})\b`)
 
 func (s *Server) updateStatus(c *Ctx) (*Resp, error) {
@@ -62,6 +66,7 @@ func (s *Server) updateStatus(c *Ctx) (*Resp, error) {
 		"$type":     "app.bsky.feed.post",
 		"text":      text,
 		"createdAt": time.Now().UTC().Format("2006-01-02T15:04:05.000Z"),
+		"via":       postVia,
 	}
 	facets := translate.BuildFacets(ctx, text, s.mentionResolver(c))
 	if len(facets) > 0 {
