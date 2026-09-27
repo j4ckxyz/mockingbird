@@ -7,13 +7,13 @@ mockingbird is a small bridge that lets Twitter apps from 2009 and 2010, such as
 Try the hosted bridge at **http://mockingbird.j4ck.xyz**, or run your own in a few minutes.
 
 <p align="center">
-  <img src="docs/landing-light.png" alt="The mockingbird landing page in light mode" width="720">
+  <img src="docs/screenshots/home.png" alt="Tweetie 2 showing a Bluesky home timeline" width="150">
+  <img src="docs/screenshots/mentions.png" alt="The mentions tab with Bluesky replies" width="150">
+  <img src="docs/screenshots/search.png" alt="Searching Bluesky for #nowspinning" width="150">
+  <img src="docs/screenshots/profile.png" alt="A Bluesky profile with follower and post counts" width="150">
+  <img src="docs/screenshots/post.png" alt="A single Bluesky post" width="150">
 </p>
-
-<p align="center">
-  <img src="docs/landing-dark.png" alt="The landing page in dark mode" width="400">
-  <img src="docs/landing-narrow.png" alt="The landing page on a narrow screen" width="200">
-</p>
+<p align="center"><sub>Tweetie 2 on iPhone OS 3, running on Bluesky: home timeline, mentions, search, profile and a single post.</sub></p>
 
 ## What works
 
@@ -35,9 +35,13 @@ Not supported: lists, locations and streaming. Videos appear as a link.
 | Search API | `http://mockingbird.j4ck.xyz` |
 | Image service (if offered) | `http://mockingbird.j4ck.xyz/api/upload` |
 
-**3. Sign in** with your Bluesky handle (for example `alice.bsky.social`, or just `alice` for `.bsky.social` accounts) and the app password.
+In Tweetie 2, the settings are under **Add Account › Advanced**:
 
-In Tweetie 2, the settings are under **Add Account › Advanced**.
+<p align="center">
+  <img src="docs/screenshots/settings.png" alt="Tweetie 2's Advanced screen with API Root and Search API set to http://mockingbird.j4ck.xyz" width="200">
+</p>
+
+**3. Sign in** with your Bluesky handle (for example `alice.bsky.social`, or just `alice` for `.bsky.social` accounts) and the app password.
 
 Use `http://`, not `https://`: old apps cannot use modern secure connections.
 
